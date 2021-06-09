@@ -213,10 +213,8 @@
     }
 
     .chatpopup-widget__trigger {
-        padding: 6px 14px;
-        border-radius: 4px;
         cursor: pointer;
-        font-size: 15px;
+        font-size: 4em;
         display: inline-block;
         user-select: none;
         display: flex;
@@ -310,9 +308,13 @@
     .chatpopup-icon-whatsapp svg {
         width: 16px
     }
+
+    
+    .chatpopup-widget__trigger {
+      color: #6da830;
+    }
     .chatpopup-widget-close,
         .chatpopup-widget__body-header,
-        .chatpopup-widget__trigger,
         .chatpopup-welcome-msg {
             background-color: #6da830;
             color: #ffffff;
@@ -780,7 +782,17 @@
                 </div>
             </div>
         </div>
-        <div class="chatpopup-widget__trigger" style="padding:15px;margin:0 15px 15px;"> <i class="icon-question-sign" style="font-size:30px;"></i> </div>
+        <div class="chatpopup-widget__trigger" style="padding:15px;margin:0 15px 15px;"> <i class="icon-question-sign" style=" background-image: radial-gradient(at center, white 40%, transparent 40%);"></i> </div>
+    </div>
+
+<div class="chatpopup-widget" style="margin-right:110px;">
+        <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+          <a href="ferme//create">
+            <div class="icon"> 
+              <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+            </div>
+          </a> 
+        </div>
     </div>
 
 <script type="text/javascript">
