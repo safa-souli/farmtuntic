@@ -1,0 +1,2 @@
+# Farm Fresh
+Une plateforme web et mobile pour acheter et vendre des produits agricoles tels que: fruits, légumes, poisson, produits naturels, etc. afin de faciliter le processus d'achat et de supprimer la médiation entre le producteur et le consommateur.

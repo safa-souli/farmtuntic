@@ -1,0 +1,21 @@
+{
+    "editor.tabSize": 2,
+    "alignment.surroundSpace": {
+    
+    
+        "colon": [
+            0,
+            1
+        ],
+        "assignment": [
+            1,
+            1
+        ],
+        "arrow": [
+            1,
+            1
+        ],
+        "comment": 2
+    },
+    "alignment.operatorPadding": "left"
+}
