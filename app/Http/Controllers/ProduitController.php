@@ -8,6 +8,7 @@ use App\produit_note;
 use App\User;
 use Illuminate\Http\request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProduitController extends Controller
 {
@@ -30,12 +31,13 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function categorie(categorie $categorie)
+  public function categorie(categorie $categorie, $id)
   {
+    $categorie = categorie::find($id);
     return view('product.viewAny',
       [
         'time' => $this->time,
-        'produits' => $categorie->produits, //access to the parent columns
+        'produits' => $categorie->produits()->paginate(15), //access to the parent columns
         'Categorie' => $categorie,
         'categories' => categorie::orderBy('nom')->get()
       ]);
@@ -84,15 +86,26 @@ class ProduitController extends Controller
     return view('product.edit', ['produit' => $produit]);
   }
   
-  public function update(Request $request)
+  public function update(Request $request, $id)
   {
-    $produit = new produit();
+    function transpose($array) {
+        array_unshift($array, null);
+        return call_user_func_array('array_map', $array);
+    }
+    $produit = produit::find($id);
+    $produit->nom = $request->nom;
+    $produit->prix = $request->prix;
+    $produit->description = $request->description;
+    $produit->promotion = $request->promotion;
+    if($request->caracteristics != NULL) $produit->caracteristics = array_merge($request->caracteristics, transpose($request->car));
+    else $produit->caracteristics = transpose($request->car);
+    $produit->caracteristics = (object) $produit->caracteristics;
     if($request->hasFile('image')) {    
       $produit->image = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
       $request->file('image')->storeAs('public/assets/img/dish', $produit->image);
     }
-    $produit->update($request->all());
-    return redirect()->back();
+    $produit->save();
+    return view('product.edit')->with('produit', $produit);
   }
 
   public function note_store(Request $request)

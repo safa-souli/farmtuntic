@@ -272,23 +272,22 @@
                         <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
                         </div>
                         <div class="restaurent-tags-price">
+                          <div style="float: left;">
                           @inject('note', 'App\Http\Controllers\PanierController')
-                          
-                          @if($note->exist($produit->id)->isEmpty())
-                            <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier">
-                              <i class="fas fa-shopping-bag"></i>
-                            </button>
-                            <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light" title="Supprimer du panier" style="display: none;">
-                              <i class="fas fa-shopping-bag"></i>
-                            </button>
-                          @else
-                            <button class="btn-first btn-submit text-light" title="Supprimer du panier"><i class="fas
-                            fa-shopping-bag"></i></button>
-                          @endif
-                          <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn" style="margin-left: -1.7in">Afficher plus</a>
+                            @if($note->exist($produit->id)->isEmpty())
+                              <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier">
+                                <i class="fas fa-shopping-bag"></i>
+                              </button>
+                              <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light" title="Supprimer du panier" style="display: none;">
+                                <i class="fas fa-shopping-bag"></i>
+                              </button>
+                            @else
+                              <button class="btn-first btn-submit text-light" title="Supprimer du panier"><i class="fas fa-shopping-bag"></i></button>
+                            @endif
+                            <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn align-left" style="float: none;">Afficher plus</a>
+                          </div>
                           <div class="restaurent-product-price">
-                            <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup> économisez </h6>
-                            <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span class="save-price text-light-green fs-12">save $90</span>
+                            <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">{{$produit->prix}}</span><span class="save-price text-light-green fs-12">save $90</span>
                             </p>
                           </div>
                         </div>

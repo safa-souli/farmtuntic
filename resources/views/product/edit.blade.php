@@ -83,9 +83,8 @@
               <li class="breadcrumb-item active" aria-current="page">Modifier {{ $produit->nom }}</li>
             </ul>
           </div>
-          <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('product.update', $produit->id) }}" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="row">
               <div class="col-xl-12 col-lg-8">
                 <div class="step-content">
@@ -110,19 +109,13 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label class="text-light-black fw-700">Prix du produit (<sup>dt</sup>) <sup class="fs-16" style="color: red">*</sup></label>
-                            <input type="number" name="prix" class="form-control form-control-submit"  value=" {{ $produit->prix }} ">
+                            <input type="number" name="prix" class="form-control form-control-submit"  value="{{ $produit->prix }}">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label class="text-light-black fw-700"> Promotion  (<sup>%</sup>) </label>
-                            <input type="number" name="promotion" class="form-control form-control-submit"  value=" {{ $produit->promotion }} ">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="text-light-black fw-700"> Stock </label>
-                            <input name="stock" class="form-control form-control-submit"  value=" {{ $produit->stock }} ">
+                            <input type="number" name="promotion" class="form-control form-control-submit"  value="{{$produit->promotion}}">
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -146,34 +139,53 @@
                         <div class="col-12">
                           <h5 class="text-light-black fw-700">Information additionelle</h5>
                           <p class="text-light-black fw-400" style="margin-top: -10px;">Pour plus de spécifications et de détails</p>
-                        </div>
-                        @foreach ($produit->caracteristics as $caracteristic)
-                                 
-                          @php
-                            $x = 0;
-                          @endphp             
-                          <div class="col-6">
-                            <div class="form-group">
-                              <label class="text-light-black fw-700">caratéristiques du produit</label>
-                              <input name="caracteristic[{{$x}}][nom_car]" class="form-control form-control-submit" placeholder="{{ $caracteristic['nom_car'] }}">
-
+                        </div>                        
+                        @if (isset($produit->caracteristics))
+                          @foreach ($produit->caracteristics as $caracteristic)
+                                  
+                            @php
+                              $x = 0;
+                            @endphp             
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label class="text-light-black fw-700">caratéristiques du produit</label>
+                                <input name="car[nom_car][]" class="form-control form-control-submit" value="{{ $caracteristic['nom_car'] }}">
+                              </div>
                             </div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label class="text-light-black fw-700">caratéristiques du produit
+                                </label>
+                                <input name="car[val_car][]" class="form-control form-control-submit" value="{{ $caracteristic['val_car'] }}">                          
+                              </div>                          
+                            </div>
+                            @php
+                                $x++;
+                            @endphp
+                          @endforeach                            
+                        @else
+                        @php
+                           $x = 0; 
+                        @endphp
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700">caratéristiques du produit</label>
+                            <input name="car[nom_car][0]" class="form-control form-control-submit" placeholder="i.e poid">
+
                           </div>
-                          <div class="col-6">
-                            <div class="form-group">
-                              <label class="text-light-black fw-700">caratéristiques du produit
-                              </label>
-                              <input name="caracteristic[{{$x}}][val_car]" class="form-control form-control-submit" placeholder="{{ $caracteristic['val_car'] }}">                          
-                            </div>                          
-                          </div>
-                          @php
-                              $x++;
-                          @endphp
-                        @endforeach
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700">caratéristiques du produit
+                            </label>
+                            <input name="car[val_car][0]" class="form-control form-control-submit" placeholder="i.e 6kg">                          
+                          </div>                          
+                        </div>
+                        @endif
                       </div>
                       <div class="col-6" style="margin-left:-2ex;">
                         <div class="form-group">
-                        <a href="javascript:void(0);" class="btn-second btn-submit add_button" title="Add field">Modifier caratéristique</a>
+                        <a href="javascript:void(0);" class="btn-second btn-submit add_button" title="Add field">Ajouter caratéristique</a>
                       </div>
                       
                         
