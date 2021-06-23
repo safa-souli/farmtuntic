@@ -68,15 +68,15 @@
                           <div id="deliverycollapseTwo" class="collapse show">
                             <div class="card-body">
                               <div class="rating">
-                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                <button id="rate1" class="btn-submit text-light"><i class="fas fa-star"></i>
                                 </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                <button id="rate2" class="text-yellow"><i class="fas fa-star"></i>
                                 </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                <button id="rate3" class="text-yellow"><i class="fas fa-star"></i>
                                 </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                <button id="rate4" class="text-yellow"><i class="fas fa-star"></i>
                                 </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                <button id="rate5" class="text-yellow"><i class="fas fa-star"></i>
                                 </button>
                               </div>
                             </div>
@@ -108,85 +108,6 @@
                             <div class="card-body">
                               <div class="delivery-slider">
                                 <input type="text" class="delivery-range-slider" value=""/>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="pickup-restaurents">
-                      <p class="text-light-black delivery-type p-relative">Pick my food <a href="#">Today, ASAP</a>
-                      </p>
-                      <div class="filters">
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseOne">
-                              Feature
-                            </a>
-                          </div>
-                          <div id="pickupcollapseOne" class="collapse show">
-                            <div class="card-body">
-                              <form>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Coupons <span class="text-light-white">(1)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> New <span class="text-light-white">(26)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Open Now [7:08am] <span class="text-light-white">(236)</span>
-                                </label>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseTwo">
-                              Rating
-                            </a>
-                          </div>
-                          <div id="pickupcollapseTwo" class="collapse show">
-                            <div class="card-body">
-                              <div class="rating">
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseThree">
-                              Price
-                            </a>
-                          </div>
-                          <div id="pickupcollapseThree" class="collapse show">
-                            <div class="card-body">
-                              <div class="rating">
-                                <button class="text-success">$</button>
-                                <button class="text-success">$$</button>
-                                <button class="text-success">$$$</button>
-                                <button class="text-success">$$$$</button>
-                                <button class="text-success">$$$$$</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseFour">
-                              Distance
-                            </a>
-                          </div>
-                          <div id="pickupcollapseFour" class="collapse show">
-                            <div class="card-body">
-                              <div class="delivery-slider">
-                                <input type="text" class="distance-range-slider" value=""/>
                               </div>
                             </div>
                           </div>
@@ -502,6 +423,11 @@
     </div>
   </section>
   <script type="text/javascript">
+    $(document).on("ajaxStart pfAjaxSend", function() {
+        $("html").addClass("progress");
+    }).on("ajaxStop pfAjaxComplete", function() {
+        $("html").removeClass("progress");
+    });
     $(document).ready(function () {
       <?php foreach($produits as $produit) { ?>
       $("#add-cart<?php echo $produit->id?>").click(function () {
@@ -515,6 +441,17 @@
         });
       });
       <?php } ?>
+      for (let index = 0; index < 5; index++) {        
+        $("#rate"+index).click(function () {
+          $.ajax({
+            type: 'get',
+            url: '<?php echo url('/produits/filter'); ?>?rate=' + index,
+            success: function () {
+              $("#rate"+index).addClass("btn-submit text-light");
+            }
+          });          
+        });
+      }
     });
   </script>
 @endsection

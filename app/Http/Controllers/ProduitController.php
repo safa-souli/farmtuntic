@@ -170,14 +170,20 @@ class ProduitController extends Controller
   
   public function filter(produit $produit)
   {
-    $term = $_GET['term'];
-    $produit = $produit->where('nom', 'like', "%{$term}%")
-    ->orWhere('description', 'like', "%{$term}%")
-    ->paginate(10);
-    return view('product.viewAny',
+    $rate = $_GET['rate'];
+    if($rate) {
+      $products = produit::orderBy('created_at', 'DESC')->get();
+      foreach ($products as $product) {
+        $avg = $product->notes()->avg('etoiles');
+        if((int) $rate = $avg) {
+          $prod[] = $product;
+        }
+      }
+    }
+    return view('product.filter',
       [
         'time' => $this->time,
-        'produits' => $produit,
+        'produits' => $prod,
         'categories' => categorie::orderBy('nom')->get()
       ]);
   }
