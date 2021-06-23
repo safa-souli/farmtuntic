@@ -3,11 +3,11 @@
 @section('content')
   <section class="our-articles bg-light-theme section-padding pt-0">
     <div class="blog-page-banner"></div>
-    <div class="container-fluid">
+    <div class="container-fluid"  style="margin:0 10ex 0 7ex;">
       <div class="row">
         <aside class="col-lg-3 mb-md-40">
           <div class="filter-sidebar mb-5">
-            <div class="sidebar-tab" style="margin-top: 50px;">
+            <div class="sidebar-tab" style="margin: 50px 0 0 3ch;">
               <ul class="nav nav-pills mb-xl-20">
                 <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#categorie">Catégories</a>
                 </li>
@@ -35,7 +35,7 @@
             </div>
           </div>
         </aside>
-        <div class="col-lg-6 blog-inner clearfix">
+        <div class="col-lg-5 blog-inner clearfix">
           <div class="main-box padding-20 full-width">
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
@@ -51,43 +51,53 @@
             <div class="row">
               <div class="col-12">
                 <div class="blog-meta mb-xl-20">
-                  <h2 class="blog-title text-light-black">{{ $produit->nom }}
-
-                    <div class="restaurent-product-rating text-right" style="margin-top: -40px;">
-                      @inject('note', 'App\Http\Controllers\ProduitController')
-                      @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
-                        <i class="fas fa-star text-yellow"></i>
-                      @endfor
-                      @if((number_format($note->avg($produit->ferme->id) != 0)) && ($note->avg($produit->ferme->id) %  number_format($note->avg
-                            ($produit->ferme->id))) > 0.5)
-                        <i class="fas fa-star-half-alt text-yellow"></i>
-                      @endif
-                      <div class="rating-text">
-                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
+                  
+                  <h2 class="blog-title text-light-black">
+                    <div class="testimonial-caption padding-15" style="margin: -1.3ex 0 0 -0.7ch;">
+                      <p class="text-light-white text-uppercase no-margin fs-12">{{ $time->inWords($produit->updated_at) }}</p>
+                      <h5 class="fw-600 text-light-black"> {{ $produit->nom}} </h5>
+                      <div class="head-rating" style="margin-top: -20px;">
+                        <div class="rating">
+                          @inject('note', 'App\Http\Controllers\ProduitController')
+                          @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
+                            <i class="fas fa-star  fs-18 text-yellow"></i>
+                          @endfor
+                          @if((number_format($note->avg($produit->ferme->id) != 0)) && ($note->avg($produit->ferme->id) %  number_format($note->avg
+                                ($produit->ferme->id))) > 0.5)
+                            <i class="fas fa-star-half-alt  fs-18 text-yellow"></i>
+                          @endif
+                          <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
+                        </div>
+                    </div>
+                    <div class="restaurent-product-rating text-right" style="margin-top: -20px;">                      
+                      <div class="restaurent-tags-price">             
+                        <div class="restaurent-product-price" style="margin: -0.7in 0 0 30px;">
+                                    
+              
+                          <p class="text-light-green fw-600 text-right">
+                            
+                        @inject('note', 'App\Http\Controllers\PanierController')
+                        $90 <span class="line-through text-light-white fs-16">{{$produit->prix}}<sup>dt</sup></span><span class="save-price text-light-green fs-12">save $90</span></p>
+                        @if($note->exist($produit->id)->isEmpty())
+                          <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier">
+                            <i class="fas fa-shopping-bag"></i>
+                          </button>
+                          <button id="success-cart{{ $produit->id }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
+                            <i class="fas fa-shopping-bag"></i>
+                          </button>
+                        @else
+                          <button class="btn-second btn-submit text-light" title="Supprimer du panier">
+                            <i class="fas fa-shopping-bag"></i>
+                          </button>
+                        @endif
+                        </div>
                       </div>
                     </div>
                   </h2>
-                  <h6 class="text-light-white fs-14" style="margin-top: -30px;">{{ $time->inWords($produit->updated_at) }}</h6>
-
-                  <div class="restaurent-tags-price">
-                    @inject('note', 'App\Http\Controllers\PanierController')
-                    @if($note->exist($produit->id)->isEmpty())
-                      <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier">
-                        <i class="fas fa-shopping-bag"></i>
-                      </button>
-                      <button id="success-cart{{ $produit->id }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
-                        <i class="fas fa-shopping-bag"></i>
-                      </button>
-                    @else
-                      <button class="btn-second btn-submit text-light" title="Supprimer du panier">
-                        <i class="fas fa-shopping-bag"></i>
-                      </button>
-                    @endif
-                    <div class="restaurent-product-price" style="margin: -30px 0 0 30px;">
-                      <h6 class="text-success fw-600 text-right">{{$produit->prix}}<sup>dt</sup></h6>
-                    </div>
+                  <div>             
+                  <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
+                  <p class="text-light-black"> Feateaure 1: <span class="text-light-white">{{ $produit->description }}</span></p>
                   </div>
-                  <p class="text-light-white">{{ $produit->description }}</p>
                 </div>
               </div>
             </div>

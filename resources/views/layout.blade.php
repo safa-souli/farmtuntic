@@ -10,6 +10,18 @@
 
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
+ 
+ .page-item.active .page-link {
+  
+   z-index: 1;
+  
+   color: #fff;
+  
+   background-color: #FF0000;
+  
+   border-color: #AEFF5E;
+  
+ }
     .container-pop {
     width: 50px;
       border: 2px solid #dedede;
@@ -787,7 +799,7 @@
 
 <div class="chatpopup-widget" style="margin-right:110px;">
         <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
-          <a href="ferme//create">
+          <a href="{{ route('product.create') }}">
             <div class="icon"> 
               <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
             </div>

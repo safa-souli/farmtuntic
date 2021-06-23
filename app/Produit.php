@@ -8,7 +8,10 @@ class produit extends Model
 {
   public $table = 'produit';
   protected $fillable = [
-    'nom', 'prix', 'stock', 'image', 'description'
+    'nom', 'prix', 'stock', 'promotion', 'image', 'description','caracteristics'
+  ];
+  protected $casts = [
+    'caracteristics' =>  'array'
   ];
 
   public function ferme()

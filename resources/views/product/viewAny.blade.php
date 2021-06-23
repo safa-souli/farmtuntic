@@ -11,7 +11,7 @@
     .pagination > .active > a:hover,
     .pagination > .active > span:focus,
     .pagination > .active > span:hover,
-    .pagination > li > a:hover {
+    .pagination > li > a:hover  {
       background-color: #6da830;
       border-color: #6da830;
       color: white;
@@ -23,27 +23,18 @@
       <div class="row">
         <aside class="col-lg-3 mb-md-40">
           <div class="filter-sidebar mb-5">
-            <div class="sidebar-tab" style="margin-top: 50px;">
+            <div class="sidebar-tab" style="margin: 50px 0 0 3ch;">
               <ul class="nav nav-pills mb-xl-20">
-                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#filtre">Filtre</a>
+                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#filtre">Filtre</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#categorie">Catégories</a>
+                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#categorie">Catégories</a>
                 </li>
               </ul>
               <div class="tab-content">
-                <div class="tab-pane fade show active" id="filtre">
-                  <div class="siderbar-innertab">
-                    <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#delivery-restaurents">Delivery</a>
-                      </li>
-                      <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pickup-restaurents">Pickup</a>
-                      </li>
-                    </ul>
-                  </div>
+                <div class="tab-pane fade" id="filtre">
                   <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="delivery-restaurents">
-                      <p class="text-light-black delivery-type p-relative">Delivery my food <a href="#">Today, ASAP</a>
-                      </p>
+                      <p class="text-light-black delivery-type p-relative"> Choisissez les fonctionnalités qui vous conviennent</p>
                       <div class="filters">
                         <div class="card">
                           <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseOne">
@@ -204,7 +195,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="categorie">
+                <div class="tab-pane fade active show" id="categorie">
                   <div class="main-box padding-20 trending-blog-cat mb-xl-20">
                     <ul>
                       @foreach($categories as $categorie)
@@ -245,7 +236,7 @@
                 {{ $produits->links() }}
               </ul>
             </nav>
-            <div id="products-box" class="row">
+            <div id="products-box" class="container row">
               @foreach($produits as $produit)
                 <div class="col-lg-12">
                   <div class="restaurent-product-list">
@@ -255,11 +246,15 @@
                           <div class="restaurent-product-box">
                             <div class="restaurent-product-title">
                               <h6 class="mb-2 text-light-black">{{ $produit->nom }}</h6>
-                              <p class="text-light-white">{{ $time->inWords($produit->created_at) }}</p>
+                              <div class="rating-text">
+                                <p class="text-light-white fs-12">{{ $time->inWords($produit->created_at) }}</p>
+                              </div>
                             </div>
-                            <div class="restaurent-product-label">
-                              <span class="rectangle-tag bg-gradient-red text-custom-white">10%</span>
-                            </div>
+                            @isset($product->promo) 
+                              <div class="restaurent-product-label">
+                                <span class="rectangle-tag bg-gradient-red text-custom-white">{{ $product->promo }}%</span>
+                              </div>
+                            @endisset
                           </div>
                           <div class="restaurent-product-rating text-right">
                             @inject('note', 'App\Http\Controllers\ProduitController')
@@ -278,19 +273,23 @@
                         </div>
                         <div class="restaurent-tags-price">
                           @inject('note', 'App\Http\Controllers\PanierController')
-                          <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn">Afficher plus</a>
+                          
                           @if($note->exist($produit->id)->isEmpty())
-                            <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier"
-                                    style="margin-left:
-                              -100px;"><i class="fas fa-shopping-bag"></i></button>
-                            <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light"
-                                    title="Supprimer du panier" style="margin-left: -100px; display: none;"><i class="fas fa-shopping-bag"></i></button>
+                            <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier">
+                              <i class="fas fa-shopping-bag"></i>
+                            </button>
+                            <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light" title="Supprimer du panier" style="display: none;">
+                              <i class="fas fa-shopping-bag"></i>
+                            </button>
                           @else
-                            <button class="btn-first btn-submit text-light" title="Supprimer du panier" style="margin-left: -100px;"><i class="fas
+                            <button class="btn-first btn-submit text-light" title="Supprimer du panier"><i class="fas
                             fa-shopping-bag"></i></button>
                           @endif
+                          <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn" style="margin-left: -1.7in">Afficher plus</a>
                           <div class="restaurent-product-price">
-                            <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>
+                            <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup> économisez </h6>
+                            <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">$180</span><span class="save-price text-light-green fs-12">save $90</span>
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -300,6 +299,9 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          
+        </div>
               @endforeach
             </div>
 

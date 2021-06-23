@@ -6,7 +6,7 @@ use App\categorie;
 use App\produit;
 use App\produit_note;
 use App\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\request;
 use Illuminate\Support\Facades\Auth;
 
 class ProduitController extends Controller
@@ -59,15 +59,51 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function note_store()
+  public function store(Request $request)
   {
-    Auth::user()->produitNotes()->attach('', \request()->all(), ['client_id' => Auth::user()->id]);
+    $produit = new produit();
+    if($request->hasFile('image')) {    
+      $produit->image = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+      $request->file('image')->storeAs('public/assets/img/dish', $produit->image);
+    }
+    else  $produit->image = 'default.jpg';
+    $produit->agriculteur_id =  Auth::user()->id;
+    $produit->nom = $request->nom;
+    $produit->prix = $request->prix;
+    $produit->promotion = $request->promotion;
+    $produit->stock = $request->stock;
+    $produit->description = $request->description;
+    $produit->caracteristics = $request->caracteristics;
+    $produit->save();
     return redirect()->back();
   }
 
-  public function note_update(produit_note $note)
+  public function edit(produit $produit, $id)
+  {    
+    $produit = produit::find($id);
+    return view('product.edit', ['produit' => $produit]);
+  }
+  
+  public function update(Request $request)
   {
-    $note->update(\request()->all());
+    $produit = new produit();
+    if($request->hasFile('image')) {    
+      $produit->image = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+      $request->file('image')->storeAs('public/assets/img/dish', $produit->image);
+    }
+    $produit->update($request->all());
+    return redirect()->back();
+  }
+
+  public function note_store(Request $request)
+  {
+    Auth::user()->produitNotes()->attach('', $request()->all(), ['client_id' => Auth::user()->id]);
+    return redirect()->back();
+  }
+
+  public function note_update(produit_note $note, Request $request)
+  {
+    $note->update($request()->all());
     return redirect()->back();
   }
 
