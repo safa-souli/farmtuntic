@@ -105,37 +105,51 @@
                           <div class="form-group">
                             <label class="text-light-black fw-700">Nom du produit<sup class="fs-16" style="color: red">*</sup>
                             </label>
-                            <input name="nom" class="form-control form-control-submit" placeholder="i.e Tomate">
+                            <input name="nom" class="form-control @error('nom') is-invalid @enderror form-control-submit" placeholder="i.e Tomate" value="{{ old('nom') }}">
+                            @error('nom')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="text-light-black fw-700">Prix du produit (<sup>dt</sup>) <sup class="fs-16" style="color: red">*</sup></label>
-                            <input type="number" name="prix" class="form-control form-control-submit" placeholder="i.e 7.32">
+                            <label class="text-light-black fw-700">Prix du produit (dt) <sup class="fs-16" style="color: red">*</sup></label>
+                            <input type="number" name="prix" class="form-control @error('prix') is-invalid @enderror form-control-submit" placeholder="i.e 7.32" value="{{ old('prix') }}">
+                            @error('prix')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label class="text-light-black fw-700"> Promotion  (<sup>%</sup>) </label>
-                            <input type="number" name="promotion" class="form-control form-control-submit" placeholder="i.e 10">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="text-light-black fw-700"> Stock </label>
-                            <input name="stock" class="form-control form-control-submit" placeholder="i.e 6kg ">
+                            <label class="text-light-black fw-700"> Promotion (%) </label>
+                            <input type="number" name="promotion" class="form-control @error('promotion') is-invalid @enderror form-control-submit" placeholder="i.e 10" value="{{ old('promotion')}}">
+                            @error('promotion')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label class="text-light-black fw-700">Image du produit<sup class="fs-16" style="color: red">*</sup></label>
                             <input type="file" name="image" class="custom-file">
+                            @error('image')
+                              <span style="font-size: 80%;color: #dc3545;">
+                                <strong>{{$message}}</strong>
+                              </span>
+                            @enderror
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
                             <label class="text-light-black fw-700">Description</label>
-                            <textarea type="text" name="description" class="form-control form-control-submit" rows="3" placeholder="i.e est une produit internationnale"></textarea>
+                            <textarea type="text" name="description" class="form-control form-control-submit" rows="3" placeholder="i.e est une produit internationnale">{{ old('description') }}</textarea>
                           </div>
                         </div>
                       </div>

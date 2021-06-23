@@ -94,9 +94,20 @@
                       </div>
                     </div>
                   </h2>
+                  <div>    
+                    @isset($produit->caracteristics)                        
+                      <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
+                        @foreach ($produit->caracteristics as $caracteristic)
+                            
+                        <p class="text-light-black"> {{ $caracteristic['nom_car'] }}: <span class="text-light-white">{{ $caracteristic['value_car'] }}</span></p>
+                        @endforeach
+                    @endisset         
+                  </div>
+                </div>
+                <div>
                   <div>             
-                  <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
-                  <p class="text-light-black"> Feateaure 1: <span class="text-light-white">{{ $produit->description }}</span></p>
+                  <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Description</h6>
+                  <p class="text-light-white"> {{ $produit->description }}</p>
                   </div>
                 </div>
               </div>

@@ -27,6 +27,7 @@ Route::put('produit/add', 'produitController@store')->name('product.store');
 Route::get('produit/edit/{id}', 'produitController@edit')->name('product.edit');
 Route::post('produit/update/{id}', 'produitController@update')->name('product.update');
 Route::get('produit/delete/{id}', 'produitController@delete')->name('product.delete');
+Route::get('produits/search', 'produitController@search');
 Route::post('produit/noter', 'produitController@note_store')->name('note.store');
 Route::post('produit/note/update/{note}', 'produitController@note_update')->name('note.update');
 

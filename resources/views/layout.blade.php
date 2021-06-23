@@ -467,7 +467,7 @@
                 <!-- search -->
                 <div class="col-lg-6 col-md-7">
                   <div class="search-box padding-10">
-                    <input type="text" class="form-control" placeholder="Fruits, Légume, Lait, Oeufs">
+                    <input name="term" class="form-control" placeholder="Fruits, Légume, Lait, Oeufs">
                   </div>
                 </div>
                 <!-- search -->

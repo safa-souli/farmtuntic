@@ -9,17 +9,33 @@ use App\User;
 use Illuminate\Http\request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Validator;
 
 class ProduitController extends Controller
 {
+  
+ 
   protected $time;
   protected $user;
-  //boot functions
+
   public function __construct()
   {
     $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
     $this->middleware('auth')->only('note_store', 'note_update');
   }
+
+   //boot functions
+
+
+   protected function rules(Request $request)
+   {
+     return $request->validate([
+       'nom' => 'required|string|min:3|max:255',
+       'prix' => 'required|numeric|min:1',
+       'promotion' => 'nullable|numeric|between:1,99',
+       'image' => 'required|image|max:2048',
+     ]);
+   }
 
   public function index()
   {
@@ -63,6 +79,12 @@ class ProduitController extends Controller
 
   public function store(Request $request)
   {
+    $request->validate([
+      'nom' => 'required|string|min:3|max:255',
+      'prix' => 'required|numeric|min:1',
+      'promotion' => 'nullable|numeric|between:1,99',
+      'image' => 'required|image|max:2048',
+    ]);
     $produit = new produit();
     if($request->hasFile('image')) {    
       $produit->image = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -73,7 +95,6 @@ class ProduitController extends Controller
     $produit->nom = $request->nom;
     $produit->prix = $request->prix;
     $produit->promotion = $request->promotion;
-    $produit->stock = $request->stock;
     $produit->description = $request->description;
     $produit->caracteristics = $request->caracteristics;
     $produit->save();
@@ -88,24 +109,77 @@ class ProduitController extends Controller
   
   public function update(Request $request, $id)
   {
-    function transpose($array) {
-        array_unshift($array, null);
-        return call_user_func_array('array_map', $array);
-    }
+    $request->validate([
+      'nom' => 'required|string|min:3|max:255',
+      'prix' => 'required|numeric|min:1',
+      'promotion' => 'nullable|numeric|between:1,99',
+      'image' => 'nullable|image|max:2048',
+    ]);
     $produit = produit::find($id);
-    $produit->nom = $request->nom;
-    $produit->prix = $request->prix;
-    $produit->description = $request->description;
-    $produit->promotion = $request->promotion;
-    if($request->caracteristics != NULL) $produit->caracteristics = array_merge($request->caracteristics, transpose($request->car));
-    else $produit->caracteristics = transpose($request->car);
-    $produit->caracteristics = (object) $produit->caracteristics;
+    
+    function flipDiagonally($arr) {
+      $out = array();
+      foreach ($arr as $key => $subarr) {
+          foreach ($subarr as $subkey => $subvalue) {
+              $out[$subkey][$key] = $subvalue;
+          }
+      }
+      return $out;
+    }
+    if($request->car != NULL) {
+      $produit->caracteristics = flipDiagonally($request->car);
+      if($request->caracteristics != null) $produit->caracteristics = array_merge($request->caracteristics, $produit->caracteristics);
+    } 
+
     if($request->hasFile('image')) {    
       $produit->image = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
       $request->file('image')->storeAs('public/assets/img/dish', $produit->image);
     }
+    $produit->nom = $request->nom;
+    $produit->prix = $request->prix;
+    $produit->description = $request->description;
+    $produit->promotion = $request->promotion;
     $produit->save();
     return view('product.edit')->with('produit', $produit);
+  }
+
+  public function delete(produit $produit, $id)
+  {
+    $produit = produit::find($id);
+    $produit->categories()->delete();
+    $produit->notes()->delete();
+    $produit->commandes()->delete();
+    $produit->paniers()->delete();
+    $produit->delete();
+    return redirect()->back();
+  }
+  
+  public function search(produit $produit)
+  {
+    $term = $_GET['term'];
+    $produit = $produit->where('nom', 'like', "%{$term}%")
+    ->orWhere('description', 'like', "%{$term}%")
+    ->paginate(10);
+    return view('product.viewAny',
+      [
+        'time' => $this->time,
+        'produits' => $produit,
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
+  }
+  
+  public function filter(produit $produit)
+  {
+    $term = $_GET['term'];
+    $produit = $produit->where('nom', 'like', "%{$term}%")
+    ->orWhere('description', 'like', "%{$term}%")
+    ->paginate(10);
+    return view('product.viewAny',
+      [
+        'time' => $this->time,
+        'produits' => $produit,
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
   }
 
   public function note_store(Request $request)
