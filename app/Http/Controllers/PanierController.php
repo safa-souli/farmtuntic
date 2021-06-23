@@ -17,9 +17,11 @@ class PanierController extends Controller
 
   public function show()
   {
-    return view('panier',
+    if(!$this->panier) $panier = panier::where('client_id', Auth::user()->id);
+    else $panier = $this->panier;
+    return view('order.cart',
     [
-      'panier' => $this->panier
+      'panier' => $panier
     ]);
   }
   public function store($produit_id)

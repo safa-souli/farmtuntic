@@ -21,10 +21,9 @@ class produit extends Model
 
   public function commandes()
   {
-    return $this->belongsToMany(User::class, 'commande', 'produit_id', 'client_id')
-      ->using(commande::class)
+    return $this->belongsToMany(commande::class, 'commande_produit', 'produit_id', 'commande_id')
       ->orderBy('created_at', 'desc')
-      ->withPivot('total', 'etat', 'livraison_id')
+      ->withPivot('total', 'livraison_id')
       ->withTimestamps();
   }
 

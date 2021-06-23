@@ -77,3 +77,10 @@ Route::get('profil/{client}', 'clientController@show')->name('profile.show');
 Route::get('profil/edit', 'clientController@edit')->name('profile.edit');
 Route::post('profil/update', 'clientController@update')->name('profile.update');
 Route::get('profil/delete', 'clientController@delete')->name('profile.delete');
+
+#route of orders 
+
+Route::get('orders/list', 'commandeController@show')->name('orders.shows');
+Route::get('order/details/{id}', 'commandeController@detail')->name('order.details');
+Route::get('order/delete/{id}', 'commandeController@delete')->name('order.delete');
+Route::get('order/edit/{id}', 'commandeController@edit')->name('order.edit');

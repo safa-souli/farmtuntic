@@ -868,8 +868,6 @@
 <script src="{{ URL::asset('assets/js/jquery.nice-select.min.js')}}"></script>
 <!-- magnific popup -->
 <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-<!-- Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
 
 <!-- /Place all Scripts Here -->
 </body>
