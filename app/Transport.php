@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class transport extends Model
 {
   public $table = 'transport';
+  protected $primaryKey = 'matricule';
   protected $fillable = [
     'matricule','nom', 'type'
   ];

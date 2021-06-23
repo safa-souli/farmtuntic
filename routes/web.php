@@ -29,6 +29,7 @@ Route::post('produit/update/{id}', 'produitController@update')->name('product.up
 Route::get('produit/delete/{id}', 'produitController@delete')->name('product.delete');
 Route::get('produits/search', 'produitController@search');
 Route::get('produits/filter', 'produitController@filter');
+
 Route::post('produit/noter', 'produitController@note_store')->name('note.store');
 Route::post('produit/note/update/{note}', 'produitController@note_update')->name('note.update');
 
@@ -80,7 +81,7 @@ Route::get('profil/delete', 'clientController@delete')->name('profile.delete');
 
 #route of orders 
 
-Route::get('orders/list', 'commandeController@show')->name('orders.shows');
+Route::get('orders/list', 'commandeController@show')->name('orders.list');
 Route::get('order/details/{id}', 'commandeController@detail')->name('order.details');
 Route::get('order/delete/{id}', 'commandeController@delete')->name('order.delete');
 Route::get('order/edit/{id}', 'commandeController@edit')->name('order.edit');

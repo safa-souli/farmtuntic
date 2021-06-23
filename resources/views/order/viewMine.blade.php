@@ -104,7 +104,7 @@
                             Action
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('order.edit', $order->id) }}">Modifier</a>
+                            <a class="dropdown-item" href="{{ route('order.details', $order->id) }}">Consulter</a>
                             <a class="dropdown-item" href="{{ route('order.delete', $order->id) }}" onclick="return confirm('Voulez-vous sûr du supprimer?');">Supprimer</a>
                         </div>
                     </div>

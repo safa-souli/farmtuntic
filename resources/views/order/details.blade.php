@@ -6,76 +6,58 @@
   <div class="container">
       <div class="row">
           <div class="col-md-12">
-              <div class="tracking-sec">
-                  <div class="tracking-details padding-20 p-relative">
-                      <h5 class="text-light-black fw-600">{{$order->livraison_id}}</h5>
-                      <span class="text-light-white">Estimated Delivery time</span>
-                      <h2 class="text-light-black fw-700 no-margin">9:00pm-9:10pm</h2>
-                      <div id="add-listing-tab" class="step-app">
-                          <ul class="step-steps">
-                              <li class="done">
-                                  <a href="javascript:void(0)"> <span class="number"></span>
-                                      <span class="step-name">Order sent<br>8:38pm</span>
-                                  </a>
-                              </li>
-                              <li class="active">
-                                  <a href="javascript:void(0)"> <span class="number"></span>
-                                      <span class="step-name">In the works</span>
-                                  </a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0)"> <span class="number"></span>
-                                      <span class="step-name">Out of delivery</span>
-                                  </a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0)"> <span class="number"></span>
-                                      <span class="step-name">Delivered</span>
-                                  </a>
-                              </li>
-                          </ul>
-                          <button type="button" class="fullpageview text-light-black fw-600" data-modal="modal-12">Full Page View</button>
-                      </div>
-                  </div>
-                  <div class="tracking-map">
-                      <div id="pickupmap"></div>
-                  </div>
-              </div>
               <!-- recipt -->
               <div class="recipt-sec padding-20">
-                  <div class="recipt-name title u-line full-width mb-xl-20">
-                      <div class="recipt-name-box">
-                          <h5 class="text-light-black fw-600 mb-2">{{$order->livraison_id}}</h5>
-                          <p class="text-light-white ">Estimated Delivery time</p>
+                @isset($order->livraison_id)
+                    
+                <div class="recipt-name title u-line full-width mb-xl-20">
+                  <div class="recipt-name-box">
+                    <h5 class="text-light-black fw-600 mb-2">{{$livreur->client->nom}} {{$livreur->client->prenom}}({{$livreur->nom_entreprise}})</h5>
+                    <p class="text-light-white ">Temps de livraison estimé</p>
                       </div>
-                      <div class="countdown-box">
-                          <div class="time-box"> <span id="mb-days"></span> </div>
-                          <div class="time-box"> <span id="mb-hours"></span> </div>
-                          <div class="time-box"> <span id="mb-minutes"></span></div>
-                          <div class="time-box"> <span id="mb-seconds"></span> </div>
-                      </div>
+                      
+                      <h2 class="text-light-black fw-700 no-margin">{{date('g:ia', strtotime($order->livraison->delivery_on))}}-{{date('g:ia', strtotime($order->livraison->delivery_at))}}</h2>
+                      <div id="add-listing-tab" class="step-app">
+                          <ul class="step-steps">
+                              <li @if (in_array($order->livraison->etat, array('S','O','H','L'))) class="done" @endif >
+                                <a href="javascript:void(0)"> <span class="number"></span>
+                                      <span class="step-name">Commande envoyée<br>{{ $order->delivery_on}}</span>
+                                    </a>
+                              </li>
+                              <li @if (in_array($order->livraison->etat, array('O','H','L' ))) class="done" @endif >
+                                  <a href="javascript:void(0)"> <span class="number"></span>
+                                    <span class="step-name">Dans les ouvrages</span>
+                                  </a>
+                              </li>
+                              <li @if (in_array($order->livraison->etat, array('H','L'))) class="done" @endif >
+                                <a href="javascript:void(0)"> <span class="number"></span>
+                                      <span class="step-name">Hors livraison</span>
+                                    </a>
+                              </li>
+                              <li @if (in_array($order->livraison->etat, array('L'))) class="done" @endif >
+                                <a href="javascript:void(0)"> <span class="number"></span>
+                                      <span class="step-name">Livré<br>{{$order->delivery_at}}</span>
+                                    </a>
+                              </li>
+                          </ul>
+                        </div>
                   </div>
+                  @endisset
                   <div class="u-line mb-xl-20">
-                      <div class="row">
-                          <div class="col-lg-4">
+                    <div class="row">
+                          <div class="col-lg-6">
                               <div class="recipt-name full-width padding-tb-10 pt-0">
-                                  <h5 class="text-light-black fw-600">Delivery (ASAP) to:</h5>
-                                  <span class="text-light-white ">Jhon Deo</span>
-                                  <span class="text-light-white ">Home</span>
-                                  <span class="text-light-white ">314 79th St</span>
-                                  <span class="text-light-white ">Rite Aid, Brooklyn, NY, 11209</span>
-                                  <p class="text-light-white ">(347) 123456789</p>
+                                  <h5 class="text-light-black fw-600">Livraison (Dès que possible) à :</h5>
+                                  <span class="text-light-white ">{{ $order->user->nom }} {{$order->user->prenom}}</span>
+                                  <span class="text-light-white ">{{$order->user->adresse}}</span>
+                                  <span class="text-light-white ">{{$order->user->mail}}</span>
+                                  <p class="text-light-white ">{{$order->user->telephone}}</p>
                               </div>
                           </div>
-                          <div class="col-lg-4">
+                          <div class="col-lg-6">
                               <div class="recipt-name full-width padding-tb-10 pt-0">
                                   <h5 class="text-light-black fw-600">Delivery instructions</h5>
                                   <p class="text-light-white ">{{$order->description}}</p>
-                              </div>
-                          </div>
-                          <div class="col-lg-4">
-                              <div class="ad-banner padding-tb-10 h-100">
-                                  <img src="assets/img/details/banner.jpg" class="img-fluid full-width" alt="banner-adv">
                               </div>
                           </div>
                       </div>
@@ -135,19 +117,17 @@
                               <div class="item"> <span class="text-light-white">Delivery fee:</span>
                                   <span class="text-light-white">$30.5</span>
                               </div>
-                              <div class="item"> <span class="text-light-white">Tax and fees:</span>
-                                  <span class="text-light-white">$30.5</span>
-                              </div>
-                              <div class="item"> <span class="text-light-white">Driver tip:</span>
-                                  <span class="text-light-white">$30.5</span>
-                              </div>
                           </div>
                           <div class="total-price padding-tb-10">
                               <h5 class="title text-light-black fw-700">Total: <span>$33.36</span></h5>
                           </div>
                       </div>
-                      <div class="col-12 d-flex"> <a href="#" class="btn-first white-btn fw-600 help-btn">Need Help?</a>
-                      </div>
+                      @isset($order->livraison)
+                      <div class="col-12"><p style="font-size: 80%;color: #dc3545;"><i class="fas fa-exclamation-circle"></i> <span> Vous n'avez pas modifier votre commande il est en livraison, nous avons besoin de vous en place !</span></p></div>
+                      @else
+                        <div class="col-12 d-flex"> <a href="#" class="btn-first white-btn fw-600 help-btn">Modifier?</a>
+                        </div>
+                      @endisset
                   </div>
               </div>
           </div>

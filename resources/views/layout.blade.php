@@ -10,7 +10,7 @@
 
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
- 
+ y
  .page-item.active .page-link {
   
    z-index: 1;
@@ -526,7 +526,7 @@
                 <div class="user-dropdown" style="margin-left: 30px;">
                   <ul>
                     <li>
-                      <a href="{{ route('order') }}">
+                      <a href="{{ route('orders.list') }}">
                         <div class="icon"><i class="fab fa-jedi-order"></i>
                         </div>
                         <span class="details">Commandes passées</span>
@@ -583,34 +583,6 @@
                 </div>
               </div>
               <!-- mobile search -->
-              <!-- user notification -->
-              <div class="cart-btn notification-btn">
-                <a href="#" class="text-light-green fw-700"> <i class="fas fa-bell"></i>
-                  <span class="user-alert-notification"></span>
-                </a>
-                <div class="notification-dropdown">
-                  <div class="product-detail">
-                    <a href="#">
-                      <div class="img-box">
-                        <img src="{{URL::asset('assets/img/shop-1.png')}}" class="rounded" alt="image">
-                      </div>
-                      <div class="product-about">
-                        <p class="text-light-black">Lil Johnny’s</p>
-                        <p class="text-light-white">Spicy Maxican Grill</p>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="rating-box">
-                    <p class="text-light-black">How was your last order ?.</p> <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                    <span class="text-dark-white"><i class="fas fa-star"></i></span>
-                    <cite class="text-light-white">Ordered 2 days ago</cite>
-                  </div>
-                </div>
-              </div>
-              <!-- user notification -->
           @endguest
           <!-- user cart -->
             <div class="cart-btn cart-dropdown">
@@ -859,7 +831,7 @@
 <!-- Range Slider -->
 <script src="{{ URL::asset('assets/js/ion.rangeSlider.min.js')}}"></script>
 <!-- Swiper Slider -->
-<script src="{{ URL::asset('assets/js/swiper.min.js')}}"></script>
+<script src="{{ URL::asset('asseyts/js/swiper.min.js')}}"></script>
 <!-- sticky sidebar -->
 <script src="{{ URL::asset('assets/js/sticksy.js')}}"></script>
 <!-- organza Js -->
@@ -868,6 +840,9 @@
 <script src="{{ URL::asset('assets/js/jquery.nice-select.min.js')}}"></script>
 <!-- magnific popup -->
 <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+<!-- Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
+<script src="assets/js/map.js"></script>
 
 <!-- /Place all Scripts Here -->
 </body>
