@@ -393,7 +393,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <!-- Google Fonts -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <title>{{ $title ?? 'Farmtastic' }}</title>
+  <title>Farmtuntic | {{ $title ?? '' }}</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
