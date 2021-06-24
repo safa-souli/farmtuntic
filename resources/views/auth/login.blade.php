@@ -36,7 +36,7 @@
               </div>
               <div class="form-group">
                 <button type="submit" class="btn-second btn-submit full-width">
-                  <img src="{{ asset('assets/img/logo/icon.png') }}" alt="btn logo">Se connecter
+                  <img src="{{ asset('assets/img/logo/white-icon.png') }}" alt="btn logo">Se connecter
                 </button>
               </div>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">

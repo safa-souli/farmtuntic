@@ -57,12 +57,12 @@ class ResetPassword extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Notification de réinitialisation de mot de passe'))
+            ->subject(Lang::getFromJson('Notification de réinitialisation du mot de passe'))
             ->greeting('Oublié votre mot de passe '.$notifiable->prenom.'?')
-            ->line(Lang::getFromJson('Vous recevez cet e-mail car nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.'))
+            ->line(Lang::getFromJson('Vous recevez cet e-mail car nous avons reçu une demande de réinitialisation du mot de passe pour votre compte.'))
             ->action(Lang::getFromJson('Modifier mot de passe'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line(Lang::getFromJson('Ce lien de réinitialisation de mot de passe expirera dans :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::getFromJson('Si vous n\'avez pas demandé de réinitialisation de mot de passe, aucune autre action n\'est requise.'));
+            ->line(Lang::getFromJson('Si vous n\'avez pas demandé de réinitialisation du mot de passe, aucune autre action n\'est requise.'));
     }
 
     /**

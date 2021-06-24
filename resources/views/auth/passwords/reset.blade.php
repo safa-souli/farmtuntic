@@ -5,7 +5,7 @@
   <div class="section-2 user-page main-padding">
     <div class="login-sec">
       <div class="login-box">
-        <h4 class="form-group text-light-black fw-600">{{ __('Réinitialisé mot de passe') }} </h4>
+        <h4 class="form-group text-light-black fw-600">{{ __('Réinitialiser mot de passe') }} </h4>
         <form method="POST" action="{{ route('password.update') }}">
           @csrf
 
@@ -53,7 +53,7 @@
           <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-3">
               <button type="submit" class="btn-second btn-submit full-width">
-                <img src="{{ asset('assets/img/logo/icon.png') }}" alt="btn logo">{{ __('Rénitialiser') }}
+                <img src="{{ asset('assets/img/logo/white-icon.png') }}" alt="btn logo">{{ __('Rénitialiser') }}
               </button>
             </div>
           </div>

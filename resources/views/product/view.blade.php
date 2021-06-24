@@ -77,7 +77,7 @@
                           <p class="text-light-green fw-600 text-right">
                             
                         @inject('note', 'App\Http\Controllers\PanierController')
-                        $90 <span class="line-through text-light-white fs-16">{{$produit->prix}}<sup>dt</sup></span><span class="save-price text-light-green fs-12">save $90</span></p>
+                        $90 <span class="line-through text-light-white fs-16">{{$produit->prix}}<sup>dt</sup></span><span class="save-price text-light-green fs-12">eco $90</span></p>
                         @if($note->exist($produit->id)->isEmpty())
                           <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier">
                             <i class="fas fa-shopping-bag"></i>
@@ -99,7 +99,7 @@
                       <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
                         @foreach ($produit->caracteristics as $caracteristic)
                             
-                        <p class="text-light-black"> {{ $caracteristic['nom_car'] }}: <span class="text-light-white">{{ $caracteristic['value_car'] }}</span></p>
+                        <p class="text-light-black fw-600"> {{ $caracteristic['nom_car'] }}: <span class="text-light-white">{{ $caracteristic['val_car'] }}</span></p>
                         @endforeach
                     @endisset         
                   </div>

@@ -21,7 +21,7 @@ class FermeController extends Controller
 
   public function index()
   {
-    return view('ferme.viewAny',
+    return view('farm.viewAny',
       [
         'time' => $this->time,
         'fermes' => ferme::orderBy('created_at', 'DESC')->get()
@@ -30,7 +30,7 @@ class FermeController extends Controller
 
   public function mine()
   {
-    return view('ferme.viewMine',
+    return view('farm.viewMine',
       [
         'time' => $this->time,
         'fermes' => ferme::where('agriculteur_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get()
@@ -44,7 +44,7 @@ class FermeController extends Controller
       else $avis = ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first();
     else
       $avis = NULL;
-    return view('ferme.view',
+    return view('farm.view',
       [
         'time' => $this->time,
         'ferme_avis' => $avis,
@@ -77,7 +77,7 @@ class FermeController extends Controller
 
   public function edit(ferme $ferme)
   {
-    return view('ferme.edit', ['ferme' => $ferme]);
+    return view('farm.edit', ['ferme' => $ferme]);
   }
 
   public function update(ferme $ferme)

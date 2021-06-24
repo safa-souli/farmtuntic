@@ -42,7 +42,7 @@ Route::get('panier/destroy/produit/{id}', 'panierController@delete')->name('card
 Route::get('fermes', 'fermeController@index')->name('farm.index');
 Route::get('fermes/mine', 'fermeController@mine')->middleware('can:viewAny, App\ferme')->name('farm.mine');
 Route::get('ferme/{ferme}', 'fermeController@show')->name('farm.show');
-Route::view('ferme//create', 'ferme.create')->middleware('can:create,App\ferme')->name('farm.create');
+Route::view('ferme//create', 'farm.create')->middleware('can:create,App\ferme')->name('farm.create');
 Route::put('ferme/store', 'fermeController@store')->middleware('can:create,App\ferme')->name('farm.store');
 Route::get('ferme/edit/{ferme}', 'fermeController@edit')->middleware('can:update,ferme')->name('farm.edit');
 Route::post('ferme/update/{ferme}', 'fermeController@update')->middleware('can:update,ferme')->name('farm.update');
