@@ -11,7 +11,7 @@
                     <section class="col-md-12 form-fields" style="padding: 1cm">
                     <div class="form-group row">
                         <div class="col-md-12 col-md-offset-3">
-                            <h3  class="text-light-black header-title">Contactez-nous</h3>
+                            <h3  class="text-light-black fw-700">Contactez-nous</h3>
                             <p>Partager avec nous vos options ou vos suggestions nous aidera à progresser.</p>
                             <p>Pour demander d'être un agriculteur au livreur vous devez nous envoyer le certificat en tant que fichier.</p>
                         </div>
@@ -21,16 +21,63 @@
                             Merci pour votre opinion we will answer you! it will help us
                         </div>
                     @endif
-                    @if (session('errors'))                        
+                    @if (session('valid-mail'))                        
                       <div class="alert alert-danger" role="alert">
-                          <strong>Whoops!! {{ session('errors')->first('mail') }}: </strong> Something went wrong please check the email validity
+                          <strong>Whoops!! Email non valid: </strong> Something went wrong please check the email validity
                           so we can answer you
                       </div>
                     @endif
                     <hr style="margin-top:-1ch 0 3ch">
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Objet</label>
+                    
+                    <div class="row">
                         <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700">Nom<sup class="fs-16" style="color: red">*</sup>
+                            </label>
+                            <input name="nom" class="form-control @error('nom') is-invalid @enderror " placeholder="i.e Tomate" value="{{Auth::user()->nom ??  old('nom') }}">
+                            @error('nom')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700">Prénom <sup class="fs-16" style="color: red">*</sup></label>
+                            <input name="prenom" class="form-control @error('prenom') is-invalid @enderror " placeholder="i.e 7.32" value="{{ Auth::user()->prenom ?? old('prenom') }}">
+                            @error('prenom')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700"> Email <sup class="fs-16" style="color: red">*</sup></label>
+                            <input name="email" class="form-control @error('email') is-invalid @enderror " placeholder="i.e 10" value="{{ Auth::user()->email ?? old('email')}}">
+                            @error('email')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700"> Téléphone</label>
+                            <input name="telephone" class="form-control @error('telephone') is-invalid @enderror" placeholder="i.e 10" value="{{ old('promotion')}}">
+                            @error('telephone')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700"> Objet</label>
                             <select name="subject" class="form-control form-control-select">
                                 <option value="O">Opinion</option>
                                 <option value="S">Suggestion</option>
@@ -38,49 +85,31 @@
                                 <option value="L">Demande d'être un livreur</option>
                                 <option value="A">Autre</option>
                             </select>
+                          </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Email address<sup style="color: red">*</sup></label>
                         <div class="col-md-6">
-                            <input class="form-control" name="email" type="email" placeholder="vos@email.com">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700">ficher</label>
+                            <input type="file" name="image" class="custom-file">
+                            @error('file')
+                              <span style="font-size: 80%;color: #dc3545;">
+                                <strong>{{$message}}</strong>
+                              </span>
+                            @enderror
+                          </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Téléphone</label>
-                        <div class="col-md-6">
-                            <input class="form-control" name="email" type="email" placeholder="vos@email.com">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="text-light-black fw-700">Message<sup class="fs-16" style="color: red">*</sup></label>
+                            <textarea type="text" name="message" class="form-control @error('message') is-invalid @enderror " rows="3" placeholder="i.e est une produit internationnale">{{ old('description') }}</textarea>
+                            @error('message')
+                              <span style="font-size: 80%;color: #dc3545;">
+                                <strong>{{$message}}</strong>
+                              </span>
+                            @enderror
+                          </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Pièce jointe
-                            <span class="form-control-comment">
-                                (optionnel)
-                            </span></label>
-                        <div class="col-md-6">
-                            <input type="file" name="fileUpload" class="filestyle" data-buttontext="Choisir le fichier"
-                                id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
-                            <div class="bootstrap-filestyle input-group">
-                                <input type="text" class="form-control " placeholder="" disabled="">
-                                <span class="group-span-filestyle input-group-btn" tabindex="0">
-                                    <label for="filestyle-0" class="btn btn-default ">
-                                        <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
-                                        <span class="buttonText">Choisir le fichier</span>
-                                    </label>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Message<sup style="color: red">*</sup></label>
-                        <div class="col-md-9">
-                            <textarea class="form-control" name="message" placeholder="Comment pouvons nous aider?"
-                                rows="3"></textarea>
-                        </div>
-                    </div>
+                      </div>
                     <footer class="text-sm-right">
                         <input type="hidden" name="token" value="2699eab29c6b0741fb5e170320633008">
                         <input type="hidden" name="client_id" value={{ Auth::user()->id ?? null }}>

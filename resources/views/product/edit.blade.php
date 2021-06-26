@@ -17,7 +17,7 @@
                         <div class="payment-sec">
                           <div class="section-header-left">
                             <h3 class="text-light-black header-title">Modifier {{ $produit->nom}} </h3>
-                            <p class="text-light-black fw-400">Au minimum un produit de produit</p>
+                            <p class="text-light-black fw-400">Vous pouvez ajouter un produit dans un votre spécifie ferme.</p>
                             <hr>
                           </div>
                           <div class="row">
@@ -28,7 +28,7 @@
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Nom du produit<sup class="fs-16" style="color: red">*</sup>
                                 </label>
-                                <input name="nom" class="form-control @error('nom') is-invalid @enderror form-control-submit" value=" {{ $produit->nom ?? old('nom')}} ">
+                                <input name="nom" class="form-control @error('nom') is-invalid @enderror" value=" {{ $produit->nom ?? old('nom')}} ">
                                 @error('nom')
                                   <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Prix du produit (dt) <sup class="fs-16" style="color: red">*</sup></label>
-                                <input type="number" name="prix" class="form-control @error('prix') is-invalid @enderror form-control-submit"  value="{{ $produit->prix ?? old('prix') }}">
+                                <input type="number" name="prix" class="form-control @error('prix') is-invalid @enderror"  value="{{ $produit->prix ?? old('prix') }}">
                                 @error('prix')
                                   <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700"> Promotion (%) </label>
-                                <input type="number" name="promotion" class="form-control  @error('promotion') is-invalid @enderror form-control-submit"  value="{{$produit->promotion ?? old('promotion')}}">
+                                <input type="number" name="promotion" class="form-control  @error('promotion') is-invalid @enderror"  value="{{$produit->promotion ?? old('promotion')}}">
                                 @error('promotion')
                                   <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -72,7 +72,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Description<sup class="fs-16" style="color: red">*</sup></label>
-                                <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror form-control-submit" rows="3" placeholder="i.e est une produit internationnale">{{ $produit->nom }}</textarea>
+                                <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="i.e est une produit internationnale">{{ $produit->nom }}</textarea>
                                 @error('description')
                                   <span style="font-size: 80%;color: #dc3545;">
                                     <strong>{{$message}}</strong>
@@ -95,15 +95,15 @@
                                       @endphp             
                                       <div class="col-6">
                                         <div class="form-group">
-                                          <label class="text-light-black fw-700">caratéristiques du produit</label>
-                                          <input name="car[nom_car][]" class="form-control form-control-submit" value="{{ $caracteristic['nom_car'] }}">
+                                          <label class="text-light-black fw-700">Caratéristique du produit</label>
+                                          <input name="car[nom_car][]" class="form-control" value="{{ $caracteristic['nom_car'] }}">
                                         </div>
                                       </div>
                                       <div class="col-6">
                                         <div class="form-group">
-                                          <label class="text-light-black fw-700">caratéristiques du produit
+                                          <label class="text-light-black fw-700">La valeur de caractéristique entré
                                           </label>
-                                          <input name="car[val_car][]" class="form-control form-control-submit" value="{{ $caracteristic['val_car'] }}">                          
+                                          <input name="car[val_car][]" class="form-control" value="{{ $caracteristic['val_car'] }}">                          
                                         </div>                          
                                       </div>
                                       @php
@@ -117,7 +117,7 @@
                                   <div class="col-6">
                                     <div class="form-group">
                                       <label class="text-light-black fw-700">caratéristiques du produit</label>
-                                      <input name="car[nom_car][0]" class="form-control form-control-submit" placeholder="i.e poid">
+                                      <input name="car[nom_car][0]" class="form-control" placeholder="i.e poid">
           
                                     </div>
                                   </div>
@@ -125,7 +125,7 @@
                                     <div class="form-group">
                                       <label class="text-light-black fw-700">caratéristiques du produit
                                       </label>
-                                      <input name="car[val_car][0]" class="form-control form-control-submit" placeholder="i.e 6kg">                          
+                                      <input name="car[val_car][0]" class="form-control" placeholder="i.e 6kg">                          
                                     </div>                          
                                   </div>
                                   @endif
@@ -174,7 +174,7 @@
         var wrapper = $('.field_wrapper'); //Input field wrapper
   
         var x =  "<?php echo $x ?>";  //Initial field counter is 1
-        var fieldHTML = '<div class="col-6"><div class="form-group"><input type="text" name="caracteristics['+x+'][nom_car]" class="form-control form-control-submit"></div></div><div class="col-6 field_wrapper"><div class="form-group"><input type="text" name="caracteristics['+x+'][val_car]" class="form-control form-control-submit"></div></div>'
+        var fieldHTML = '<div class="col-6"><div class="form-group"><input type="text" name="caracteristics['+x+'][nom_car]" class="form-control"></div></div><div class="col-6 field_wrapper"><div class="form-group"><input type="text" name="caracteristics['+x+'][val_car]" class="form-control"></div></div>'
   
         
         //Once add button is clicked
@@ -182,7 +182,7 @@
             //Check maximum number of input fields
             if(x < maxField){ 
               x++;
-              var fieldHTML = '<div class="col-6"><div class="form-group"><input type="text" name="caracteristics['+x+'][nom_car]" class="form-control form-control-submit"></div></div><div class="col-6 field_wrapper"><div class="form-group"><input type="text" name="caracteristics['+x+'][val_car]" class="form-control form-control-submit"></div></div>'
+              var fieldHTML = '<div class="col-6"><div class="form-group"><input type="text" name="caracteristics['+x+'][nom_car]" class="form-control"></div></div><div class="col-6 field_wrapper"><div class="form-group"><input type="text" name="caracteristics['+x+'][val_car]" class="form-control"></div></div>'
               $(wrapper).append(fieldHTML); //Add field html
             }
         });
