@@ -6,6 +6,7 @@ use App\categorie;
 use App\produit;
 use App\produit_note;
 use App\User;
+use App\ferme;
 use Illuminate\Http\request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -47,6 +48,18 @@ class ProduitController extends Controller
       ]);
   }
 
+  
+  public function mine()
+  {
+    
+    return view('product.viewMine',
+      [
+        'time' => $this->time,
+        'produits' => produit::where('agriculteur_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(15),
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
+  }
+
   public function categorie(categorie $categorie, $id)
   {
     $categorie = categorie::find($id);
@@ -84,6 +97,7 @@ class ProduitController extends Controller
       'prix' => 'required|numeric|min:1',
       'promotion' => 'nullable|numeric|between:1,99',
       'image' => 'required|image|max:2048',
+      'description' => 'required',
     ]);
     $produit = new produit();
     if($request->hasFile('image')) {    
@@ -91,6 +105,7 @@ class ProduitController extends Controller
       $request->file('image')->storeAs('public/assets/img/dish', $produit->image);
     }
     else  $produit->image = 'default.jpg';
+    if(isset($request->ferme)) $produit->ferme_id = $request->ferme;
     $produit->agriculteur_id =  Auth::user()->id;
     $produit->nom = $request->nom;
     $produit->prix = $request->prix;
@@ -98,24 +113,30 @@ class ProduitController extends Controller
     $produit->description = $request->description;
     $produit->caracteristics = $request->caracteristics;
     $produit->save();
-    return redirect()->back();
+    return redirect()->route('product.mine');
   }
 
-  public function edit(produit $produit, $id)
+  public function edit(produit $produit)
   {    
-    $produit = produit::find($id);
     return view('product.edit', ['produit' => $produit]);
   }
+  public function farm($id)
+  {    
+    return view('product.create', [
+      'title' => '| Ajouter produit',
+      'ferme' => ferme::find($id)
+    ]);
+  }
   
-  public function update(Request $request, $id)
+  public function update(Request $request, produit $produit)
   {
     $request->validate([
       'nom' => 'required|string|min:3|max:255',
       'prix' => 'required|numeric|min:1',
       'promotion' => 'nullable|numeric|between:1,99',
-      'image' => 'nullable|image|max:2048',
+      'image' => 'nullable|image|max:2048',      
+      'description' => 'required',
     ]);
-    $produit = produit::find($id);
     
     function flipDiagonally($arr) {
       $out = array();
@@ -143,9 +164,8 @@ class ProduitController extends Controller
     return view('product.edit')->with('produit', $produit);
   }
 
-  public function delete(produit $produit, $id)
+  public function delete(produit $produit)
   {
-    $produit = produit::find($id);
     $produit->categories()->delete();
     $produit->notes()->delete();
     $produit->commandes()->delete();

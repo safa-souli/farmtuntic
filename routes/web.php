@@ -20,13 +20,16 @@ Route::get('order', 'CommandeController@index')->name('order');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');
+Route::get('produits/mine', 'produitController@mine')->middleware('can:viewAny, App\produit')->name('product.mine');
 Route::get('produits/categorie/{id}', 'produitController@categorie')->name('product.categorie');
 Route::get('produit/{produit}', 'produitController@show')->name('product.show');
 Route::view('produit//create', 'product.create')->name('product.create')->middleware('can:create,App\produit');
-Route::put('produit/add', 'produitController@store')->name('product.store')->middleware('can:store,App\produit');;
-Route::get('produit/edit/{id}', 'produitController@edit')->name('product.edit')->middleware('can:edit,App\produit');;
-Route::post('produit/update/{id}', 'produitController@update')->name('product.update')->middleware('can:update,App\produit');
-Route::get('produit/delete/{id}', 'produitController@delete')->name('product.delete')->middleware('can:delete,App\produit');
+Route::get('produit/{ferme}/create', 'produitController@farm')->name('farm.product.create')->middleware('can:create,App\produit');
+Route::put('produit/add', 'produitController@store')->name('product.store')->middleware('can:create,App\produit');
+Route::put('{ferme}/produit/add', 'produitController@store')->name('farm.product.store')->middleware('can:create,App\produit');
+Route::get('produit/edit/{produit}', 'produitController@edit')->name('product.edit')->middleware('can:update,produit');
+Route::post('produit/update/{produit}', 'produitController@update')->name('product.update')->middleware('can:update,produit');
+Route::get('produit/delete/{produit}', 'produitController@delete')->name('product.delete')->middleware('can:delete,produit');
 Route::get('produits/search', 'produitController@search');
 Route::get('produits/filter', 'produitController@filter');
 

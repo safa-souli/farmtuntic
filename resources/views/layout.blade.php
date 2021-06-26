@@ -393,7 +393,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <!-- Google Fonts -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <title>Farmtuntic | {{ $title ?? '' }}</title>
+  <title>Farmtuntic {{ $title ?? '' }}</title>
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
@@ -550,7 +550,7 @@
                     @endcan
                     @can('viewAny', \App\produit::class)
                       <li>
-                        <a href="#">
+                        <a href="{{ route('product.mine') }}">
                           <div class="icon"><i class="fab fa-product-hunt"></i>
                           </div>
                           <span class="details">Mes produits</span>
@@ -768,8 +768,8 @@
         </div>
         <div class="chatpopup-widget__trigger" style="padding:15px;margin:0 15px 15px;"> <i class="icon-question-sign" style=" background-image: radial-gradient(at center, white 40%, transparent 40%);"></i> </div>
     </div>
-
-<div class="chatpopup-widget" style="margin-right:110px;">
+    @if (\Request::route()->getName() === 'product.mine')
+      <div class="chatpopup-widget" style="margin-right:110px;">
         <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
           <a href="{{ route('product.create') }}">
             <div class="icon"> 
@@ -777,7 +777,30 @@
             </div>
           </a> 
         </div>
-    </div>
+      </div>
+    @endif
+    @if(\Request::route()->getName() === 'farm.mine')          
+      <div class="chatpopup-widget" style="margin-right:110px;">
+        <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+          <a href="{{ route('farm.create') }}">
+            <div class="icon"> 
+              <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+            </div>
+          </a> 
+        </div>
+      </div>
+    @endif
+    @if(\Request::route()->getName() === 'farm.show' && ($ferme->agriculteur_id == Auth::user()->id))
+      <div class="chatpopup-widget" style="margin-right:110px;">
+        <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+          <a href="{{ route('farm.product.create', ['ferme' => $ferme]) }}">
+            <div class="icon"> 
+              <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+            </div>
+          </a> 
+        </div>
+      </div>
+    @endif
 
 <script type="text/javascript">
 

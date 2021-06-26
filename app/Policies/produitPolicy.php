@@ -53,7 +53,8 @@ class produitPolicy
    */
   public function update(User $user, produit $produit)
   {
-    return ($user->type == 'agriculteur' && $produit->ferme()->agriculteur_id == $user->id);
+    if(isset($produit->ferme()->agriculteur_id)) return ($user->type == 'agriculteur' && $produit->ferme()->agriculteur_id == $user->id);
+    if (isset($produit->agriculteur_id)) return ($user->type == 'agriculteur' && $produit->agriculteur_id == $user->id);
   }
 
   /**
@@ -65,7 +66,8 @@ class produitPolicy
    */
   public function delete(User $user, produit $produit)
   {
-    return ($user->type == 'agriculteur' && $produit->ferme()->agriculteur_id == $user->id);
+    if(isset($produit->ferme()->agriculteur_id)) return ($user->type == 'agriculteur' && $produit->ferme()->agriculteur_id == $user->id);
+    if (isset($produit->agriculteur_id)) return ($user->type == 'agriculteur' && $produit->agriculteur_id == $user->id);
   }
 
   /**

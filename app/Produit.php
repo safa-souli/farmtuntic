@@ -16,7 +16,7 @@ class produit extends Model
 
   public function ferme()
   {
-    return $this->belongsTo(ferme::class);
+    return $this->belongsTo(ferme::class,'agriculteur_id');
   }
 
   public function commandes()

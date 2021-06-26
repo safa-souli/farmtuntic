@@ -146,8 +146,13 @@
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label class="text-light-black fw-700">Description</label>
-                            <textarea type="text" name="description" class="form-control form-control-submit" rows="3" placeholder="i.e est une produit internationnale">{{ $produit->nom }}</textarea>
+                            <label class="text-light-black fw-700">Description<sup class="fs-16" style="color: red">*</sup></label>
+                            <textarea type="text" name="description" class="form-control @error('description') is-invalid @enderror form-control-submit" rows="3" placeholder="i.e est une produit internationnale">{{ $produit->nom }}</textarea>
+                            @error('description')
+                              <span style="font-size: 80%;color: #dc3545;">
+                                <strong>{{$message}}</strong>
+                              </span>
+                            @enderror
                           </div>
                         </div>
                       </div>
