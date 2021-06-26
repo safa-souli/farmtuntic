@@ -2,20 +2,18 @@
 
 @section('content')
 
-    <section id="content" class="page-content">
-
+    <section id="content" class="page-content">>
         <section class="contact-form section-padding banner-bottom-sec">
+            
             <div style="box-shadow: 0 0 0 1px rgb(67 41 163 / 8%), 0 1px 5px 0 rgb(67 41 163 / 8%);  margin: 0 3in 0 3in;">
-            <center style="margin-top: 0%">
-                <img src='{{ URL::asset('assets\img\logo\logo3.png') }}' alt="">
-            </center>
-            <form action="contact" method="post" enctype="multipart/form-data">
-                @csrf
-                <section class="col-md-12 form-fields" style="padding: 1cm">
+                <form action="contact" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <section class="col-md-12 form-fields" style="padding: 1cm">
                     <div class="form-group row">
                         <div class="col-md-12 col-md-offset-3">
-                            <h3>Contactez-nous</h3>
+                            <h3  class="text-light-black header-title">Contactez-nous</h3>
                             <p>Partager avec nous vos options ou vos suggestions nous aidera à progresser.</p>
+                            <p>Pour demander d'être un agriculteur au livreur vous devez nous envoyer le certificat en tant que fichier.</p>
                         </div>
                     </div>
                     @if (session('success'))
@@ -36,13 +34,21 @@
                             <select name="subject" class="form-control form-control-select">
                                 <option value="O">Opinion</option>
                                 <option value="S">Suggestion</option>
+                                <option value="G">Demande d'être un agriculteur</option>
+                                <option value="L">Demande d'être un livreur</option>
                                 <option value="A">Autre</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Email address</label>
+                        <label class="col-md-3 form-control-label">Email address<sup style="color: red">*</sup></label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="email" type="email" placeholder="vos@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Téléphone</label>
                         <div class="col-md-6">
                             <input class="form-control" name="email" type="email" placeholder="vos@email.com">
                         </div>
@@ -51,7 +57,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Pièce jointe
                             <span class="form-control-comment">
-                                (optionel)
+                                (optionnel)
                             </span></label>
                         <div class="col-md-6">
                             <input type="file" name="fileUpload" class="filestyle" data-buttontext="Choisir le fichier"
@@ -69,7 +75,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Message</label>
+                        <label class="col-md-3 form-control-label">Message<sup style="color: red">*</sup></label>
                         <div class="col-md-9">
                             <textarea class="form-control" name="message" placeholder="Comment pouvons nous aider?"
                                 rows="3"></textarea>

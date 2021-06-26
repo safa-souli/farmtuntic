@@ -9,9 +9,6 @@
           <div class="row">
             <div class="sidebar-tabs main-box padding-20 mb-md-50">
               <div id="add-restaurent-tab" class="step-app">
-              <center style="margin-bottom: 1cm">
-                  <img src='{{ URL::asset('assets\img\logo\logo3.png') }}' alt="">
-              </center>
               <form method="POST" action="{{ route('farm.store') }}">
                 @csrf
                 @method('PUT')
@@ -21,7 +18,9 @@
                       <div class="step-tab-panel active" id="steppanel1">
                         <div class="payment-sec">
                           <div class="section-header-left">
-                            <h3 class="text-light-black header-title">Ajouter ferme</h3>
+                            <h3 class="text-light-black header-title">Ajouter ferme</h3>                           
+                            <p class="text-light-black fw-400" style="margin-top: 10px;">Vous conseillez de saisir des vrais données pour gagner la confience du client.</p>
+                            <hr>
                           </div>
                           <div class="row">
                             <div class="col-12">
@@ -63,7 +62,7 @@
                           <div class="row">
                             <div class="col-12">
                               <h5 class="text-light-black fw-700">Produit Information</h5>
-                              <p class="text-light-black fw-400" style="margin-top: -10px;">Au minimum un produit de ferme</p>
+                              <p class="text-light-black fw-400" style="margin-top: -10px;"> un ferme doit être au minimum un produit.</p>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">

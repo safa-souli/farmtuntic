@@ -11,7 +11,7 @@
 Auth::routes(['verify' => true]);
 Route::view('verify', 'auth.verify');
 Route::view('/', 'home');
-Route::view('contact', 'contact');
+Route::view('/contact', 'contact')->name('contact');
 Route::view('about-us', 'about-us')->name('about-us');
 Route::post('contact', 'contactController@send');
 Route::view('sign-up', 'mail.sign-up');

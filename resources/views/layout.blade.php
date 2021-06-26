@@ -441,7 +441,7 @@
            <a href="login" class="gem-points" style="color: #fff">S'identifier</a> | 
            <a href="register" class="gem-points" style="color: #fff">S'inscrire</a> | 
          @endguest
-           <a href="contact" class="gem-points" style="color: #fff">Contactez-nous</a> | 
+           <a href="{{ route('contact') }}" class="gem-points" style="color: #fff">Contactez-nous</a> | 
           <a href="propos" class="gem-points" style="color: #fff">Qui sommes-nous?</a>
          </span>
         </div>
