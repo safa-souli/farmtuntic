@@ -28,28 +28,14 @@ class forum_commentaire_repondeController extends Controller
     return redirect()->back();
   }
 
-
-  public function edit(forum $forum, forum_commentaire $commentaire, forum_commentaire_reponde $reponde)
-  {
-    return view('forum.view',
-      [
-        'time' => $this->time,
-        'forum' => $forum,
-        'Reply_commentaire' => $commentaire,
-        'Reply' => $reponde
-      ]);
-  }
-
-  public function update(forum $forum, forum_commentaire_reponde $reponde)
+  public function update(forum_commentaire_reponde $reponde)
   {
     $reponde->update(\request()->all());
-    return redirect()->route('forum.show', ['forum' => $forum]);
   }
 
   public function delete(forum_commentaire_reponde $reponde)
   {    
     $reponde->delete();
-    return redirect()->back();
   }
 
 }

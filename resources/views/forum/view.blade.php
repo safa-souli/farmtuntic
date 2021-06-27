@@ -69,13 +69,13 @@
                             <div class="dropdown">
                               <button class="btn-first text-light-green" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
                               <ul class="dropdown-menu" style="margin-left: -100px; padding-left: 30px;">
-                                <li style="cursor: pointer;" data-toggle="modal" data-target="#edit-popup{{ $commentaire->pivot->id }}">Modifier</li>
+                                <li style="cursor: pointer;" data-toggle="modal" data-target="#edit-popup">Modifier</li>
                                 <li id="delete-comment{{ $commentaire->pivot->id }}" style="cursor: pointer;">Supprimer</li>
                               </ul>
                             </div>
                           @endcan
                         <!-- Modal -->
-                          <div class="modal fade" id="edit-popup{{ $commentaire->pivot->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                          <div class="modal fade" id="edit-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                               aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -130,7 +130,7 @@
                           </form>
                           <div class="u-line" style="margin:-2ex 0 0 2.8cm;"></div>
                           @foreach($commentaire->pivot->repondes as $reponde)
-                            <div class="review-box comment-reply u-line" style="margin-left: 1in">
+                            <div id="reply-box-refresh{{ $commentaire->pivot->id }}" class="review-box comment-reply u-line" style="margin-left: 1in">
                               <div class="review-user">
                                 
                                 <div class="review-user-img">
@@ -148,11 +148,42 @@
                                       <i class="fas fa-ellipsis-v"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                      <a id="edit-reply{{$reponde->pivot->id}}" href="{{ route('reply.edit', ['forum'=> $forum, 'commentaire' => $commentaire->pivot, '$reponde'=> $reponde->pivot]) }}" class="dropdown-item" id="notice-edit">Modifier</a>
-                                      <a id="delete-reply{{$reponde->pivot->id}}" href="{{ route('reply.delete', ['reponde' => $reponde->pivot]) }}" class="dropdown-item" id="notice-delete">Supprimer </a>
+                                      <a id="edit-reply{{$reponde->pivot->id}}" href="{{ route('reply.edit', ['forum'=> $forum, 'commentaire' => $commentaire->pivot, '$reponde'=> $reponde->pivot]) }}" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Modifier</a>
+                                      <a id="delete-reply{{$reponde->pivot->id}}" href="{{ route('reply.delete', ['reponde' => $reponde->pivot]) }}" class="dropdown-item">Supprimer </a>
+                                    </div>
+                                  </div>
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Modifier réponse</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>                                          
+                                        <form id="edit-reply-form{{ $reponde->pivot->id }}">
+                                          <div class="modal-body">
+                                            @csrf
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                <div class="form-group">
+                                                  <textarea class="form-control" name="reponde" rows="3" placeholder="Entrer votre réponse">{{ $reponde->pivot->reponde }}</textarea>
+                                                </div>
+                                                <input type="hidden" name="client_id" value="{{ Auth::user()->id ?? ''}}">
+                                              </div>
+                                            </div>
+                                          </div>                                          
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Modifier</button>
+                                          </div>
+                                        </form>
+                                      </div>
                                     </div>
                                   </div>
                                 @endcan
+                                  
                               </div>
                               <p class="text-light-black">{{ $reponde->pivot->reponde }}</p>
                             </div>
@@ -272,13 +303,11 @@
               e.preventDefault();
               $.ajax({
                 type: 'POST',
-                url: '<?php echo url("/forum/commentaire/update"); ?>/' + <?php echo $reponde->pivot->id; ?>,
-                data: $("#edit-comment-form<?php echo e($reponde->pivot->id); ?>").serialize(),
+                url: '<?php echo url("/forum/commentaire/reponde/update/"); ?>/' + <?php echo $reponde->pivot->id; ?>,
+                data: $("#edit-reply-form<?php echo e($reponde->pivot->id); ?>").serialize(),
                 success: function () {
-                  //$("#edit-popup<?php echo e($reponde->pivot->id); ?>").modal('toggle');
-                  //$("#edit-popup<?php echo e($reponde->pivot->id); ?>").modal('reload');
-                  //$(".comment-box").load(" .comment-box");
-                  alert('update reply success');
+                  $("#edit-popup").hide();
+                  $("#reply-box-refresh{{ $commentaire->pivot->id }}").load(" #reply-box-refresh{{ $commentaire->pivot->id }}");
                 },
                 error: function (error) {
                   console.log(error);
