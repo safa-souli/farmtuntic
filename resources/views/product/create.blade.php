@@ -113,8 +113,7 @@
                             <div class="col-6" style="margin-left:-2ex;">
                               <div class="form-group">
                               <a href="javascript:void(0);" class="btn-second btn-submit add_button" title="Add field">Ajouter caratéristique</a>
-                            </div>
-                            
+                            </div>                          
                               
                           </div>
                           <div class="col-md-12 text-right">

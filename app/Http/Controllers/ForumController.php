@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\validator;
 
 class ForumController extends Controller
 {
@@ -22,7 +23,7 @@ class ForumController extends Controller
 
   public function index()
   {
-    return view('forums',
+    return view('forum.viewAny',
       [
         'time' => $this->time,
         'forums' => forum::orderBy('created_at', 'DESC')->get()
@@ -38,35 +39,44 @@ class ForumController extends Controller
       ]);
   }
 
-  public function store()
+  public function store(request $request, forum $forum)
   {
-    $forum = new forum();
-    $forum->theme = \request('theme');
-    $forum->description = \request('description');
+    $request->validate([
+      'objet' => 'required',
+      'description' => 'required'
+    ]);
+    $forum->theme = $request->objet;
+    $forum->description = $request->description;
     $forum->client_id = Auth::user()->id;
     $forum->save();
-    return redirect()->back();
+    return redirect()->route('forum.index');
   }
 
   public function edit(forum $forum)
   {
-    return view('forum.viewAny',
+    return view('forum.edit',
       [
-        'forum' => $forum,
+        'title' => '| Modifier forum',
         'time' => $this->time,
-        'forums' => forum::orderBy('created_at', 'DESC')->get()
+        'forum' => $forum
       ]
     );
   }
 
-  public function update(forum $forum)
+  public function update(request $request, forum $forum)
   {
-    $forum->update(\request()->all(), ['client_id'=> Auth::user()->id]);
-    return redirect('forum.viewAny');
+    $request->validate([
+      'objet' => 'required',
+      'description' => 'required'
+    ]);
+    $forum->update($request->all(), ['client_id'=> Auth::user()->id]);
+    return redirect()->back();
   }
 
   public function delete(forum $forum)
   {
+    $forum->commentaire()->repondres()->delete();
+    $forum->commentaire()->delete();
     $forum->delete();
     return redirect()->back();
   }

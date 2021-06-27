@@ -56,8 +56,9 @@ Route::get('ferme/delete/avis/{avis}', 'ferme_avisController@delete')->name('not
 
 #route forum
 Route::get('forums', 'forumController@index')->name('forum.index');
+Route::view('forum//create', 'forum.create')->name('forum.create');
 Route::get('forum/{forum}', 'forumController@show')->name('forum.show');
-Route::post('forum/store', 'forumController@store')->middleware('auth')->name('forum.store');
+Route::put('forum/store', 'forumController@store')->middleware('auth')->name('forum.store');
 Route::get('forum/edit/{forum}', 'forumController@edit')->middleware('can:update,forum')->name('forum.edit');
 Route::post('forum/update/{forum}', 'forumController@update')->middleware('can:update,forum')->name('forum.update');
 Route::get('forum/delete/{forum}', 'forumController@delete')->middleware('can:delete,forum')->name('forum.delete');

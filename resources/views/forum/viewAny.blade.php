@@ -6,7 +6,7 @@
     <div class="blog-page-banner"></div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-8 blog-inner clearfix" style="margin-left: 200px;">
+        <div class="col-lg-7 blog-inner clearfix" style="margin-left: 3in;">
           <div class="main-box padding-20 full-width">
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
@@ -17,30 +17,6 @@
             <!-- restaurent reviews -->
             <section class="restaurent-review smoothscroll" id="review">
               <div class="row">
-                <div class="comment-form col-md-12">
-                  <div class="section-header-left">
-                    <h3 class="text-light-black header-title">Publier forum</h3>
-                  </div>
-                  <form method="POST" action="@isset($forum) {{ route('forum.update', ['forum' => $forum]) }} @else {{ route('forum.store') }}
-                  @endisset">
-                    @csrf
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="text-light-black fw-600">Theme</label>
-                          <input type="text" name="theme" class="form-control form-control-submit" value="{{ $forum->theme ?? '' }}">
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="text-light-black fw-600">Description</label>
-                          <textarea class="form-control form-control-submit" name="description" rows="6">{{ $forum->description ?? '' }}</textarea>
-                        </div>
-                        <button type="submit" class="btn-second btn-submit full-width">Send</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
                 @foreach($forums as $forum)
                   <div class="col-md-12">
                     <div class="review-box">
@@ -61,16 +37,29 @@
                         </div>
                         <div class="review-date"><span class="text-light-white text-right">{{ $time->inWords($forum->created_at) }}</span>
                           @can('update', $forum)
-                            <a href="{{  route('forum.edit', ['forum' => $forum]) }}"> Modifier</a>
-                          @endcan
-                          @can('delete', $forum)
-                            <a href="{{ route('forum.delete', ['forum' => $forum]) }}"
-                               onclick="return confirm('Voulez-vous sûr de supprimer ce forum?')">Supprimer</a>
+                          <div class="btn-group">
+                            <button class="btn-sm text-light-green" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" style="margin-right: 3in">
+                              <a href="{{  route('forum.edit', ['forum' => $forum]) }}" class="dropdown-item" id="notice-edit">Modifier</a>
+                              <a href="{{  route('forum.delete', ['forum' => $forum]) }}" class="dropdown-item" id="notice-delete">Supprimer </a>
+                            </div>
+                          </div>
                           @endcan
                         </div>
                       </div>
                       <div class="ratings">
-                        <p class="text-light-black">{{ substr($forum->description, 0, 100) }}...</p>
+                        <p class="text-light-black">
+                          @php
+                              $description = $forum->description;
+                              if (strlen($description) > 300) {
+                                echo substr($forum->description, 0, 300).'...';
+                              } else {
+                                echo $description;
+                              }
+                          @endphp
+                        </p>
                       </div>
                     </div>
                     <div class="u-line"></div>

@@ -770,11 +770,23 @@
         </div>
         <div class="chatpopup-widget__trigger" style="padding:15px;margin:0 15px 15px;"> <i class="icon-question-sign" style=" background-image: radial-gradient(at center, white 40%, transparent 40%);"></i> </div>
     </div>
-    @if(Illuminate\Support\Facades\Auth::check())      
+    @if(!Illuminate\Support\Facades\Auth::check())      
       @if (\Request::route()->getName() === 'product.mine')
         <div class="chatpopup-widget" style="margin-right:110px;">
           <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
             <a href="{{ route('product.create') }}">
+              <div class="icon"> 
+                <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+              </div>
+            </a> 
+          </div>
+        </div>
+      @endif 
+      {{dd(\Request::route()->getName())}}
+      @if (\Request::route()->getName() === 'forum.viewAny')
+        <div class="chatpopup-widget" style="margin-right:110px;">
+          <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+            <a href="{{ route('forum.create') }}">
               <div class="icon"> 
                 <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
               </div>
