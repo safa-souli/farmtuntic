@@ -70,7 +70,7 @@ Route::post('forum/commentaire/update/{commentaire}', 'forum_commentaireControll
 Route::get('forum/commentaire/delete/{commentaire}', 'forum_commentaireController@delete')->middleware('can:delete,commentaire')->name('comment.delete');
 
 //route forum commentaire repondes
-Route::post('forum/commentaire/reponde/{commentaire}', 'forum_commentaire_repondeController@store')->name('reply.store');
+Route::put('forum/commentaire/reponde/{commentaire}', 'forum_commentaire_repondeController@store')->name('reply.store');
 Route::get('forum/commentaire/reponde/edit/{forum}/{commentaire}/{reponde}', 'forum_commentaire_repondeController@edit')->middleware('can:update,reponde')->name('reply.edit');
 Route::post('forum/commentaire/reponde/update/{forum}/{reponde}', 'forum_commentaire_repondeController@update')->middleware('can:update,reponde')->name('reply.update');
 Route::get('forum/commentaire/reponde/delete/{reponde}', 'forum_commentaire_repondeController@delete')->middleware('can:update,reponde')->name('reply.delete');
