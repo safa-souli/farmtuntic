@@ -6,30 +6,170 @@
     <div class="container-fluid">
       <div class="row">
         <aside class="col-lg-3 mb-md-40">
-          <div class="filter-sidebar mb-5">
-            <div class="sidebar-tab" style="margin-top: 50px;">
+          <div class="filter-sidebar mb-5" style="margin: 50px 0 0 3ch;">
+            <div class="sidebar-tab">
               <ul class="nav nav-pills mb-xl-20">
-                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#search">Rechercher par</a>
+                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#filtre">Filtre</a>
                 </li>
               </ul>
               <div class="tab-content">
-                <div class="tab-pane fade show active" id="search">
-                  <h6 class="text-light-black fw-700">Farm</h6>
-                  <div class="input-group row">
-                    <div class="input-group2 col-xl-10">
-                      <input type="search" class="form-control form-control-submit">
-                    </div>
-                    <div class="input-group-append col-xl-2">
-                      <button class="btn-second btn-submit" type="button"><i class="fas fa-search"></i></button>
-                    </div>
+                <div class="tab-pane fade show active" id="filtre">
+                  <div class="siderbar-innertab">
+                    <ul class="nav nav-pills">
+                      <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#delivery-restaurents">Delivery</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pickup-restaurents">Pickup</a>
+                      </li>
+                    </ul>
                   </div>
-                  <h6 class="text-light-black fw-700" style="margin-top: 20px;">Agriculteur</h6>
-                  <div class="input-group row">
-                    <div class="input-group2 col-xl-10">
-                      <input type="search" class="form-control form-control-submit">
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="delivery-restaurents">
+                      <p class="text-light-black delivery-type p-relative">Delivery my food <a href="#">Today, ASAP</a>
+                      </p>
+                      <div class="filters">
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseOne">
+                              Feature
+                            </a>
+                          </div>
+                          <div id="deliverycollapseOne" class="collapse show">
+                            <div class="card-body">
+                              <form>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> New <span class="text-light-white">(3)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Order Tracking <span class="text-light-white">(6)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Open Now [6:05am] <span class="text-light-white">(10)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Free Delivery <span class="text-light-white">(6)</span>
+                                </label>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseTwo">
+                              Rating
+                            </a>
+                          </div>
+                          <div id="deliverycollapseTwo" class="collapse show">
+                            <div class="card-body">
+                              <div class="rating">
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseThree">
+                              Price
+                            </a>
+                          </div>
+                          <div id="deliverycollapseThree" class="collapse show">
+                            <div class="card-body">
+                              <div class="rating">
+                                <button class="text-success">$</button>
+                                <button class="text-success">$$</button>
+                                <button class="text-success">$$$</button>
+                                <button class="text-success">$$$$</button>
+                                <button class="text-success">$$$$$</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="input-group-append col-xl-2">
-                      <button class="btn-second btn-submit" type="button"><i class="fas fa-search"></i></button>
+                    <div class="tab-pane fade" id="pickup-restaurents">
+                      <p class="text-light-black delivery-type p-relative">Pick my food <a href="#">Today, ASAP</a>
+                      </p>
+                      <div class="filters">
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseOne">
+                              Feature
+                            </a>
+                          </div>
+                          <div id="pickupcollapseOne" class="collapse show">
+                            <div class="card-body">
+                              <form>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Coupons <span class="text-light-white">(1)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> New <span class="text-light-white">(26)</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Open Now [7:08am] <span class="text-light-white">(236)</span>
+                                </label>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseTwo">
+                              Rating
+                            </a>
+                          </div>
+                          <div id="pickupcollapseTwo" class="collapse show">
+                            <div class="card-body">
+                              <div class="rating">
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                                <button class="text-yellow"><i class="fas fa-star"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseThree">
+                              Price
+                            </a>
+                          </div>
+                          <div id="pickupcollapseThree" class="collapse show">
+                            <div class="card-body">
+                              <div class="rating">
+                                <button class="text-success">$</button>
+                                <button class="text-success">$$</button>
+                                <button class="text-success">$$$</button>
+                                <button class="text-success">$$$$</button>
+                                <button class="text-success">$$$$$</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseFour">
+                              Distance
+                            </a>
+                          </div>
+                          <div id="pickupcollapseFour" class="collapse show">
+                            <div class="card-body">
+                              <div class="delivery-slider">
+                                <input type="text" class="distance-range-slider" value=""/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -99,13 +239,13 @@
                     <div class="testimonial-box">
                       <div class="testimonial-img p-relative">
                         <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-2.jpg" class="img-fluid full-width" alt="testimonial-img">
+                          <img src="{{URL::asset('assets/img/blog/438x180/shop-2.jpg')}}" class="img-fluid full-width" alt="testimonial-img">
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
+                            <img src="{{URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo">
                           </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                          <div class="add-fav text-light-white"><img src="{{URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>
                         </div>
                       </div>
@@ -113,7 +253,7 @@
                         <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                         <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                         <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-2.png" class="rounded-circle" alt="#">
+                          <img src="{{URL::asset('assets/img/blog-details/40x40/user-2.png')}}" class="rounded-circle" alt="#">
                           <div class="testimonial-user-name">
                             <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                           </div>
@@ -147,13 +287,13 @@
                     <div class="testimonial-box">
                       <div class="testimonial-img p-relative">
                         <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-3.jpg" class="img-fluid full-width" alt="testimonial-img">
+                          <img src="{{URL::asset('assets/img/blog/438x180/shop-3.jpg')}}" class="img-fluid full-width" alt="testimonial-img">
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
+                            <img src="{{URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo">
                           </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                          <div class="add-fav text-light-white"><img src="{{URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>
                         </div>
                       </div>
@@ -161,7 +301,7 @@
                         <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                         <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                         <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-3.png" class="rounded-circle" alt="farm.html">
+                          <img src="{{URL::asset('assets/img/blog-details/40x40/user-3.png')}}" class="rounded-circle" alt="farm.html">
                           <div class="testimonial-user-name">
                             <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                           </div>
@@ -182,9 +322,6 @@
                             <i class="fas fa-star"></i>
                           </span>
                         </div>
-                        <p class="text-light-black">Delivery was fast and friendly...</p>
-                        <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
-                        <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
                       </div>
                     </div>
                   </div>
@@ -194,13 +331,13 @@
                     <div class="testimonial-box">
                       <div class="testimonial-img p-relative">
                         <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-1.jpg" class="img-fluid full-width" alt="testimonial-img">
+                          <img src="{{URL::asset('assets/img/blog/438x180/shop-1.jpg')}}" class="img-fluid full-width" alt="testimonial-img">
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="assets/img/user/user-2.png" class="img-fluid" alt="logo">
+                            <img src="{{URL::asset('assets/img/user/user-2.png')}}" class="img-fluid" alt="logo">
                           </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                          <div class="add-fav text-light-white"><img src="{{URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>
                         </div>
                       </div>
@@ -208,7 +345,7 @@
                         <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                         <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                         <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-1.png" class="rounded-circle" alt="farm.html">
+                          <img src="{{URL::asset('assets/img/blog-details/40x40/user-1.png')}}" class="rounded-circle" alt="farm.html">
                           <div class="testimonial-user-name">
                             <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                           </div>
@@ -242,7 +379,7 @@
               <div class="swiper-button-prev"></div>
             </div>
             <div class="large-product-box mb-xl-20">
-              <img src="assets/img/blog/446x1025/ad-1.jpg" class="img-fluid full-width" alt="image">
+              <img src="{{URL::asset('assets/img/blog/446x1025/ad-1.jpg')}}" class="img-fluid full-width" alt="image">
               <div class="category-type overlay padding-15">
                 <button class="category-btn">Most popular near you</button>
                 <a href="farm.html" class="btn-first white-btn text-light-black fw-600 full-width">See all</a>
@@ -250,11 +387,11 @@
             </div>
             <div class="inner-wrapper main-box">
               <div class="main-banner p-relative">
-                <img src="assets/img/blog/446x501/ff-1.jpg" class="img-fluid full-width main-img" alt="banner">
+                <img src="{{URL::asset('assets/img/blog/446x501/ff-1.jpg')}}" class="img-fluid full-width main-img" alt="banner">
                 <div class="overlay-2 main-padding">
-                  <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
+                  <img src="{{URL::asset('assets/img/logo-2.jpg')}}" class="img-fluid" alt="logo">
                 </div>
-                <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
+                <img src="{{URL::asset('assets/img/banner/burger.png')}}" class="footer-img" alt="footerimg">
               </div>
             </div>
           </div>

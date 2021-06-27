@@ -770,38 +770,40 @@
         </div>
         <div class="chatpopup-widget__trigger" style="padding:15px;margin:0 15px 15px;"> <i class="icon-question-sign" style=" background-image: radial-gradient(at center, white 40%, transparent 40%);"></i> </div>
     </div>
-    @if (\Request::route()->getName() === 'product.mine')
-      <div class="chatpopup-widget" style="margin-right:110px;">
-        <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
-          <a href="{{ route('product.create') }}">
-            <div class="icon"> 
-              <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
-            </div>
-          </a> 
+    @if(Illuminate\Support\Facades\Auth::check())      
+      @if (\Request::route()->getName() === 'product.mine')
+        <div class="chatpopup-widget" style="margin-right:110px;">
+          <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+            <a href="{{ route('product.create') }}">
+              <div class="icon"> 
+                <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+              </div>
+            </a> 
+          </div>
         </div>
-      </div>
-    @endif
-    @if(\Request::route()->getName() === 'farm.mine')          
-      <div class="chatpopup-widget" style="margin-right:110px;">
-        <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
-          <a href="{{ route('farm.create') }}">
-            <div class="icon"> 
-              <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
-            </div>
-          </a> 
+      @endif
+      @if(\Request::route()->getName() === 'farm.mine')          
+        <div class="chatpopup-widget" style="margin-right:110px;">
+          <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+            <a href="{{ route('farm.create') }}">
+              <div class="icon"> 
+                <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+              </div>
+            </a> 
+          </div>
         </div>
-      </div>
-    @endif
-    @if(\Request::route()->getName() === 'farm.show' && ($ferme->agriculteur_id == Auth::user()->id))
-      <div class="chatpopup-widget" style="margin-right:110px;">
-        <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
-          <a href="{{ route('farm.product.create', ['ferme' => $ferme]) }}">
-            <div class="icon"> 
-              <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
-            </div>
-          </a> 
+      @endif
+      @if(\Request::route()->getName() === 'farm.show' && ($ferme->agriculteur_id == Auth::user()->id))
+        <div class="chatpopup-widget" style="margin-right:110px;">
+          <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
+            <a href="{{ route('farm.product.create', ['ferme' => $ferme]) }}">
+              <div class="icon"> 
+                <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
+              </div>
+            </a> 
+          </div>
         </div>
-      </div>
+      @endif
     @endif
 
 <script type="text/javascript">

@@ -188,19 +188,6 @@
                             </div>
                           </div>
                         </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseFour">
-                              Delivery time
-                            </a>
-                          </div>
-                          <div id="deliverycollapseFour" class="collapse show">
-                            <div class="card-body">
-                              <div class="delivery-slider">
-                                <input type="text" class="delivery-range-slider" value=""/>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="pickup-restaurents">
@@ -372,7 +359,7 @@
                       <h4 class="text-light-black no-margin">50%</h4>
                     </div>
                     <a href="restaurent.html">
-                      <img src="assets/img/logo-3.jpg" class="img-fluid" alt="logo">
+                      <img src="{{URL::asset('assets/img/logo/icon.png')}}" class="img-fluid" alt="logo">
                     </a>
                   </div>
                 </div>
@@ -473,128 +460,9 @@
   <section class="section-padding restaurent-about smoothscroll" id="about">
     <div class="container">
       <div class="row">
+        
         <div class="col-md-6">
-          <h3 class="text-light-black fw-700 title">{{ $ferme->nom }}</h3>
-          <p class="text-light-white no-margin">{{ $ferme->description }}</p>
-          <ul class="about-restaurent">
-            <li><i class="fas fa-map-marker-alt"></i>
-              <span>
-                <a href="#" class="text-light-white">{{ $ferme->adresse }} </a>
-              </span>
-            </li>
-            <li><i class="fas fa-phone-alt"></i>
-              <span><a href="tel:" class="text-light-white">{{ $ferme->telephone }}</a></span>
-            </li>
-            <li><i class="far fa-envelope"></i>
-              <span><a href="mailto:" class="text-light-white">{{ $ferme->email }}</a></span>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <div class="restaurent-schdule">
-            <div class="card">
-              <div class="card-header text-light-white fw-700 fs-16">Hours</div>
-              <div class="card-body">
-                <div class="schedule-box">
-                  <div class="day text-light-black">Monday</div>
-                  <div class="time text-light-black">Delivery: 7:00am - 10:59pm</div>
-                </div>
-                <div class="collapse" id="schdule">
-                  <div class="schedule-box">
-                    <div class="day text-light-black">Tuesday</div>
-                    <div class="time text-light-black">Delivery: 7:00am - 10:00pm</div>
-                  </div>
-                  <div class="schedule-box">
-                    <div class="day text-light-black">Wednesday</div>
-                    <div class="time text-light-black">Delivery: 7:00am - 10:00pm</div>
-                  </div>
-                  <div class="schedule-box">
-                    <div class="day text-light-black">Thursday</div>
-                    <div class="time text-light-black">Delivery: 7:00am - 10:00pm</div>
-                  </div>
-                  <div class="schedule-box">
-                    <div class="day text-light-black">Friday</div>
-                    <div class="time text-light-black">Delivery: 7:00am - 10:00pm</div>
-                  </div>
-                  <div class="schedule-box">
-                    <div class="day text-light-black">Saturday</div>
-                    <div class="time text-light-black">Delivery: 7:00am - 10:00pm</div>
-                  </div>
-                  <div class="schedule-box">
-                    <div class="day text-light-black">Sunday</div>
-                    <div class="time text-light-black">Delivery: 7:00am - 10:00pm</div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer"><a class="fw-500 collapsed" data-toggle="collapse" href="#schdule">See the full schedule</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- restaurent about -->
-  <!-- map gallery -->
-  <div class="map-gallery-sec section-padding bg-light-theme smoothscroll" id="mapgallery">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="main-box">
-            <div class="row">
-              <div class="col-md-6 map-pr-0">
-                <iframe id="locmap"
-                        src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
-              </div>
-              <div class="col-md-6 map-pl-0">
-                <div class="gallery-box padding-10">
-                  <ul class="gallery-img">
-                    <li>
-                      <a class="image-popup" href="assets/img/gallery/img-1.jpg" title="Image title">
-                        <img src="assets/img/gallery/img-1.jpg" class="img-fluid full-width" alt="9.jpg"/>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="image-popup" href="assets/img/gallery/img-2.jpg" title="Image title">
-                        <img src="assets/img/gallery/img-2.jpg" class="img-fluid full-width" alt="9.jpg"/>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="image-popup" href="assets/img/gallery/img-3.jpg" title="Image title">
-                        <img src="assets/img/gallery/img-3.jpg" class="img-fluid full-width" alt="9.jpg"/>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="image-popup" href="assets/img/gallery/img-4.jpg" title="Image title">
-                        <img src="assets/img/gallery/img-4.jpg" class="img-fluid full-width" alt="9.jpg"/>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="image-popup" href="assets/img/gallery/img-5.jpg" title="Image title">
-                        <img src="assets/img/gallery/img-5.jpg" class="img-fluid full-width" alt="9.jpg"/>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="image-popup" href="assets/img/gallery/img-6.jpg" title="Image title">
-                        <img src="assets/img/gallery/img-6.jpg" class="img-fluid full-width" alt="9.jpg"/>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- map gallery -->
-
-  <!-- restaurent reviews -->
-  <section class="section-padding restaurent-review smoothscroll" id="review">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
+            
           <div class="section-header-left">
             <h3 class="text-light-black header-title title">Avis de {{ $ferme->nom }}</h3>
           </div>
@@ -616,139 +484,8 @@
                 </div>
                 <span class="fs-12 text-light-black">{{ $note->etoiles($ferme->id) }} évaluations</span>
               </div>
-              <p class="text-light-black mb-xl-20">Exprimez votre opinion sur la {{ $ferme->nom }}:</p>
-              <div class="u-line" style="margin-bottom: 30px;"></div>
-              @isset($ferme_avis)
-                <?php $user = Auth::user()?>
-                <div id="notice-box" class="review-box">
-                  <div class="review-user">
-                    <div class="review-user-img">
-                      <img src='{{ URL::asset("assets/img/user/$user->photo") }}' class="rounded-circle" alt="#">
-                      <div class="reviewer-name">
-                        <p class="text-light-black fw-600">{{ $user->prenom }} {{ $user->nom }}
-                          <small class="text-light-white fw-500">{{ $user->adresse }}</small>
-                        </p>
-                        <div class="ratings">
-                        <span class="text-yellow fs-16">
-                          @for($i = 0; $i <  $ferme_avis->etoiles; $i++)
-                            <i class="fas fa-star text-yellow"></i>
-                          @endfor
-                        </span>
-                          <span class="ml-2 text-light-white">{{ $time->inWords($ferme_avis->created_at) }}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-date">
-                    <span class="text-light-white">
-                      <a id="notice-delete">Supprimer </a>
-                    </span>
-                    </div>
-                    <div class="review-date"><span class="text-light-white"><a id="notice-edit">Modifier</a></span></div>
-                  </div>
-                  <p class="text-light-black">{{ $ferme_avis->avis }}</p>
-                </div>
-                <div id="notice-div" class="comment-form" style="display: none;">
-                  <form id="notice-form">
-                    @csrf
-                    <div class="row">
-                      @auth
-                        <?php $photo = Auth::user()->photo; ?>
-                        <div class="review-user col-md-1">
-                          <div class="review-user-img">
-                            <img src='{{ URL::asset("assets/img/user/$photo") }}' class="rounded-circle" alt="profil-user">
-                          </div>
-                        </div>
-                      @endauth
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating"
-                                                                                          value="5" {{ ($ferme_avis->etoiles == 5) ?  'checked': '' }} />
-                            <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
-                            <input type="radio" id="star4half" name="etoiles" value="4.5" {{ ($ferme_avis->etoiles == 4.5) ?  'checked': '' }}/>
-                            <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                            <input type="radio" id="star4" name="etoiles" value="4" {{ ($ferme_avis->etoiles == 4) ?  'checked': '' }} />
-                            <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                            <input type="radio" id="star3half" name="etoiles" value="3.5" {{ ($ferme_avis->etoiles == 3.5) ?  'checked': '' }} />
-                            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                            <input type="radio" id="star3" name="etoiles" value="3" {{ ($ferme_avis->etoiles == 3) ?  'checked': '' }}/>
-                            <label class="full" for="star3" title="Meh - 3 stars"></label>
-                            <input type="radio" id="star2half" name="etoiles" value="2.5" {{ ($ferme_avis->etoiles == 2.5) ?  'checked': '' }}/>
-                            <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                            <input type="radio" id="star2" name="etoiles" value="2" {{ ($ferme_avis->etoiles == 2) ?  'checked': '' }}/>
-                            <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                            <input type="radio" id="star1half" name="etoiles" value="1.5" {{ ($ferme_avis->etoiles == 1.5) ?  'checked': '' }}/>
-                            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                            <input type="radio" id="star1" name="etoiles" value="1" {{ ($ferme_avis->etoiles == 1) ?  'checked': '' }} />
-                            <label class="full" for="star1" title="mauvais - 1 star"></label>
-                            <input type="radio" id="starhalf" name="etoiles" value="0.5" {{ ($ferme_avis->etoiles == 0.5) ?  'checked': '' }}/>
-                            <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
-                          </fieldset>
-                          <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required>{{ $ferme_avis->avis }}</textarea>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <div class="form-group"></div>
-                          <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
-                          <button type="submit" class="btn-second btn-submit" style="margin-top: 10px">Valider</button>
-                          <button id="notice-cancel" type="button" class="btn-second btn-submit" style="margin-top: 10px">Annuler</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              @else
-                <div id="notice-div-store" class="comment-form">
-                  <form id="notice-form-add">
-                    @csrf
-                    @method('PUT')
-                    <div class="row">
-                      @auth
-                        <?php $photo = Auth::user()->photo; ?>
-                        <div class="review-user col-md-1">
-                          <div class="review-user-img">
-                            <img src='{{ URL::asset("assets/img/user/$photo") }}' class="rounded-circle" alt="profil-user">
-                          </div>
-                        </div>
-                      @endauth
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5"/>
-                            <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
-                            <input type="radio" id="star4half" name="etoiles" value="4.5"/>
-                            <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
-                            <input type="radio" id="star4" name="etoiles" value="4"/>
-                            <label class="full" for="star4" title="Assez bien - 4 stars"></label>
-                            <input type="radio" id="star3half" name="etoiles" value="3.5"/>
-                            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                            <input type="radio" id="star3" name="etoiles" value="3"/>
-                            <label class="full" for="star3" title="Meh - 3 stars"></label>
-                            <input type="radio" id="star2half" name="etoiles" value="2.5"/>
-                            <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
-                            <input type="radio" id="star2" name="etoiles" value="2"/>
-                            <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
-                            <input type="radio" id="star1half" name="etoiles" value="1.5"/>
-                            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                            <input type="radio" id="star1" name="etoiles" value="1"/>
-                            <label class="full" for="star1" title="mauvais - 1 star"></label>
-                            <input type="radio" id="starhalf" name="etoiles" value="0.5"/>
-                            <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
-                          </fieldset>
-                          <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required></textarea>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <div class="form-group"></div>
-                          <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
-                          <button type="submit" class="btn-second btn-submit" style="margin-top: 10px">Valider</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              @endisset
-              <p class="text-light-black mb-xl-20">Voici ce que les gens avis:</p>
+              <div class="u-line" style="margin-top: 1cm;"></div>
+              <h6 class="text-light-black mb-xl-20" style="margin-top: 2ex">Gens avis:</h6>
               <div class="u-line"></div>
             </div>
             @foreach($ferme->avis as $avis)
@@ -771,7 +508,7 @@
                   <div class="review-date"><span class="text-light-white">{{ $time->inWords($avis->pivot->created_at) }}</span>
                   </div>
                 </div>
-                <p class="text-light-black">{{ $avis->pivot->avis }}</p>
+                <p class="text-light-black" style="margin:-1ch 0 0 9vh;">{{ $avis->pivot->avis }}</p>
               </div>
             @endforeach
           @else
@@ -788,10 +525,147 @@
             </div>
           @endisset
         </div>
+        <div class="col-md-6">
+          <h3 class="text-light-black fw-700 title">{{ $ferme->nom }}</h3>
+          <p class="text-light-white no-margin">{{ $ferme->description }}</p>
+          <ul class="about-restaurent">
+            <li><i class="fas fa-map-marker-alt"></i>
+              <span>
+                <a href="#" class="text-light-white">{{ $ferme->adresse }} </a>
+              </span>
+            </li>
+            <li><i class="fas fa-phone-alt"></i>
+              <span><a href="tel:" class="text-light-white">{{ $ferme->telephone }}</a></span>
+            </li>
+            <li><i class="far fa-envelope"></i>
+              <span><a href="mailto:" class="text-light-white">{{ $ferme->email }}</a></span>
+            </li>
+          </ul>
+          
+          <div class="u-line" style="margin-top: 1cm;"></div>
+          <h6 class="text-light-black mb-xl-20" style="margin-top: 2ex">Votre avis sur la {{ $ferme->nom }}:</h6>
+          <div class="u-line"></div>
+          @isset($ferme_avis)
+            <?php $user = Auth::user()?>
+            <div id="notice-box" class="review-box">
+              <div class="review-user">
+                <div class="review-user-img">
+                  <img src='{{ URL::asset("assets/img/user/$user->photo") }}' class="rounded-circle" alt="#">
+                  <div class="reviewer-name">
+                    <p class="text-light-black fw-600">{{ $user->prenom }} {{ $user->nom }}
+                      <small class="text-light-white fw-500">{{ $user->adresse }}</small>
+                    </p>
+                    <div class="ratings">
+                    <span class="text-yellow fs-16">
+                      @for($i = 0; $i <  $ferme_avis->etoiles; $i++)
+                        <i class="fas fa-star text-yellow"></i>
+                      @endfor
+                    </span>
+                      <span class="ml-2 text-light-white">{{ $time->inWords($ferme_avis->created_at) }}</span>
+                    </div>
+                  </div>
+                </div>
+                  
+                  <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Action
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" id="notice-edit">Modifier</a>
+                      <a class="dropdown-item" id="notice-delete">Supprimer </a>
+                    </div>
+                  </div>
+              </div>
+              <p class="text-light-black"  style="margin:-1ch 0 0 9vh;">{{ $ferme_avis->avis }}</p>
+            </div>
+            <div id="notice-div" class="comment-form" style="display: none;">
+              <form id="notice-form">
+                @csrf
+                <div class="row">
+                  <div class="col-md-12" style="margin-top: 2ch">
+                    <div class="form-group">
+                      <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating"
+                                                                                      value="5" {{ ($ferme_avis->etoiles == 5) ?  'checked': '' }} />
+                        <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
+                        <input type="radio" id="star4half" name="etoiles" value="4.5" {{ ($ferme_avis->etoiles == 4.5) ?  'checked': '' }}/>
+                        <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
+                        <input type="radio" id="star4" name="etoiles" value="4" {{ ($ferme_avis->etoiles == 4) ?  'checked': '' }} />
+                        <label class="full" for="star4" title="Assez bien - 4 stars"></label>
+                        <input type="radio" id="star3half" name="etoiles" value="3.5" {{ ($ferme_avis->etoiles == 3.5) ?  'checked': '' }} />
+                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                        <input type="radio" id="star3" name="etoiles" value="3" {{ ($ferme_avis->etoiles == 3) ?  'checked': '' }}/>
+                        <label class="full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2half" name="etoiles" value="2.5" {{ ($ferme_avis->etoiles == 2.5) ?  'checked': '' }}/>
+                        <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
+                        <input type="radio" id="star2" name="etoiles" value="2" {{ ($ferme_avis->etoiles == 2) ?  'checked': '' }}/>
+                        <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
+                        <input type="radio" id="star1half" name="etoiles" value="1.5" {{ ($ferme_avis->etoiles == 1.5) ?  'checked': '' }}/>
+                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                        <input type="radio" id="star1" name="etoiles" value="1" {{ ($ferme_avis->etoiles == 1) ?  'checked': '' }} />
+                        <label class="full" for="star1" title="mauvais - 1 star"></label>
+                        <input type="radio" id="starhalf" name="etoiles" value="0.5" {{ ($ferme_avis->etoiles == 0.5) ?  'checked': '' }}/>
+                        <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
+                      </fieldset>
+                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required>{{ $ferme_avis->avis }}</textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6" style="margin-top: -1cm">
+                    <div class="form-group">
+                      <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
+                      <button type="submit" class="btn btn-secondary btn-sm btn-submit" style="margin-top: 10px">Valider</button>
+                      <button id="notice-cancel" type="button" class="btn btn-secondary btn-sm" style="margin-top: 10px">Annuler</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          @else
+            <div id="notice-div-store" class="comment-form" style="margin-top: 2ch">
+              <form id="notice-form-add">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <fieldset class="rating" style="margin: -10px 0 10px 0;"><input type="radio" id="star5" name="rating" value="5"/>
+                        <label class="full" for="star5" title="Impressionnant - 5 stars"></label>
+                        <input type="radio" id="star4half" name="etoiles" value="4.5"/>
+                        <label class="half" for="star4half" title="Assez bien - 4.5 stars"></label>
+                        <input type="radio" id="star4" name="etoiles" value="4"/>
+                        <label class="full" for="star4" title="Assez bien - 4 stars"></label>
+                        <input type="radio" id="star3half" name="etoiles" value="3.5"/>
+                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                        <input type="radio" id="star3" name="etoiles" value="3"/>
+                        <label class="full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2half" name="etoiles" value="2.5"/>
+                        <label class="half" for="star2half" title="Un peu mauvais- 2.5 stars"></label>
+                        <input type="radio" id="star2" name="etoiles" value="2"/>
+                        <label class="full" for="star2" title="Un peu mauvais - 2 stars"></label>
+                        <input type="radio" id="star1half" name="etoiles" value="1.5"/>
+                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                        <input type="radio" id="star1" name="etoiles" value="1"/>
+                        <label class="full" for="star1" title="mauvais - 1 star"></label>
+                        <input type="radio" id="starhalf" name="etoiles" value="0.5"/>
+                        <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
+                      </fieldset>
+                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="form-group"></div>
+                      <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
+                      <button type="submit" class="btn-second btn-submit" style="margin-top: -2ch">Valider</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          @endisset
+        </div>
       </div>
     </div>
   </section>
-  <!-- restaurent reviews -->
   <script>
     $(document).ready(function () {
       <?php if(isset($ferme_avis)) { ?>
