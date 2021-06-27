@@ -76,7 +76,7 @@ Route::get('forum/commentaire/reponde/delete/{reponde}', 'forum_commentaire_repo
 
 #route profil
 Route::get('profil/{client}', 'clientController@show')->name('profile.show');
-Route::get('profil/edit', 'clientController@edit')->name('profile.edit');
+Route::get('profil//edit', 'clientController@edit')->name('profile.edit');
 Route::post('profil/update', 'clientController@update')->name('profile.update');
 Route::get('profil/delete', 'clientController@delete')->name('profile.delete');
 

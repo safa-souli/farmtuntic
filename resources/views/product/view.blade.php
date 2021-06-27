@@ -62,14 +62,16 @@
                           @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
                             <i class="fas fa-star  fs-18 text-yellow"></i>
                           @endfor
-                          @if( 
-                            (number_format($note->avg($produit->ferme->id) != 0)) 
-                            && ($note->avg($produit->ferme->id) 
-                            %  number_format($note->avg($produit->ferme->id))) > 0.5
-                          )
-                            <i class="fas fa-star-half-alt  fs-18 text-yellow"></i>
+                          @if(!is_null($produit->ferme))
+                            @if( 
+                              (number_format($note->avg($produit->ferme->id) != 0)) 
+                              && ($note->avg($produit->ferme->id) 
+                              %  number_format($note->avg($produit->ferme->id))) > 0.5
+                            )
+                              <i class="fas fa-star-half-alt  fs-18 text-yellow"></i>
+                            @endif
+                            <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
                           @endif
-                          <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
                         </div>
                     </div>
                     <div class="restaurent-product-rating text-right" style="margin-top: -20px;">                      
@@ -97,9 +99,11 @@
                       </div>
                     </div>
                   </h2>
+                  <div class="u-line"></div>
                   <div>    
-                    @isset($produit->caracteristics)                        
-                      <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
+                    @isset($produit->caracteristics)  
+                      <div class="u-line"></div>
+                        <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
                         @foreach ($produit->caracteristics as $caracteristic)
                             
                         <p class="text-light-black fw-600"> {{ $caracteristic['nom_car'] }}: <span class="text-light-white">{{ $caracteristic['val_car'] }}</span></p>
@@ -108,9 +112,9 @@
                   </div>
                 </div>
                 <div>
-                  <div>             
-                  <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Description</h6>
-                  <p class="text-light-white"> {{ $produit->description }}</p>
+                  <div class="u-line">             
+                    <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Description</h6>
+                    <p class="text-light-white"> {{ $produit->description }}</p>
                   </div>
                 </div>
               </div>
@@ -164,6 +168,7 @@
                   </form>
                 </h4>
               </div>
+              @if(!is_null($produit->ferme))
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <div class="testimonial-wrapper">
@@ -203,210 +208,12 @@
                   </div>
                 </div>
               </div>
+              @endif
             </div>
         </aside>
       </div>
     </div>
   </section>
-
-  <!-- offer near -->
-  <section class="fresh-deals section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="section-header-left">
-            <h3 class="text-light-black header-title title">Produit de même catégorie</h3>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="fresh-deals-slider swiper-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img">
-                    <a href="farm.html">
-                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-10.jpg") }}' class="img-fluid full-width" alt="product-img">
-                    </a>
-                  </div>
-                  <div class="product-caption">
-                    <div class="title-box">
-                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Great Burger</a></h6>
-                    </div>
-                    <p class="text-light-white">American, Fast Food</p>
-                    <div class="product-details">
-                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
-                        <span class="text-light-white price">$10 min</span>
-                      </div>
-                      <div class="rating"> <span>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                        </span>
-                        <span class="text-light-white text-right">4225 ratings</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-footer-2">
-                    <div class="discount"><span class="text-success fs-12">$3 off</span>
-                    </div>
-                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img">
-                    <a href="farm.html">
-                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-11.jpg") }}' class="img-fluid full-width" alt="product-img">
-                    </a>
-                  </div>
-                  <div class="product-caption">
-                    <div class="title-box">
-                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Flavor Town</a></h6>
-                    </div>
-                    <p class="text-light-white">Breakfast, Lunch & Dinner</p>
-                    <div class="product-details">
-                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
-                        <span class="text-light-white price">$10 min</span>
-                      </div>
-                      <div class="rating"> <span>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                        </span>
-                        <span class="text-light-white text-right">4225 ratings</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-footer-2">
-                    <div class="discount"><span class="text-success fs-12">$3 off</span>
-                    </div>
-                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img">
-                    <a href="farm.html">
-                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-22.jpg") }}' class="img-fluid full-width" alt="product-img">
-                    </a>
-                  </div>
-                  <div class="product-caption">
-                    <div class="title-box">
-                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Big Bites</a></h6>
-                    </div>
-                    <p class="text-light-white">Fruits, Vegitables, Milk, Eggs</p>
-                    <div class="product-details">
-                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
-                        <span class="text-light-white price">$10 min</span>
-                      </div>
-                      <div class="rating"> <span>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                        </span>
-                        <span class="text-light-white text-right">4225 ratings</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-footer-2">
-                    <div class="discount"><span class="text-success fs-12">$3 off</span>
-                    </div>
-                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img">
-                    <a href="farm.html">
-                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-23.jpg") }}' class="img-fluid full-width" alt="product-img">
-                    </a>
-                  </div>
-                  <div class="product-caption">
-                    <div class="title-box">
-                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Smile N’ Delight</a></h6>
-                    </div>
-                    <p class="text-light-white">Desserts, Beverages</p>
-                    <div class="product-details">
-                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
-                        <span class="text-light-white price">$10 min</span>
-                      </div>
-                      <div class="rating"> <span>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                        </span>
-                        <span class="text-light-white text-right">4225 ratings</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-footer-2">
-                    <div class="discount"><span class="text-success fs-12">$3 off</span>
-                    </div>
-                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-box">
-                  <div class="product-img">
-                    <a href="farm.html">
-                      <img src='{{ URL::asset("assets/img/farms/255x150/shop-24.jpg") }}' class="img-fluid full-width" alt="product-img">
-                    </a>
-                  </div>
-                  <div class="product-caption">
-                    <div class="title-box">
-                      <h6 class="product-title"><a href="farm.html" class="text-light-black">Lil Johnny’s</a></h6>
-                    </div>
-                    <p class="text-light-white">Continental & Mexican</p>
-                    <div class="product-details">
-                      <div class="price-time"><span class="text-light-black time">30-40 min</span>
-                        <span class="text-light-white price">$10 min</span>
-                      </div>
-                      <div class="rating"> <span>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                          <i class="fas fa-star text-yellow"></i>
-                        </span>
-                        <span class="text-light-white text-right">4225 ratings</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-footer-2">
-                    <div class="discount"><span class="text-success fs-12">$3 off</span>
-                    </div>
-                    <div class="discount-coupon"><span class="text-light-white fs-12">First order only</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            //didn't work
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- offer near -->
   <script type="text/javascript">
     $(document).ready(function () {
       $("#success-cart<?php echo $produit->id?>").hide();

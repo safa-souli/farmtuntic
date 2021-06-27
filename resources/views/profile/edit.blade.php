@@ -13,7 +13,7 @@
                 <div class="col-xl-12 col-lg-7">
                   <div class="step-content">
                     <div class="step-tab-panel active" id="steppanel1">
-                      <form method="POST" action="{{ route('profile.update') }}">
+                      <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="general-sec">
                           <div class="row">
@@ -23,43 +23,73 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Nom</label>
-                                <input type="text" name="nom" class="form-control form-control-submit" value="{{ $client->nom }}">
+                                <input type="text" name="nom" class="form-control @error('nom') is-invalid @enderror" value="{{ $client->nom }}">
+                                @error('nom')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Prénom</label>
-                                <input type="text" name="prenom" class="form-control form-control-submit" value="{{ $client->prenom }}">
+                                <input type="text" name="prenom" class="form-control @error('prenom') is-invalid @enderror" value="{{ $client->prenom ?? old('nom') }}">
+                                @error('prenom')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Date de naissance</label>
-                                <input type="date" name="datenai" class="form-control form-control-submit" value="{{ $client->datenai }}">
+                                <input type="date" name="datenai" class="form-control" value="{{ $client->datenai ?? old('datenai')}}">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Téléphone</label>
-                                <input type="text" name="telephone" class="form-control form-control-submit" value="{{ $client->telephone }}">
+                                <input type="text" name="telephone" class="form-control @error('telephone') is-invalid @enderror" value="{{ $client->telephone ?? old('telephone')}}">
+                                @error('telephone')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Email</label>
-                                <input type="text" name="email" class="form-control form-control-submit" value="{{ $client->email }}">
+                                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $client->email ?? old('email')}}">
+                                @error('email')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Adresse</label>
-                                <input type="text" name="adresse" class="form-control form-control-submit" value="{{ $client->adresse }}">
+                                <input type="text" name="adresse" class="form-control @error('adresse') is-invalid @enderror" value="{{ $client->adresse ?? old('adresse')}}">
+                                @error('adresse')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label class="text-light-black fw-700">Sexe</label>
+                                <label class="text-light-black fw-700">Photo</label>
                                 <input type="file" name="photo" class="custom-file">
+                                @error('photo')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -79,21 +109,34 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="text-light-black fw-700">Nom de l'entreprise</label>
-                                    <input type="text" name="nom_entreprise" class="form-control form-control-submit" value="{{ $client->livreur->nom_entreprise  }}">
+                                    <input type="text" name="nom_entreprise" class="form-control @error('nom_entreprise') is-invalid @enderror" value="{{ $client->livreur->nom_entreprise ?? old('nom_entreprise') }}">
+                                    @error('nom_entreprise')
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                      </span>
+                                    @enderror
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="text-light-black fw-700">Télephone de l'entreprise</label>
-                                    <input type="text" name="telephone_entreprise" class="form-control form-control-submit" value="{{
-                                  $client->livreur->telephone_entreprise  }}">
+                                    <input type="text" name="telephone_entreprise" class="form-control @error('telephone_entreprise') is-invalid @enderror" value="{{$client->livreur->telephone_entreprise ?? old('telephone_entreprise') }}">
+                                    @error('telephone_entreprise')
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                      </span>
+                                    @enderror
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="text-light-black fw-700">Adresse de l'entreprise</label>
-                                    <input type="text" name="adresse_entreprise" class="form-control form-control-submit" value="{{ $client->livreur->adresse_entreprise
-                                  }}">
+                                    <input type="text" name="adresse_entreprise" class="form-control @error('adresse_entreprise') is-invalid @enderror" value="{{ $client->livreur->adresse_entreprise ?? old('adresse_entreprise')}}">
+                                    @error('adresse_entreprise')
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                      </span>
+                                    @enderror
                                   </div>
                                 </div>
                               @endisset
@@ -101,19 +144,20 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="text-light-black fw-700">Domaine</label>
-                                    <textarea type="text" name="domaine" class="form-control form-control-submit" rows="3">{{ $client->agriculteur->domaine }}</textarea>
+                                    <textarea type="text" name="domaine" class="form-control" rows="3">{{ $client->agriculteur->domaine }}</textarea>
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="text-light-black fw-700">Certification</label>
-                                    <input type="text" name="certificate" class="form-control form-control-submit" value="{{ $client->agriculteur->certificate }}">
+                                    <input type="text" name="certificate" class="form-control" value="{{ $client->agriculteur->certificate }}">
                                   </div>
                                 </div>
                               @endisset
                             </div>
                           @endif
                         </div>
+                        <div class="u-line" style="margin-bottom: 3ch"></div>
                         <button class="btn-second btn-submit">Modifier</button>
                       </form>
                     </div>

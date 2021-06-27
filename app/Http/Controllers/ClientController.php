@@ -34,27 +34,40 @@ class ClientController extends Controller
     ]);
   }
 
-  public function update()
+  public function update(request $request)
   {
+    $request->validate([
+      'nom' => 'required|string|alpha|min:3|max:130',
+      'prenom' => 'required|string|alpha|min:3|max:130',
+      'email' => 'required|string|email|unique:client',
+      'telephone' => 'nullable|numeric|digits:8',
+      'adresse' =>'nullable|string|min:3|max:130',
+      'photo' =>'nullable|image|max:2048',
+    ]);
     $client = Auth::user();
-    $client->nom = \request('nom');
-    $client->prenom = \request('prenom');
-    $client->datenai = \request('datenai');
-    $client->email = \request('email');
-    $client->telephone = \request('telephone');
-    $client->adresse = \request('adresse');
-    $client->sexe = \request('sexe');
+    $client->nom = $request->nom;
+    $client->prenom = $request->prenom;
+    $client->datenai = $request->datenai;
+    $client->email = $request->email;
+    $client->telephone = $request->telephone;
+    $client->adresse = $request->adresse;
+    $client->sexe = $request->sexe;
     $client->save();
     if ($client->type == 'agriculteur') {
-      $client->agriculteur->domaine = \request('domaine');
-      $client->agriculteur->certificate = \request('certificate');
+      $client->agriculteur->domaine = $request->domaine;
+      $client->agriculteur->certificate = $request->certificate;
       $client->agriculteur->save();
     }
     if ($client->type == 'livreur')
     {
-      $client->livreur->nom_entreprise = \request('nom_entreprise');
-      $client->livreur->telephone_entreprise = \request('telephone_entreprise');
-      $client->livreur->adresse_entreprise = \request('adresse_entreprise');
+      $request->validate([
+        'nom_entreprise' => 'nullable|string|alpha|min:3|max:130',
+        'telephone_entreprise' => 'nullable|numeric|size:8',
+        'adresse_entreprise' => 'nullable|string|digits:3',
+      ]);
+      $client->livreur->nom_entreprise = $request->nom_entreprise;
+      $client->livreur->telephone_entreprise = $request->telephone_entreprise;
+      $client->livreur->adresse_entreprise = $request->adresse_entreprise;
       $client->livreur->save();
     }
     return redirect()->back();

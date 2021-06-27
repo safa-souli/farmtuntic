@@ -192,7 +192,7 @@ class ProduitController extends Controller
 
   public function note_store(Request $request)
   {
-    Auth::user()->produitNotes()->attach('', $request()->all(), ['client_id' => Auth::user()->id]);
+    Auth::user()->produitNotes()->attach('', $request->all(), ['client_id' => Auth::user()->id]);
     return redirect()->back();
   }
 
