@@ -21,7 +21,7 @@ class forum extends Model
     return $this->belongsToMany(User::class, 'forum_commentaire', 'forum_id', 'client_id')
       ->withPivot('id','commentaire')
       ->using(forum_commentaire::class)
-      ->orderBy('created_at', 'desc')
+      ->orderBy('created_at', 'asc')
       ->withTimestamps();
   }
 }

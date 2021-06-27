@@ -10,387 +10,386 @@
 
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
- y
- .page-item.active .page-link {
-  
-   z-index: 1;
-  
-   color: #fff;
-  
-   background-color: #FF0000;
-  
-   border-color: #AEFF5E;
-  
- }
-    .container-pop {
-    width: 50px;
-      border: 2px solid #dedede;
-      background-color: white;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 10px 0;
+    .page-item.active .page-link {
+      
+      z-index: 1;
+      
+      color: #fff;
+      
+      background-color: #FF0000;
+      
+      border-color: #AEFF5E;
+      
     }
+      .container-pop {
+      width: 50px;
+        border: 2px solid #dedede;
+        background-color: white;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+      }
 
-    .darker {
-      border-color: #ccc;
-      background-color: #ddd;
-    }
+      .darker {
+        border-color: #ccc;
+        background-color: #ddd;
+      }
 
-    .container-pop::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-            @keyframes blink {
+      .container-pop::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+              @keyframes blink {
 
-        from,
-        to {
-            color: transparent
-        }
+          from,
+          to {
+              color: transparent
+          }
 
-        50% {
-            color: black
-        }
-    }
+          50% {
+              color: black
+          }
+      }
 
-    @-moz-keyframes blink {
+      @-moz-keyframes blink {
 
-        from,
-        to {
-            color: transparent
-        }
+          from,
+          to {
+              color: transparent
+          }
 
-        50% {
-            color: black
-        }
-    }
+          50% {
+              color: black
+          }
+      }
 
-    @-webkit-keyframes blink {
+      @-webkit-keyframes blink {
 
-        from,
-        to {
-            color: transparent
-        }
+          from,
+          to {
+              color: transparent
+          }
 
-        50% {
-            color: black
-        }
-    }
+          50% {
+              color: black
+          }
+      }
 
-    @-ms-keyframes blink {
+      @-ms-keyframes blink {
 
-        from,
-        to {
-            color: transparent
-        }
+          from,
+          to {
+              color: transparent
+          }
 
-        50% {
-            color: black
-        }
-    }
+          50% {
+              color: black
+          }
+      }
 
-    @-o-keyframes blink {
+      @-o-keyframes blink {
 
-        from,
-        to {
-            color: transparent
-        }
+          from,
+          to {
+              color: transparent
+          }
 
-        50% {
-            color: black
-        }
-    }
+          50% {
+              color: black
+          }
+      }
 
-    .chatpopup-widget * {
-        box-sizing: border-box
-    }
+      .chatpopup-widget * {
+          box-sizing: border-box
+      }
 
-    .chatpopup-widget {
-        position: fixed;
-        bottom: 12px;
-        z-index: 999999;
-        display: flex;
-        flex-direction: column
-    }
+      .chatpopup-widget {
+          position: fixed;
+          bottom: 12px;
+          z-index: 999999;
+          display: flex;
+          flex-direction: column
+      }
 
-    .chatpopup-widget__body {
-        margin-bottom: 10px;
-        min-width: 300px;
-        max-width: 340px;
-        display: none;
-        margin-left: 12px
-    }
+      .chatpopup-widget__body {
+          margin-bottom: 10px;
+          min-width: 300px;
+          max-width: 340px;
+          display: none;
+          margin-left: 12px
+      }
 
-    .chatpopup-widget__body-header {
-        padding: 15px;
-        font-size: 15px;
-        line-height: 22px;
-        text-align: center;
-        border-radius: 4px 4px 0 0;
-        position: relative
-    }
+      .chatpopup-widget__body-header {
+          padding: 15px;
+          font-size: 15px;
+          line-height: 22px;
+          text-align: center;
+          border-radius: 4px 4px 0 0;
+          position: relative
+      }
 
-    .chatpopup-widget-close {
-        position: absolute;
-        top: -40px;
-        width: 30px;
-        height: 30px;
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        user-select: none
-    }
+      .chatpopup-widget-close {
+          position: absolute;
+          top: -40px;
+          width: 30px;
+          height: 30px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          user-select: none
+      }
 
-    .chatpopup-support-persons {
-        background-color: #fff;
-        padding: 15px;
-        box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 4px 4px;
-        max-height: 370px;
-        overflow-y: auto;
-        min-height: 20px
-    }
+      .chatpopup-support-persons {
+          background-color: #fff;
+          padding: 15px;
+          box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
+          border-radius: 0 0 4px 4px;
+          max-height: 370px;
+          overflow-y: auto;
+          min-height: 20px
+      }
 
-    .chatpopup-support-person {
-        display: flex;
-        margin-bottom: 15px;
-        border: 1px solid #F5F5F5;
-        cursor: pointer
-    }
+      .chatpopup-support-person {
+          display: flex;
+          margin-bottom: 15px;
+          border: 1px solid #F5F5F5;
+          cursor: pointer
+      }
 
-    .chatpopup-support-person__img {
-        width: 70px;
-        height: 70px;
-        margin-right: 15px;
-        position: relative
-    }
+      .chatpopup-support-person__img {
+          width: 70px;
+          height: 70px;
+          margin-right: 15px;
+          position: relative
+      }
 
-    .chatpopup-support-person__img img {
-        width: 100%;
-        border-radius: 0
-    }
+      .chatpopup-support-person__img img {
+          width: 100%;
+          border-radius: 0
+      }
 
-    .chatpopup-support-person__status {
-        background-color: red;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        position: absolute;
-        bottom: 0;
-        right: 0
-    }
+      .chatpopup-support-person__status {
+          background-color: red;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 0;
+          right: 0
+      }
 
-    .chatpopup-support-person__status--avail {
-        background-color: #00c853
-    }
+      .chatpopup-support-person__status--avail {
+          background-color: #00c853
+      }
 
-    .chatpopup-support-person__status--not-avail {
-        background-color: #ffd600
-    }
+      .chatpopup-support-person__status--not-avail {
+          background-color: #ffd600
+      }
 
-    .chatpopup-support-person__meta {
-        display: flex;
-        flex-direction: column;
-        justify-content: center
-    }
+      .chatpopup-support-person__meta {
+          display: flex;
+          flex-direction: column;
+          justify-content: center
+      }
 
-    .chatpopup-support-person__name,
-    .chatpopup-support-person__title {
-        line-height: 20px
-    }
+      .chatpopup-support-person__name,
+      .chatpopup-support-person__title {
+          line-height: 20px
+      }
 
-    .chatpopup-support-person__name {
-        font-size: 16px;
-        font-weight: 700;
-        color: #706F6F
-    }
+      .chatpopup-support-person__name {
+          font-size: 16px;
+          font-weight: 700;
+          color: #706F6F
+      }
 
-    .chatpopup-support-person__title {
-        color: #706F6F
-    }
+      .chatpopup-support-person__title {
+          color: #706F6F
+      }
 
-    .chatpopup-welcome-msg {
-        padding: 5px 15px;
-        border-radius: 0 0 4px 4px
-    }
+      .chatpopup-welcome-msg {
+          padding: 5px 15px;
+          border-radius: 0 0 4px 4px
+      }
 
-    .chatpopup-custom-offer {
-        margin: 10px 0
-    }
+      .chatpopup-custom-offer {
+          margin: 10px 0
+      }
 
-    .chatpopup-custom-offer img {
-        width: 100%
-    }
+      .chatpopup-custom-offer img {
+          width: 100%
+      }
 
-    .chatpopup-widget__trigger {
-        cursor: pointer;
-        font-size: 4em;
-        display: inline-block;
-        user-select: none;
-        display: flex;
-        align-items: center
-    }
+      .chatpopup-widget__trigger {
+          cursor: pointer;
+          font-size: 4em;
+          display: inline-block;
+          user-select: none;
+          display: flex;
+          align-items: center
+      }
 
-    .chatpopup-gdpr {
-        font-size: 14px;
-        border: 1px solid transparent;
-        padding-left: 15px;
-        background-color: #fff
-    }
+      .chatpopup-gdpr {
+          font-size: 14px;
+          border: 1px solid transparent;
+          padding-left: 15px;
+          background-color: #fff
+      }
 
-    .chatpopup-gdpr.error {
-        border: 1px solid red
-    }
+      .chatpopup-gdpr.error {
+          border: 1px solid red
+      }
 
-    a.chatpopup-whatsapp-button {
-        padding: 6px 20px !important;
-        text-align: center !important;
-        text-decoration: none !important;
-        margin-right: 5px !important;
-        border-radius: 2px !important;
-        cursor: pointer !important;
-        font-size: 15px !important;
-        outline: none !important;
-        display: inline-block !important
-    }
+      a.chatpopup-whatsapp-button {
+          padding: 6px 20px !important;
+          text-align: center !important;
+          text-decoration: none !important;
+          margin-right: 5px !important;
+          border-radius: 2px !important;
+          cursor: pointer !important;
+          font-size: 15px !important;
+          outline: none !important;
+          display: inline-block !important
+      }
 
-    .chatpopup-blinking-cursor {
-        font-weight: 100;
-        font-size: 15px;
-        color: #2E3D48;
-        -webkit-animation: 1s blink step-end infinite;
-        -moz-animation: 1s blink step-end infinite;
-        -ms-animation: 1s blink step-end infinite;
-        -o-animation: 1s blink step-end infinite;
-        animation: 1s blink step-end infinite
-    }
+      .chatpopup-blinking-cursor {
+          font-weight: 100;
+          font-size: 15px;
+          color: #2E3D48;
+          -webkit-animation: 1s blink step-end infinite;
+          -moz-animation: 1s blink step-end infinite;
+          -ms-animation: 1s blink step-end infinite;
+          -o-animation: 1s blink step-end infinite;
+          animation: 1s blink step-end infinite
+      }
 
-    .chatpopup-input-wrapper {
-        display: flex;
-        align-items: center;
-        padding: 5px 10px;
-        background: #fff;
-        box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 4px 4px;
-        border-top: 1px solid #ccc
-    }
+      .chatpopup-input-wrapper {
+          display: flex;
+          align-items: center;
+          padding: 5px 10px;
+          background: #fff;
+          box-shadow: 0 50px 30px rgba(0, 0, 0, 0.1);
+          border-radius: 0 0 4px 4px;
+          border-top: 1px solid #ccc
+      }
 
-    .chatpopup-input-wrapper input {
-        flex: 1;
-        height: 40px;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important
-    }
+      .chatpopup-input-wrapper input {
+          flex: 1;
+          height: 40px;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important
+      }
 
-    .chatpopup-input-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        cursor: pointer;
-        margin: 0 10px
-    }
+      .chatpopup-input-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          cursor: pointer;
+          margin: 0 10px
+      }
 
-    .chatpopup-input-icon svg {
-        width: 100%;
-        height: auto
-    }
+      .chatpopup-input-icon svg {
+          width: 100%;
+          height: auto
+      }
 
-    .chatpopup_jwi {
-        display: inline-block;
-        position: fixed;
-        bottom: 12px;
-        filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, .1));
-        outline: none;
-        z-index: 99999
-    }
+      .chatpopup_jwi {
+          display: inline-block;
+          position: fixed;
+          bottom: 12px;
+          filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, .1));
+          outline: none;
+          z-index: 99999
+      }
 
-    .chatpopup-icon-close svg {
-        width: 14px
-    }
+      .chatpopup-icon-close svg {
+          width: 14px
+      }
 
-    .chatpopup-icon-whatsapp {
-        line-height: 0 !important;
-        margin-right: 5px
-    }
+      .chatpopup-icon-whatsapp {
+          line-height: 0 !important;
+          margin-right: 5px
+      }
 
-    .chatpopup-icon-whatsapp svg {
-        width: 16px
-    }
+      .chatpopup-icon-whatsapp svg {
+          width: 16px
+      }
 
-    
-    .chatpopup-widget__trigger {
-      color: #6da830;
-    }
-    .chatpopup-widget-close,
-        .chatpopup-widget__body-header,
-        .chatpopup-welcome-msg {
-            background-color: #6da830;
-            color: #ffffff;
-        }
+      
+      .chatpopup-widget__trigger {
+        color: #6da830;
+      }
+      .chatpopup-widget-close,
+          .chatpopup-widget__body-header,
+          .chatpopup-welcome-msg {
+              background-color: #6da830;
+              color: #ffffff;
+          }
 
-        .chatpopup-widget {
-            right: 12px;
-            align-items: flex-end;
-        }
+          .chatpopup-widget {
+              right: 12px;
+              align-items: flex-end;
+          }
 
-        .chatpopup-widget-close {
-            right: 0;
-        }
+          .chatpopup-widget-close {
+              right: 0;
+          }
 
-        .chatpopup_jwi {
-            right: 12px;
-        }
+          .chatpopup_jwi {
+              right: 12px;
+          }
 
-        .chatpopup-welcome-msg {
-            border: 1px solid #ccc;
-            color: #999;
-            background: #fff;
-            line-height: 1em;
-            padding: 8px 15px 5px 10px;
-            position: relative;
-        }
+          .chatpopup-welcome-msg {
+              border: 1px solid #ccc;
+              color: #999;
+              background: #fff;
+              line-height: 1em;
+              padding: 8px 15px 5px 10px;
+              position: relative;
+          }
 
-        .chatpopup-welcome-msg:before {
-            content: "\1F4AC";
-            display: inline;
-            top: 0;
-            position: relative;
-            font-size: 1.1em;
-            margin-right: 5px;
-        }
+          .chatpopup-welcome-msg:before {
+              content: "\1F4AC";
+              display: inline;
+              top: 0;
+              position: relative;
+              font-size: 1.1em;
+              margin-right: 5px;
+          }
 
-        .chatpopup-welcome-msg:after {
-            content: "|";
-            position: absolute;
-            left: 32px;
-            top: 6px;
-            animation: cursor 2.5s infinite;
-        }
+          .chatpopup-welcome-msg:after {
+              content: "|";
+              position: absolute;
+              left: 32px;
+              top: 6px;
+              animation: cursor 2.5s infinite;
+          }
 
-        @keyframes cursor {
-            0% {
-                opacity: 1;
-            }
+          @keyframes cursor {
+              0% {
+                  opacity: 1;
+              }
 
-            25% {
-                opacity: 0;
-            }
+              25% {
+                  opacity: 0;
+              }
 
-            50% {
-                opacity: 1;
-            }
+              50% {
+                  opacity: 1;
+              }
 
-            75% {
-                opacity: 0;
-            }
-        }
+              75% {
+                  opacity: 0;
+              }
+          }
       </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <!-- Google Fonts -->
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <title>Farmtuntic {{ $title ?? '' }}</title>
@@ -441,7 +440,7 @@
            <a href="login" class="gem-points" style="color: #fff">S'identifier</a> | 
            <a href="register" class="gem-points" style="color: #fff">S'inscrire</a> | 
          @endguest
-           <a href="{{ route('contact') }}" class="gem-points" style="color: #fff">Contactez-nous</a> | 
+           <a href="{{ route('contact') }}" class="gem-points" style="color: #fff">Contactez-nous </a> | 
           <a href="propos" class="gem-points" style="color: #fff">Qui sommes-nous?</a>
          </span>
         </div>
@@ -770,7 +769,7 @@
         </div>
         <div class="chatpopup-widget__trigger" style="padding:15px;margin:0 15px 15px;"> <i class="icon-question-sign" style=" background-image: radial-gradient(at center, white 40%, transparent 40%);"></i> </div>
     </div>
-    @if(!Illuminate\Support\Facades\Auth::check())      
+    @if(!is_null(Auth::user()))  
       @if (\Request::route()->getName() === 'product.mine')
         <div class="chatpopup-widget" style="margin-right:110px;">
           <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
@@ -782,8 +781,7 @@
           </div>
         </div>
       @endif 
-      {{dd(\Request::route()->getName())}}
-      @if (\Request::route()->getName() === 'forum.viewAny')
+      @if (\Request::route()->getName() === 'forum.index')
         <div class="chatpopup-widget" style="margin-right:110px;">
           <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
             <a href="{{ route('forum.create') }}">
@@ -881,7 +879,7 @@
 <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
 <!-- Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
-<script src="assets/js/map.js"></script>
+<script src="{{URL::asset('assets/js/map.js')}}"></script>
 
 <!-- /Place all Scripts Here -->
 </body>

@@ -47,7 +47,7 @@ class forum_commentaire_repondeController extends Controller
   }
 
   public function delete(forum_commentaire_reponde $reponde)
-  {
+  {    
     $reponde->delete();
     return redirect()->back();
   }

@@ -7,6 +7,7 @@ use App\forum_commentaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\validator;
 
 class forum_commentaireController extends Controller
 {
@@ -18,9 +19,9 @@ class forum_commentaireController extends Controller
     $this->middleware('auth');
   }
 
-  public function store()
+  public function store(request $request)
   {
-    Auth::user()->forumCommentaires()->attach('', \request()->all());
+    Auth::user()->forumCommentaires()->attach('', $request->all());
   }
 
   public function update(forum_commentaire $commentaire)
@@ -30,6 +31,7 @@ class forum_commentaireController extends Controller
 
   public function delete(forum_commentaire $commentaire)
   {
+    $commentaire->repondes()->delete();
     $commentaire->delete();
   }
 }

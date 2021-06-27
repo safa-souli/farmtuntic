@@ -75,8 +75,11 @@ class ForumController extends Controller
 
   public function delete(forum $forum)
   {
-    $forum->commentaire()->repondres()->delete();
-    $forum->commentaire()->delete();
+    foreach ($forum->commentaires() as $commentaire) {
+      if(!$commentaire) $commentaire->repondes()->detach($commentaire->id);
+    }
+    $forum->commentaires()->detach($forum->id);
+    $forum->commentaires()->delete();
     $forum->delete();
     return redirect()->back();
   }
