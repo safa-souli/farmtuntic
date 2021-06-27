@@ -11,7 +11,7 @@
                     <section class="col-md-12 form-fields" style="padding: 1cm">
                     <div class="form-group row">
                         <div class="col-md-12 col-md-offset-3">
-                            <h3  class="text-light-black fw-700">Contactez-nous</h3>
+                            <h3  class="text-light-black header-title">Contactez-nous</h3>
                             <p>Partager avec nous vos options ou vos suggestions nous aidera à progresser.</p>
                             <p>Pour demander d'être un agriculteur au livreur vous devez nous envoyer le certificat en tant que fichier.</p>
                         </div>

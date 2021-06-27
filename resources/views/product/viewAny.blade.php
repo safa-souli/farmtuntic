@@ -241,13 +241,13 @@
                     <div class="testimonial-box">
                       <div class="testimonial-img p-relative">
                         <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-2.jpg" class="img-fluid full-width" alt="testimonial-img">
+                          <img src="{{ URL::asset('assets/img/blog/438x180/shop-2.jpg')}}" class="img-fluid full-width" alt="testimonial-img">
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
+                            <img src="{{ URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo">
                           </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                          <div class="add-fav text-light-white"><img src="{{ URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>
                         </div>
                       </div>
@@ -255,7 +255,7 @@
                         <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                         <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                         <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-2.png" class="rounded-circle" alt="#">
+                          <img src="{{ URL::asset('assets/img/blog-details/40x40/user-2.png')}}" class="rounded-circle" alt="#">
                           <div class="testimonial-user-name">
                             <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                           </div>
@@ -289,13 +289,13 @@
                     <div class="testimonial-box">
                       <div class="testimonial-img p-relative">
                         <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-3.jpg" class="img-fluid full-width" alt="testimonial-img">
+                          <img src="{{ URL::asset('assets/img/blog/438x180/shop-3.jpg')}}" class="img-fluid full-width" alt="testimonial-img">
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="assets/img/user/user-1.png" class="img-fluid" alt="logo">
+                            <img src="{{ URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo">
                           </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
+                          <div class="add-fav text-light-white"><img src="{{ URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>
                         </div>
                       </div>
@@ -303,54 +303,7 @@
                         <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
                         <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
                         <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-3.png" class="rounded-circle" alt="farm.html">
-                          <div class="testimonial-user-name">
-                            <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
-                          </div>
-                        </div>
-                        <div class="ratings"> <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                          <span class="text-yellow fs-16">
-                            <i class="fas fa-star"></i>
-                          </span>
-                        </div>
-                        <p class="text-light-black">Delivery was fast and friendly...</p>
-                        <p class="text-light-white fw-100"><strong class="text-light-black fw-700">Local delivery: </strong> From $7.99 (4.0 mi)</p>
-                        <a href="checkout.html" class="btn-second btn-submit">Order Now</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="testimonial-wrapper">
-                    <div class="testimonial-box">
-                      <div class="testimonial-img p-relative">
-                        <a href="farm.html">
-                          <img src="assets/img/blog/438x180/shop-1.jpg" class="img-fluid full-width" alt="testimonial-img">
-                        </a>
-                        <div class="overlay">
-                          <div class="brand-logo">
-                            <img src="assets/img/user/user-2.png" class="img-fluid" alt="logo">
-                          </div>
-                          <div class="add-fav text-light-white"><img src="assets/img/svg/013-heart-1.svg" alt="tag">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="testimonial-caption padding-15">
-                        <p class="text-light-white text-uppercase no-margin fs-12">Featured</p>
-                        <h5 class="fw-600"><a href="farm.html" class="text-light-black">GSA King Tomato Farm</a></h5>
-                        <div class="testimonial-user-box">
-                          <img src="assets/img/blog-details/40x40/user-1.png" class="rounded-circle" alt="farm.html">
+                          <img src="{{ URL::asset('assets/img/blog-details/40x40/user-3.png')}}" class="rounded-circle" alt="farm.html">
                           <div class="testimonial-user-name">
                             <p class="text-light-black fw-600">Sarra</p> <i class="fas fa-trophy text-black"></i><span class="text-light-black">Top Reviewer</span>
                           </div>
@@ -384,7 +337,7 @@
               <div class="swiper-button-prev"></div>
             </div>
             <div class="large-product-box mb-xl-20">
-              <img src="assets/img/blog/446x1025/ad-1.jpg" class="img-fluid full-width" alt="image">
+              <img src="{{ URL::asset('assets/img/blog/446x1025/ad-1.jpg')}}" class="img-fluid full-width" alt="image">
               <div class="category-type overlay padding-15">
                 <button class="category-btn">Most popular near you</button>
                 <a href="farm.html" class="btn-first white-btn text-light-black fw-600 full-width">See all</a>
@@ -392,11 +345,11 @@
             </div>
             <div class="inner-wrapper main-box">
               <div class="main-banner p-relative">
-                <img src="assets/img/blog/446x501/ff-1.jpg" class="img-fluid full-width main-img" alt="banner">
+                <img src="{{ URL::asset('assets/img/blog/446x501/ff-1.jpg')}}" class="img-fluid full-width main-img" alt="banner">
                 <div class="overlay-2 main-padding">
-                  <img src="assets/img/logo-2.jpg" class="img-fluid" alt="logo">
+                  <img src="{{ URL::asset('assets/img/logo-2.jpg')}}" class="img-fluid" alt="logo">
                 </div>
-                <img src="assets/img/banner/burger.png" class="footer-img" alt="footerimg">
+                <img src="{{ URL::asset('assets/img/banner/burger.png')}}" class="footer-img" alt="footerimg">
               </div>
               <div class="section-2 main-page main-padding">
                 <div class="login-box">

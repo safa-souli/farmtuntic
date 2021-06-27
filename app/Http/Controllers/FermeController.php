@@ -8,6 +8,7 @@ use App\ferme_avis;
 use App\produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class FermeController extends Controller
 {
@@ -54,23 +55,35 @@ class FermeController extends Controller
       ]);
   }
 
-  public function store()
+  public function store(request $request, ferme $ferme)
   {
-    $ferme = new ferme();
-    $ferme->nom = \request('nom_ferme');
-    $ferme->telephone = \request('telephone');
-    $ferme->email = \request('email');
-    $ferme->image = 'default.jpg';
-    $ferme->adresse = 'jendouba';
-    $ferme->description = \request('description_ferme');
+    $request->validate([
+      'nom_ferme' =>'required|string|min:3|max:255',
+      'telephone' => 'required|numeric',
+      'email' =>  'required|string|email',
+      'adresse'=> 'required|string|min:3|max:255',
+      'nom_produit' => 'required|string|min:3|max:255',
+      'image_ferme' => 'required|image|max:2048',
+      'image_produit' => 'required|image|max:2048',
+      'description_ferme' => 'required',
+      'description_produit' => 'required',
+      'prix' => 'required|numeric|min:1',
+      'promotion' => 'nullable|numeric|between:1,99'
+    ]);
+    $ferme->nom = $request->nom_ferme;
+    $ferme->telephone = $request->telephone;
+    $ferme->email = $request->email;
+    $ferme->image = $image_ferme ?? 'default.jpg';
+    $ferme->adresse = $request->adresse;
+    $ferme->description = $request->description_ferme;
     $ferme->agriculteur_id = Auth::user()->id;
     $ferme->save();
     $ferme->produits()->create([
-      'nom' => \request('nom_produit'),
-      'prix' => \request('prix'),
-      'stock' => \request('stock'),
-      'image' => 'default.jpg',
-      'description' => \request('description_produit')
+      'nom' => $request->nom_produit,
+      'prix' => $request->prix,
+      'promotion' => $request->promotion,
+      'image' => $request->image_produit ?? 'default.jpg',
+      'description' => $request->description_produit
     ]);
     return redirect()->route('farm.mine');
   }
@@ -80,8 +93,17 @@ class FermeController extends Controller
     return view('farm.edit', ['ferme' => $ferme]);
   }
 
-  public function update(ferme $ferme)
+  public function update(request $request, ferme $ferme)
   {
+    
+    $request->validate([
+      'nom' =>'required|string|min:3|max:255',
+      'telephone' => 'required|numeric',
+      'email' =>  'required|string|email',
+      'adresse'=> 'required|string|min:3|max:255',
+      'image' => 'nullable|image|max:2048',
+      'description' => 'required'
+    ]);
     $ferme->update(\request()->all());
     return redirect()->back();
   }

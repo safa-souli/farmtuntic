@@ -19,112 +19,76 @@
                             <h3 class="text-light-black header-title">Modifier {{ $ferme->nom }} ferme</h3>
                           </div>
                           <div class="row">
-                            <div class="col-12">
-                              <h5 class="text-light-black fw-700">Général Information</h5>
-                            </div>
+                              
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Nom de ferme <sup class="fs-16">*</sup>
                                 </label>
-                                <input type="text" name="nom" class="form-control form-control-submit" placeholder="i.e Mazraa" value="{{ $ferme->nom }}">
+                                <input  name="nom_ferme" class="form-control @error('nom_ferme') is-invalid @enderror" placeholder="i.e Mazraa" value={{$ferme->nom ?? old('nom_ferme')}}>
+                                @error('nom_ferme')
+                                    <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                    </span>
+                                  @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Téléphone de ferme <sup class="fs-16">*</sup></label>
-                                <input type="text" name="telephone" class="form-control form-control-submit" placeholder="i.e 21 828 662" value="{{ $ferme->telephone }}">
+                                <input  name="telephone" class="form-control @error('telephone') is-invalid @enderror" placeholder="i.e 21 828 662" value="{{$ferme->telephone ?? old('telephone')}}">
+                                @error('telephone')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="text-light-black fw-700"> Adresse <sup class="fs-16">*</sup></label>
+                                <input  name="adresse" class="form-control @error('adresse') is-invalid @enderror" placeholder="i.e souala hay hedi ben hsin" value="{{$ferme->adresse ?? old('adresse')}}">
+                                @error('adresse')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Contact Email <sup class="fs-16">*</sup></label>
-                                <input type="email" name="email" class="form-control form-control-submit" placeholder="i.e alard@example.com" value="{{ $ferme->email }}">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">Photo ferme</label>
-                                <input type="file" name="#" class="custom-file">
+                                <input  name="email" class="form-control @error('email') is-invalid @enderror" placeholder="i.e alard@example.com " value="{{$ferme->email ?? old('email')}}">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                    </span>
+                                  @enderror
                               </div>
                             </div>
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Description</label>
-                                <textarea type="text" name="description" class="form-control form-control-submit" rows="3" placeholder="i.e est une bonne
-                              ferme">{{ $ferme->description }}</textarea>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="i.e est une bonne ferme">{{$ferme->description ?? old('description')}}</textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                    </span>
+                                  @enderror
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="text-light-black fw-700">Photo ferme</label>
+                                <input type="file" name="image_ferme" class="custom-file">
+                                @error('image')
+                                <span style="font-size: 80%;color: #dc3545;" role="alert">
+                                  <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                               </div>
                             </div>
                           </div>
-                          <div class="row">
-                            <div class="col-12">
-                              <h5 class="text-light-black fw-700">Location</h5>
-                            </div>
-                            <div class="col-12">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">Country <sup class="fs-16">*</sup>
-                                </label>
-                                <select class="form-control form-control-submit custom-select-2 full-width">
-                                  <option value="">Select Country</option>
-                                  <option value="brazil" data-name="">Brazil</option>
-                                  <option value="canada" data-name="">Canada</option>
-                                  <option value="france" data-name="">France</option>
-                                  <option value="india" data-name="">India</option>
-                                  <option value="italy" data-name="">Italy</option>
-                                  <option value="spain" data-name="">Spain</option>
-                                  <option value="united-kingdom" data-name="">United Kingdom</option>
-                                  <option value="united-states" data-name="">United States</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">State</label>
-                                <select class="form-control form-control-submit custom-select-2 full-width">
-                                  <option value="">Select State</option>
-                                  <option value="uttar-pradesh">Uttar Pradesh</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">City</label>
-                                <select class="form-control form-control-submit custom-select-2 full-width">
-                                  <option value="">Select City</option>
-                                  <option value="uttar-pradesh">Uttar Pradesh</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">Latitude</label>
-                                <input type="text" name="#" class="form-control form-control-submit" value="40.4167754">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">Longitude</label>
-                                <input type="text" name="#" class="form-control form-control-submit" value="-3.7037901999999576">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="text-light-black fw-700">Find On Map</label>
-                                <input type="text" name="#" class="form-control form-control-submit" placeholder="Type Your Address">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <div class="form-group"></div>
-                                <button type="submit" class="btn-second btn-submit">Search Location</button>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <iframe id="locmap" class="w-100" height="300"
-                                        src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
-                              </div>
-                            </div>
-                          </div>
+                          <hr>
                           <button class="btn-second btn-submit">Modifier</button>
                         </div>
                       </div>

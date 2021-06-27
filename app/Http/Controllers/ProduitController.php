@@ -174,9 +174,10 @@ class ProduitController extends Controller
     return redirect()->back();
   }
   
-  public function search(produit $produit)
+  public function search()
   {
     $term = $_GET['term'];
+    $produit = new produit(); 
     $produit = $produit->where('nom', 'like', "%{$term}%")
     ->orWhere('description', 'like', "%{$term}%")
     ->paginate(10);
@@ -188,25 +189,6 @@ class ProduitController extends Controller
       ]);
   }
   
-  public function filter(produit $produit)
-  {
-    $rate = $_GET['rate'];
-    if($rate) {
-      $products = produit::orderBy('created_at', 'DESC')->get();
-      foreach ($products as $product) {
-        $avg = $product->notes()->avg('etoiles');
-        if((int) $rate = $avg) {
-          $prod[] = $product;
-        }
-      }
-    }
-    return view('product.filter',
-      [
-        'time' => $this->time,
-        'produits' => $prod,
-        'categories' => categorie::orderBy('nom')->get()
-      ]);
-  }
 
   public function note_store(Request $request)
   {

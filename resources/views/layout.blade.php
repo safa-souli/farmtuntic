@@ -467,7 +467,9 @@
                 <!-- search -->
                 <div class="col-lg-6 col-md-7">
                   <div class="search-box padding-10">
-                    <input name="term" class="form-control" placeholder="Fruits, Légume, Lait, Oeufs">
+                    <form method="GET" action=" {{ route('product.search') }} ">
+                      <input name="term" class="form-control" placeholder="Fruits, Légume, Lait, Oeufs">
+                    </form>
                   </div>
                 </div>
                 <!-- search -->

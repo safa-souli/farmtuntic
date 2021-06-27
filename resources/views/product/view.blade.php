@@ -62,8 +62,11 @@
                           @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
                             <i class="fas fa-star  fs-18 text-yellow"></i>
                           @endfor
-                          @if((number_format($note->avg($produit->ferme->id) != 0)) && ($note->avg($produit->ferme->id) %  number_format($note->avg
-                                ($produit->ferme->id))) > 0.5)
+                          @if( 
+                            (number_format($note->avg($produit->ferme->id) != 0)) 
+                            && ($note->avg($produit->ferme->id) 
+                            %  number_format($note->avg($produit->ferme->id))) > 0.5
+                          )
                             <i class="fas fa-star-half-alt  fs-18 text-yellow"></i>
                           @endif
                           <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\commande;
 use App\user;
+use App\ferme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Transport;
@@ -42,6 +43,21 @@ class CommandeController extends Controller
         'products' => $commande->products,
         'livreur' => $livreur ?? NULL
       ]);
+  }
+
+  public function add(ferme $ferme){
+    $panier =  Panier::where('client_id', Auth::user()->id)->first();
+    foreach ($panier->produits()->get() as $produit) {
+      if($produit->ferme_id == $ferme->id) $test[] = $produit;
+    }
+    return view('order.checkout',
+    [
+      'title' => '| Commander', 
+      'time'   => $this->time,
+      'panier' => $panier,
+      'ferme' => $ferme,
+      'produits' => $test ?? null
+    ]);
   }
 
   public function order(request $request, $panier){

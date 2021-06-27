@@ -5,7 +5,7 @@
 <section class="checkout-page section-padding bg-light-theme">
   <div class="container">
       <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-11" style="margin: 1cm 0 0 2cm">
               <!-- recipt -->
               <div class="recipt-sec padding-20">
                 @isset($order->livraison_id)

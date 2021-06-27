@@ -18,6 +18,8 @@ class panier extends Model
 
   public function produits()
   {
-    return $this->belongsToMany(produit::class, 'produit_panier', 'panier_id', 'produit_id')->withTimestamps();
+    return $this->belongsToMany(produit::class, 'produit_panier', 'panier_id', 'produit_id')
+    ->withPivot('quantite')
+    ->withTimestamps();
   }
 }
