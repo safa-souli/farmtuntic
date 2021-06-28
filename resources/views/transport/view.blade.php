@@ -1,11 +1,17 @@
 @extends('layout')
 @section('content')
+  <style>
+    .col-centered{
+      float: none;
+      margin: 0 auto;
+      }
+  </style>
   <div class="main-sec"></div>
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
     
-    <div class="container-fluid" style="margin-left: 2in;">
-      <div class="col-lg-12" style="margin-left: 1in">
+    <div class="container-fluid align-middle" style="margin-left: 3in;">
+      <div class="col-lg-12">
           
           <div class="row">
               <div class="sidebar-tabs main-box padding-20 mb-md-50">
@@ -23,11 +29,12 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th scope="col" style="width: 2cm">#</th>
-                        <th scope="col" style="width: 2cm">Image</th>
-                        <th scope="col" style="width: 3cm">nom</th>
-                        <th scope="col" style="width: 3cm">type</th>
-                        <th scope="col" style="width: 3in">Date</th>
+                        <th scope="col" style="width: 10%">#</th>
+                        <th scope="col" style="width: 30%">Image</th>
+                        <th scope="col" style="width: 10%">nom</th>
+                        <th scope="col" style="width: 10%">type</th>
+                        <th scope="col" style="width: 20%">Date</th>
+                        <th scope="col" style="width: 5%" style="border-none"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -39,9 +46,9 @@
                                 <td>{{$transport->nom}} </td>
                                 <td>{{$transport->type}} </td>
                                 <td>{{ $time->inWords($transport->updated_at)}}</td>
-                                <td>
+                                <td style="width: 1cm">
                                   <div class="btn-group">
-                                    <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 1ex">
                                       <i class="fas fa-ellipsis-v"></i>
                                     </button>
                                     <div class="dropdown-menu">

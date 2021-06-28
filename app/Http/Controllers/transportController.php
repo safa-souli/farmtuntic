@@ -72,36 +72,36 @@ class transportController extends Controller
   
     #doesn't work
     public function edit(transport $transport)
-    {
-        
+    {        
       return view('transport.edit', ['transport' => $transport]);
     }
   
     public function update(Request $request, transport $transport)
     {
       
-        dd($transport);
-        $request->validate([
-            'matricule' =>'required|numeric|unique:transport',
-            'nom' =>'required|string|min:3|max:255',
-            'image' => 'nullable|image|max:2048'
-          ]);
-          
-          if($request->hasFile('image')) {    
-            $transport->image = time().'_'.$request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/assets/img/farms', $transport->image);
-          }
-          else  $transport->image = 'default.jpg';
-    
-          $transport->matricule = $request->matricule;
-          $transport->nom = $request->nom;
-          $transport->livreur_id = Auth::user()->id;
-          $transport->save();
-          //return redirect()->back();
+      $validate_mat = ($request->matricule != $transport->matricule) ? 'required|numeric|unique:transport': '';
+      $request->validate([
+        'matricule' => $validate_mat,
+        'nom' =>'required|string|min:3|max:255',
+        'image' => 'nullable|image|max:2048'
+      ]);
+      
+      if($request->hasFile('image')) {    
+        $transport->image = time().'_'.$request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/assets/img/transport', $transport->image);
+      }
+      else  $transport->image = 'default.jpg';
+
+      $transport->matricule = $request->matricule;
+      $transport->nom = $request->nom;
+      $transport->livreur_id = Auth::user()->id;
+      $transport->save();
+      return redirect()->route('transport.edit', transport::find($request->matricule));
     }
   
     public function delete(transport $transport)
     {
-      //  transport::delete($transport->matricule);
+      $transport->delete();
+      return redirect()->back();
     }
 }

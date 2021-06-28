@@ -4,15 +4,15 @@
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
     
-    <div class="container-fluid" style="margin-left: 3.5in;">
-      <div class="col-lg-6">
+    <div class="container-fluid" style="margin-left: 1.5in;">
+      <div class="col-lg-12">
           <div class="row">
             <div class="sidebar-tabs main-box padding-20 mb-md-50">
               <div id="add-restaurent-tab" class="step-app">
                 <form method="POST" action="{{ route('transport.update', $transport) }}" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
-                    <div class="col-xl-12 col-lg-8">
+                    <div class="col-xl-6 col-lg-8">
                       <div class="step-content">
                         <div class="step-tab-panel active" id="steppanel1">
                           <div class="payment-sec">
@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                   <label class="text-light-black fw-700">Matricule<sup class="fs-16" style="color: red">*</sup>
                                   </label>
-                                  <input name="matricule" class="form-control @error('matricule') is-invalid @enderror" placeholder="i.e Tomate" value="{{ $transport->matricule ?? old('matricule') }}">
+                                  <input name="matricule" class="form-control @error('matricule') is-invalid @enderror" placeholder="i.e Tomate" value="{{ old('matricule') ?? $transport->matricule }}">
                                   @error('matricule')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                   <label class="text-light-black fw-700">Nom<sup class="fs-16" style="color: red">*</sup>
                                   </label>
-                                  <input name="nom" class="form-control @error('nom') is-invalid @enderror" placeholder="i.e Tomate" value="{{ $transport->nom ?? old('nom') }}">
+                                  <input name="nom" class="form-control @error('nom') is-invalid @enderror" placeholder="i.e Tomate" value="{{ old('nom') ?? $transport->nom}}">
                                   @error('nom')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
@@ -49,8 +49,8 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="text-light-black fw-700"> Type <sup class="fs-16" style="color: red">*</sup></label>
-                                  <input type="number" name="prix" class="form-control @error('prix') is-invalid @enderror" placeholder="i.e 7.32" value="{{ old('prix') }}">
-                                  @error('image')
+                                  <input name="type" class="form-control @error('type') is-invalid @enderror" placeholder="i.e 7.32" value="{{ old('type') ?? $transport->type}}">
+                                  @error('type')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
                                     </span>
@@ -71,12 +71,15 @@
                               
                               <div class="col-md-12 text-right">
                                 <hr>
-                                <button class="btn-second btn-submit">Modifier {{dd($transport)}}</button>
+                                <button class="btn-second btn-submit">Modifier transport</button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-8">
+                      <img src='{{URL::asset("storage/assets/img/transport/$transport->image")}}' alt="{{$transport->image}}">
                     </div>
                   </div>
                 </form>
