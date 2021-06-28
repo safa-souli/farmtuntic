@@ -106,21 +106,29 @@
                                   <div class="testimonial-img p-relative">
                                     <img src='{{ URL::asset("assets/img/farms/$ferme->image")}}' class="img-fluid full-width" alt="testimonial-img">
                                   </div>
-                                  <div class="testimonial-caption padding-15">
-                                    <h5 class="fw-600 text-light-black"> {{ $ferme->nom }} </h5>
-                                    <div class="head-rating" style="margin-top: -10px;">
-                                      <div class="rating">
-                                        @inject('note', 'App\Http\Controllers\FermeController')
+                                  
+                                  <div class="post-content padding-20">
+                                    <h5 class="no-margin"><a href="blog-details.html" class="text-light-black">{{ $ferme->nom }}</a></h5>
+                                    <div class="rating">
+                                      @inject('note', 'App\Http\Controllers\FermeController')
+                                      @if($note->avg($ferme->id))
                                         @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
                                           <i class="fas fa-star text-yellow"></i>
                                         @endfor
                                         @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
                                           <i class="fas fa-star-half-alt text-yellow"></i>
                                         @endif
-                                        <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($ferme->id) }} évaluations</span>
-                                      </div>
+                                      @endif
+                                      @if($note->etoiles($ferme->id))
+                                        <span class="text-light-black fs-12 rate-data" style="top:0;">{{ $note->etoiles($ferme->id) }} évaluations</span>
+                                      @endif
+                                    </div>
+                                    <br>
+                                    <p style="margin-top: 10px;">{{ substr($ferme->description, 0, 100) }}...</p>
+                                    <div class="blog-link-wrap"><a href="{{ route('farm.show', ['ferme' => $ferme]) }}" class="btn-first white-btn">Afficher plus</a>
                                     </div>
                                   </div>
+                                  
                                 </div>
                               </div>
                             </div>

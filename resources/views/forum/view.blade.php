@@ -19,13 +19,13 @@
             <div class="row">
               <div class="col-12">
                 <div class="post-wrapper mb-xl-20">
-                    <img src="{{ URL::asset('assets/img/blog-details/822x337/image-1.jpg')}}" class="img-fluid full-width" alt="#">
+                    <img src='{{ URL::asset("storage/assets/img/forum/{$forum->fichier}") }}' class="img-fluid full-width" alt="#">
                 </div>
                 <div class="blog-meta mb-xl-20">
                   <h2 class="blog-title text-light-black">{{ $forum->objet }}</h2>
                   <div class="review-user">
                     <div class="review-user-img">
-                      <img src='{{ URL::asset("assets/img/user/{$forum->client->photo}") }}' class="rounded-circle" alt="photo-profil">
+                      <img src='{{ URL::asset("storage/assets/img/user/{$forum->client->photo}") }}' class="rounded-circle" alt="photo-profil">
                       <div class="reviewer-name" style="margin: -50px 0 30px 70px;">
                         <p class="text-light-black fw-600">{{ $forum->client->prenom }} {{ $forum->client->nom }}
                           <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small><br>

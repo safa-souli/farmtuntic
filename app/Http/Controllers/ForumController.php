@@ -43,9 +43,15 @@ class ForumController extends Controller
   {
     $request->validate([
       'objet' => 'required',
-      'description' => 'required'
+      'description' => 'required',
+      'fichier' => 'nullable|image'
     ]);
-    $forum->theme = $request->objet;
+    
+    if($request->hasFile('fichier')) {   
+      $forum->fichier = time().'_'.$request->file('fichier')->getClientOriginalName();
+      $request->file('fichier')->storeAs('public/assets/img/forum', $forum->fichier);
+    }
+    $forum->objet = $request->objet;
     $forum->description = $request->description;
     $forum->client_id = Auth::user()->id;
     $forum->save();

@@ -86,11 +86,7 @@
             <ul class="nav nav-pills">
               <li class="nav-item"><a class="nav-link active text-light-white fw-700" data-toggle="pill" href="#menu">Menu</a>
               </li>
-              <li class="nav-item"><a class="nav-link text-light-white fw-700" data-toggle="pill" href="#about">à propos</a>
-              </li>
               <li class="nav-item"><a class="nav-link text-light-white fw-700" data-toggle="pill" href="#review">Avis</a>
-              </li>
-              <li class="nav-item"><a class="nav-link text-light-white fw-700" data-toggle="pill" href="#mapgallery">Map & Gallery</a>
               </li>
             </ul>
           </div>
@@ -101,181 +97,9 @@
   <!-- restaurent tab -->
   <!-- restaurent meals -->
   <section class="section-padding restaurent-meals bg-light-theme">
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-left: 1.2in">
       <div class="row">
-        <aside class="col-lg-3 mb-md-40">
-          <div class="filter-sidebar mb-5">
-            <div class="sidebar-tab">
-              <ul class="nav nav-pills mb-xl-20">
-                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#filtre">Filtre</a>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="filtre">
-                  <div class="siderbar-innertab">
-                    <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#delivery-restaurents">Delivery</a>
-                      </li>
-                      <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#pickup-restaurents">Pickup</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="delivery-restaurents">
-                      <p class="text-light-black delivery-type p-relative">Delivery my food <a href="#">Today, ASAP</a>
-                      </p>
-                      <div class="filters">
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseOne">
-                              Feature
-                            </a>
-                          </div>
-                          <div id="deliverycollapseOne" class="collapse show">
-                            <div class="card-body">
-                              <form>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> New <span class="text-light-white">(3)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Order Tracking <span class="text-light-white">(6)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Open Now [6:05am] <span class="text-light-white">(10)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Free Delivery <span class="text-light-white">(6)</span>
-                                </label>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseTwo">
-                              Rating
-                            </a>
-                          </div>
-                          <div id="deliverycollapseTwo" class="collapse show">
-                            <div class="card-body">
-                              <div class="rating">
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#deliverycollapseThree">
-                              Price
-                            </a>
-                          </div>
-                          <div id="deliverycollapseThree" class="collapse show">
-                            <div class="card-body">
-                              <div class="rating">
-                                <button class="text-success">$</button>
-                                <button class="text-success">$$</button>
-                                <button class="text-success">$$$</button>
-                                <button class="text-success">$$$$</button>
-                                <button class="text-success">$$$$$</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="pickup-restaurents">
-                      <p class="text-light-black delivery-type p-relative">Pick my food <a href="#">Today, ASAP</a>
-                      </p>
-                      <div class="filters">
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseOne">
-                              Feature
-                            </a>
-                          </div>
-                          <div id="pickupcollapseOne" class="collapse show">
-                            <div class="card-body">
-                              <form>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Coupons <span class="text-light-white">(1)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> New <span class="text-light-white">(26)</span>
-                                </label>
-                                <label class="custom-checkbox">
-                                  <input type="checkbox" name="#"> <span class="checkmark"></span> Open Now [7:08am] <span class="text-light-white">(236)</span>
-                                </label>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseTwo">
-                              Rating
-                            </a>
-                          </div>
-                          <div id="pickupcollapseTwo" class="collapse show">
-                            <div class="card-body">
-                              <div class="rating">
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                                <button class="text-yellow"><i class="fas fa-star"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseThree">
-                              Price
-                            </a>
-                          </div>
-                          <div id="pickupcollapseThree" class="collapse show">
-                            <div class="card-body">
-                              <div class="rating">
-                                <button class="text-success">$</button>
-                                <button class="text-success">$$</button>
-                                <button class="text-success">$$$</button>
-                                <button class="text-success">$$$$</button>
-                                <button class="text-success">$$$$$</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header"><a class="card-link text-light-black fw-700 fs-16" data-toggle="collapse" href="#pickupcollapseFour">
-                              Distance
-                            </a>
-                          </div>
-                          <div id="pickupcollapseFour" class="collapse show">
-                            <div class="card-body">
-                              <div class="delivery-slider">
-                                <input type="text" class="distance-range-slider" value=""/>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-        <div class="col-xl-6 col-lg-6">
+        <div class="col-xl-7 col-lg-6">
           <div class="row">
             <div class="col-lg-12 restaurent-meal-head mb-md-40">
               <div class="card">
@@ -293,23 +117,28 @@
                                       <h6 class="mb-2 text-light-black">{{ $produit->nom }}</h6>
                                       <p class="text-light-white">{{ $time->inWords($produit->created_at) }}</p>
                                     </div>
-                                    <div class="restaurent-product-label">
-                                      <span class="rectangle-tag bg-gradient-red text-custom-white">10%</span>
-                                    </div>
-                                  </div>
-                                  <div class="restaurent-product-rating text-right">
-                                    @inject('note', 'App\Http\Controllers\ProduitController')
-                                    @if($note->avg($ferme->id))
-                                      @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
-                                        <i class="fas fa-star text-yellow"></i>
-                                      @endfor
-                                      @if(($note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
-                                        <i class="fas fa-star-half-alt text-yellow"></i>
-                                      @endif
-                                      <div class="rating-text">
-                                        <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
-                                      </div>
+                                    @if (!is_null($produit->promotion))
+                                      <div class="restaurent-product-label">
+                                        <span class="rectangle-tag bg-gradient-red text-custom-white">$produit->promotion%</span>
+                                      </div>                                        
                                     @endif
+                                  </div>
+                                  <div class="restaurent-product-rating text-right">                                  
+                                    
+                                    <div class="rating">
+                                      @inject('note', 'App\Http\Controllers\FermeController')
+                                      @if($note->avg($ferme->id))
+                                        @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
+                                          <i class="fas fa-star text-yellow"></i>
+                                        @endfor
+                                        @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
+                                          <i class="fas fa-star-half-alt text-yellow"></i>
+                                        @endif
+                                      @endif
+                                      @if($note->etoiles($ferme->id))
+                                        <span class="text-light-black fs-12 rate-data" style="top:0;">{{ $note->etoiles($ferme->id) }} évaluations</span>
+                                      @endif
+                                    </div>
                                   </div>
                                 </div>
                                 <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
@@ -337,35 +166,6 @@
         </div>
         <div class="col-xl-3 col-lg-3">
           <div class="sidebar">
-            <div class="video-box mb-xl-20">
-              <div class="video_wrapper video_wrapper_full js-videoWrapper">
-                <iframe class="videoIframe js-videoIframe" src="https://www.youtube.com/embed/AdZrEIo6UYU"
-                        data-src="https://www.youtube.com/embed/AdZrEIo6UYU?autoplay=1&amp;rel=0" allow="autoplay"></iframe>
-                <div class="videoPoster js-videoPoster">
-                  <div class="video-inner">
-                    <i class="far fa-play-circle"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="discount-box main-box padding-tb-10">
-                <div class="discount-price padding-10">
-                  <div class="left-side">
-                    <h6 class="text-light-black fw-600 no-margin">Watch Now and get 50% discount</h6>
-                    <p class="text-light-white no-margin">The hung-over foody (2019)</p>
-                  </div>
-                  <div class="right-side justify-content-end">
-                    <div class="dis-text">
-                      <span class="badge bg-light-green text-custom-white fw-400">Discount</span>
-                      <h4 class="text-light-black no-margin">50%</h4>
-                    </div>
-                    <a href="restaurent.html">
-                      <img src="{{URL::asset('assets/img/logo/icon.png')}}" class="img-fluid" alt="logo">
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
             <div class="cart-detail-box">
               <div class="card">
                 <div class="card-header padding-15 fw-700">Your Order</div>
@@ -456,76 +256,10 @@
     </div>
   </section>
   <!-- restaurent meals -->
-  <!-- restaurent about -->
-  <section class="section-padding restaurent-about smoothscroll" id="about">
+  <section class="section-padding restaurent-about smoothscroll" id="review">
     <div class="container">
-      <div class="row">
-        
-        <div class="col-md-6">
-            
-          <div class="section-header-left">
-            <h3 class="text-light-black header-title title">Avis de {{ $ferme->nom }}</h3>
-          </div>
-          @isset($ferme->avis)
-            <div id="my-notice">
-              <div class="restaurent-rating mb-xl-20">
-                <div class="star">
-              <span class="text-yellow fs-16">
-                @inject('note', 'App\Http\Controllers\FermeController')
-                @if($note->avg($ferme->id))
-                  @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
-                    <i class="fas fa-star text-yellow"></i>
-                  @endfor
-                  @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
-                    <i class="fas fa-star-half-alt text-yellow"></i>
-                  @endif
-                @endif
-              </span>
-                </div>
-                <span class="fs-12 text-light-black">{{ $note->etoiles($ferme->id) }} évaluations</span>
-              </div>
-              <div class="u-line" style="margin-top: 1cm;"></div>
-              <h6 class="text-light-black mb-xl-20" style="margin-top: 2ex">Gens avis:</h6>
-              <div class="u-line"></div>
-            </div>
-            @foreach($ferme->avis as $avis)
-              <div class="review-box u-line">
-                <div class="review-user">
-                  <div class="review-user-img">
-                    <img src='{{ URL::asset("assets/img/user/{$avis->photo}") }}' class="rounded-circle" alt="#">
-                    <div class="reviewer-name">
-                      <p class="text-light-black fw-600">{{ $avis->prenom }} {{ $avis->nom }}<small
-                          class="text-light-white fw-500">{{ $avis->adresse }}</small>
-                      <div class="ratings">
-                        <span class="text-yellow fs-16">
-                          @for($i = 0; $i <  $avis->pivot->etoiles; $i++)
-                            <i class="fas fa-star text-yellow"></i>
-                          @endfor
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="review-date"><span class="text-light-white">{{ $time->inWords($avis->pivot->created_at) }}</span>
-                  </div>
-                </div>
-                <p class="text-light-black" style="margin:-1ch 0 0 9vh;">{{ $avis->pivot->avis }}</p>
-              </div>
-            @endforeach
-          @else
-            <div class="col-md-12">
-              <div class="col-12">
-                <div class="review-img">
-                  <img src="{{ URL::asset('assets/img/review-footer.png') }}" class="img-fluid" alt="#">
-                  <div class="review-text">
-                    <h2 class="text-light-white mb-2 fw-600">Soyez l'un des premiers à donner votre avis</h2>
-                    <p class="text-light-white">Commandez maintenant et écrivez une critique pour donner aux autres le scoop intérieur.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          @endisset
-        </div>
-        <div class="col-md-6">
+      <div class="row">        
+        <div class="col-md-5">
           <h3 class="text-light-black fw-700 title">{{ $ferme->nom }}</h3>
           <p class="text-light-white no-margin">{{ $ferme->description }}</p>
           <ul class="about-restaurent">
@@ -660,6 +394,70 @@
                   </div>
                 </div>
               </form>
+            </div>
+          @endisset
+        </div>
+        <div class="col-md-5" style="margin-left: 1.5in">
+            
+          <div class="section-header-left">
+            <h3 class="text-light-black header-title title">Avis de {{ $ferme->nom }}</h3>
+          </div>
+          @isset($ferme->avis)
+            <div id="my-notice">
+              <div class="restaurent-rating mb-xl-20">
+                <div class="star">
+              <span class="text-yellow fs-16">
+                @inject('note', 'App\Http\Controllers\FermeController')
+                @if($note->avg($ferme->id))
+                  @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
+                    <i class="fas fa-star text-yellow"></i>
+                  @endfor
+                  @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
+                    <i class="fas fa-star-half-alt text-yellow"></i>
+                  @endif
+                @endif
+              </span>
+                </div>
+                <span class="fs-12 text-light-black">{{ $note->etoiles($ferme->id) }} évaluations</span>
+              </div>
+              <div class="u-line" style="margin-top: 1cm;"></div>
+              <h6 class="text-light-black mb-xl-20" style="margin-top: 2ex">Gens avis:</h6>
+              <div class="u-line"></div>
+            </div>
+            @foreach($ferme->avis as $avis)
+              <div class="review-box u-line">
+                <div class="review-user">
+                  <div class="review-user-img">
+                    <img src='{{ URL::asset("assets/img/user/{$avis->photo}") }}' class="rounded-circle" alt="#">
+                    <div class="reviewer-name">
+                      <p class="text-light-black fw-600">{{ $avis->prenom }} {{ $avis->nom }}<small
+                          class="text-light-white fw-500">{{ $avis->adresse }}</small>
+                      <div class="ratings">
+                        <span class="text-yellow fs-16">
+                          @for($i = 0; $i <  $avis->pivot->etoiles; $i++)
+                            <i class="fas fa-star text-yellow"></i>
+                          @endfor
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-date"><span class="text-light-white">{{ $time->inWords($avis->pivot->created_at) }}</span>
+                  </div>
+                </div>
+                <p class="text-light-black" style="margin:-1ch 0 0 9vh;">{{ $avis->pivot->avis }}</p>
+              </div>
+            @endforeach
+          @else
+            <div class="col-md-12">
+              <div class="col-12">
+                <div class="review-img">
+                  <img src="{{ URL::asset('assets/img/review-footer.png') }}" class="img-fluid" alt="#">
+                  <div class="review-text">
+                    <h2 class="text-light-white mb-2 fw-600">Soyez l'un des premiers à donner votre avis</h2>
+                    <p class="text-light-white">Commandez maintenant et écrivez une critique pour donner aux autres le scoop intérieur.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           @endisset
         </div>

@@ -15,8 +15,7 @@
               </ul>
             </div>
             <!-- restaurent reviews -->
-            <section class="restaurent-review smoothscroll" id="review">
-              <div class="row">
+            <section class="restaurent-review smoothscroll padding-20" id="review">
                 @foreach($forums as $forum)
                   <div class="col-md-12">
                     <div class="review-box">
@@ -65,7 +64,6 @@
                     <div class="u-line"></div>
                   </div>
                 @endforeach
-              </div>
             </section>
             <!-- restaurent reviews -->
           </div>

@@ -32,7 +32,7 @@
                       </div>
                     </div>
                     <div class="post-content padding-20">
-                      <h5 class="no-margin" "><a href="blog-details.html" class="text-light-black">{{ $ferme->nom }}</a></h5>
+                      <h5 class="no-margin"><a href="blog-details.html" class="text-light-black">{{ $ferme->nom }}</a></h5>
                       <div class="rating">
                         @inject('note', 'App\Http\Controllers\FermeController')
                         @if($note->avg($ferme->id))

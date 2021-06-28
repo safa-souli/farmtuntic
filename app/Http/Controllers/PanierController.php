@@ -15,6 +15,13 @@ class PanierController extends Controller
     $this->panier = panier::where('ipv4', $_SERVER['REMOTE_ADDR'] ?: ($_SERVER['HTTP_X_FORWARDED_FOR'] ?: $_SERVER['HTTP_CLIENT_IP']))->first();
   }
 
+  public function layout()
+  {
+    if(!$this->panier) $panier = panier::where('client_id', Auth::user()->id);
+    else $panier = $this->panier;
+    return $panier->count();
+  }
+
   public function show()
   {
     if(!$this->panier) $panier = panier::where('client_id', Auth::user()->id);

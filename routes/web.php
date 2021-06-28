@@ -15,7 +15,7 @@ Route::view('/contact', 'contact')->name('contact');
 Route::view('about-us', 'about-us')->name('about-us');
 Route::post('contact', 'contactController@send');
 Route::view('sign-up', 'mail.sign-up');
-Route::view('home', 'home')->name('home');
+Route::view('home', 'panierController@index')->name('home');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');

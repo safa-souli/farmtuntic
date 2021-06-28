@@ -586,9 +586,10 @@
               <!-- mobile search -->
           @endguest
           <!-- user cart -->
+            @inject('panier', 'App\Http\Controllers\panierController')
             <div class="cart-btn cart-dropdown">
               <a href="{{ route('card.show') }}" class="text-light-green fw-700"> <i class="fas fa-shopping-cart" title="Panier"></i>
-                <span class="user-alert-cart">3</span>
+                <span class="user-alert-cart">{{$panier->layout()}}</span>
               </a>
             </div>
             <!-- user cart -->
@@ -774,17 +775,6 @@
         <div class="chatpopup-widget" style="margin-right:110px;">
           <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
             <a href="{{ route('forum.create') }}">
-              <div class="icon"> 
-                <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
-              </div>
-            </a> 
-          </div>
-        </div>
-      @endif
-      @if(\Request::route()->getName() === 'farm.mine')          
-        <div class="chatpopup-widget" style="margin-right:110px;">
-          <div class="chatpopup-widget_trigger" style="padding:15px;margin:0 15px 15px;"> 
-            <a href="{{ route('farm.create') }}">
               <div class="icon"> 
                 <i class="fas fa-plus-circle" style="font-size:3.7em;  background-image: radial-gradient(at center, white 40%, transparent 40%);"></i>
               </div>

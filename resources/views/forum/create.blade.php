@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                   <label class="text-light-black fw-700">Objet<sup class="fs-16" style="color: red">*</sup>
                                   </label>
-                                  <input name="objet" class="form-control @error('nom') is-invalid @enderror" placeholder="i.e Tomate" value="{{ old('objet') }}">
+                                  <input name="objet" class="form-control @error('objet') is-invalid @enderror" placeholder="i.e Tomate" value="{{ old('objet') }}">
                                   @error('objet')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
