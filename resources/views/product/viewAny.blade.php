@@ -19,20 +19,20 @@
   </style>
   <section class="our-articles bg-light-theme section-padding pt-0">
     <div class="blog-page-banner"></div>
-    <div class="container-fluid">
-      <div class="row"  style="margin-left: 1in">
-        <aside class="col-lg-2 blog-inner clearfix mb-md-40">
-          <div class="filter-sidebar main-box full-width">
-            <div class="sidebar-tab">
-              <ul class="nav nav-pills mb-xl-20 padding-20">
+    <div class="container-fluid" style="margin-top: 1in">
+      <div class="row">
+        <aside class="col-lg-3 blog-inner mb-md-40">
+          <div class="filter-sidebar full-width mb-5">
+            <div class="sidebar-tab main-box padding-20" style="margin-left:1in;">
+              <ul class="nav nav-pills mb-xl-20">
                 <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#categorie">Catégories</a>
                 </li>
               </ul>
-              <div class="u-line"></div>
               <div class="tab-content" >
                 <div class="tab-pane fade active show" id="categorie">
                   <div class="padding-20 trending-blog-cat mb-xl-20">
                     <ul>
+                      <div class="u-line" style="margin-bottom: 3ex"></div>
                       @foreach($categories as $categorie)
                         <li class="pb-xl-20 u-line mb-xl-20">
                           <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
@@ -47,7 +47,7 @@
                       @endforeach
                       
                       <li class="pb-xl-20 mb-xl-20">
-                        <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-light-black fw-600">Non catégorisés
+                        <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-light-black fw-600">Autre
                           <span class="text-light-white fw-400">
                             (
                               @inject('noneCat', 'App\Http\Controllers\ProduitController')
@@ -63,7 +63,7 @@
             </div>
           </div>
         </aside>
-        <div class="col-lg-8 blog-inner clearfix">
+        <div class="col-lg-8 blog-inner">
           <div class="main-box padding-20 full-width">
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
@@ -126,7 +126,7 @@
                             
                             @if($panier->exist($produit->id)->isEmpty())  
                                                                            
-                              <button  id="add-cart{{$produit->id}}" type="submit" class="btn-sm btn-first bg-cart text-light-green">
+                              <button  id="add-cart{{$produit->id}}" type="submit" class="btn-sm btn-light bg-cart text-light-green">
                                 <i class="fa fa-cart-plus mr-2"></i> Ajouter aux panier
                               </button>  
                             @else                               

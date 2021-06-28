@@ -30,9 +30,7 @@
                               </a>
                               <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small>
                             </p>
-                            <a href="{{ route('forum.show', ['forum' => $forum]) }}">
-                              <p class="text-light-black"><strong class="fw-600">Theme :</strong> {{ $forum->theme }} </p>
-                            </a>
+                            <p class="text-light-black"><strong class="fw-600">Theme :</strong> {{ $forum->theme }} </p>
                           </div>
                         </div>
                         <div class="review-date"><span class="text-light-white text-right">{{ $time->inWords($forum->created_at) }}</span>
@@ -60,6 +58,8 @@
                               }
                           @endphp
                         </p>
+                      </div>
+                      <div class="blog-link-wrap"><a href="{{ route('forum.show', ['forum' => $forum]) }}" class="btn-first white-btn">Afficher plus</a>
                       </div>
                     </div>
                     <div class="u-line"></div>

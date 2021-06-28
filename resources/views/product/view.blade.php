@@ -3,39 +3,9 @@
 @section('content')
   <section class="our-articles bg-light-theme section-padding pt-0">
     <div class="blog-page-banner"></div>
-    <div class="container-fluid"  style="margin:0 10ex 0 7ex;">
+    <div class="container-fluid" style="margin: 1in 0 0 1in">
       <div class="row">
-        <aside class="col-lg-3 mb-md-40">
-          <div class="filter-sidebar mb-5">
-            <div class="sidebar-tab" style="margin: 50px 0 0 3ch;">
-              <ul class="nav nav-pills mb-xl-20">
-                <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#categorie">Catégories</a>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="categorie">
-                  <div class="main-box padding-20 trending-blog-cat mb-xl-20">
-                    <ul>
-                      @foreach($categories as $categorie)
-                        <li class="pb-xl-20 u-line mb-xl-20">
-                          <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-light-black fw-600">{{ $categorie->nom }}
-                            <span class="text-light-white fw-400">
-                              (
-                                @inject('nbp', 'App\Http\Controllers\ProduitController')
-                              {{ $nbp->count($categorie->id)}}
-                              )
-                            </span>
-                          </a>
-                        </li>
-                      @endforeach
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-        <div class="col-lg-5 blog-inner clearfix">
+        <div class="col-lg-7 blog-inner clearfix">
           <div class="main-box padding-20 full-width">
             <div class="breadcrumb-wrpr">
               <ul class="breadcrumb">
@@ -44,85 +14,69 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ $produit->nom }}</li>
               </ul>
             </div>
-
             <div class="post-wrapper mb-xl-20">
               <img src='{{URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid full-width" alt="produit-img">
             </div>
+            
             <div class="row">
               <div class="col-12">
                 <div class="blog-meta mb-xl-20">
                   
-                  <h2 class="blog-title text-light-black">
-                    <div class="testimonial-caption padding-15" style="margin: -1.3ex 0 0 -0.7ch;">
-                      <p class="text-light-white text-uppercase no-margin fs-12">{{ $time->inWords($produit->updated_at) }}</p>
-                      <h5 class="fw-600 text-light-black"> {{ $produit->nom}} </h5>
-                      <div class="head-rating" style="margin-top: -20px;">
-                        <div class="rating">
-                          @inject('note', 'App\Http\Controllers\ProduitController')
-                          @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
-                            <i class="fas fa-star  fs-18 text-yellow"></i>
-                          @endfor
-                          @if(!is_null($produit->ferme))
-                            @if( 
-                              (number_format($note->avg($produit->ferme->id) != 0)) 
-                              && ($note->avg($produit->ferme->id) 
-                              %  number_format($note->avg($produit->ferme->id))) > 0.5
-                            )
-                              <i class="fas fa-star-half-alt  fs-18 text-yellow"></i>
-                            @endif
-                            <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
-                          @endif
-                        </div>
-                    </div>
-                    <div class="restaurent-product-rating text-right" style="margin-top: -20px;">                      
-                      <div class="restaurent-tags-price">             
-                        <div class="restaurent-product-price" style="margin: -0.7in 0 0 30px;">
-                                    
-              
-                          <p class="text-light-green fw-600 text-right">
-                            
-                        @inject('note', 'App\Http\Controllers\PanierController')
-                        $90 <span class="line-through text-light-white fs-16">{{$produit->prix}}<sup>dt</sup></span><span class="save-price text-light-green fs-12">eco $90</span></p>
-                        @if($note->exist($produit->id)->isEmpty())
-                          <button id="add-cart{{ $produit->id }}" class="btn-second white-btn" title="Ajouter au panier">
-                            <i class="fas fa-shopping-bag"></i>
-                          </button>
-                          <button id="success-cart{{ $produit->id }}" class="btn-second btn-submit text-light" title="Supprimer du panier">
-                            <i class="fas fa-shopping-bag"></i>
-                          </button>
-                        @else
-                          <button class="btn-second btn-submit text-light" title="Supprimer du panier">
-                            <i class="fas fa-shopping-bag"></i>
-                          </button>
-                        @endif
-                        </div>
-                      </div>
-                    </div>
-                  </h2>
-                  <div class="u-line"></div>
-                  <div>    
-                    @isset($produit->caracteristics)  
-                      <div class="u-line"></div>
-                        <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Les caratéristiques du produit</h6>
-                        @foreach ($produit->caracteristics as $caracteristic)
-                            
-                        <p class="text-light-black fw-600"> {{ $caracteristic['nom_car'] }}: <span class="text-light-white">{{ $caracteristic['val_car'] }}</span></p>
-                        @endforeach
-                    @endisset         
+                  <h5>{{$produit->nom}} </h5>
+                  <p class="mb-2 text-muted text-uppercase small">{{$time->inWords($produit->created_at)}}</p>
+                  <div class="rating">
+                    @inject('note', 'App\Http\Controllers\ProduitController')
+                    @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
+                      <i class="fas fa-star  fs-20 text-yellow"></i>
+                    @endfor
+                    @if(!is_null($produit->ferme))
+                      @if( 
+                        (number_format($note->avg($produit->ferme->id) != 0)) 
+                        && ($note->avg($produit->ferme->id) 
+                        %  number_format($note->avg($produit->ferme->id))) > 0.5
+                      )
+                        <i class="fas fa-star-half-alt  fs-18 text-yellow"></i>
+                      @endif
+                      <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
+                    @endif
                   </div>
+                  <p><span class="mr-1"><strong>{{number_format($produit->prix, 2, '.', ' ')  }}<sup>dt</sup></strong></span></p>
+                  <p class="pt-1">@if(is_null('$produit->description')) {{ $produit->description }} @else Aucun description   @endif</p>
+                  @if(!is_null($produit->caracteristics))
+                    <div class="table-responsive">
+                      <table class="table table-sm table-borderless mb-0" style="border: 0;">
+                        <tbody>
+                          @foreach ($produit->caracteristics as $caracteristic)                            
+                            <tr>
+                              <th class="pl-0 w-25" scope="row"><strong>{{ $caracteristic['nom_car'] }}</strong></th>
+                              <td>{{ $caracteristic['val_car'] }}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                  @endif
+                <hr>
+                <div id="panier">
+                  @inject('panier', 'App\Http\Controllers\PanierController')                            
+                  @if($panier->exist($produit->id)->isEmpty())  
+                                
+                    <button id="add-cart{{$produit->id}}" type="submit" class="btn btn-light btn-md mr-1 mb-2">
+                      <i class="fas fa-shopping-cart pr-2"></i>Ajouter aux panier
+                    </button>  
+                  @else                               
+                    <button id="delete-cart{{ $produit->id }}" type="submit" class="btn-sm btn-submit bg-cart">
+                      <i  class="fa fa-cart-arrow-down mr-2"></i> Supprimer du panier
+                    </button>    
+                  @endif
                 </div>
-                <div>
-                  <div class="u-line">             
-                    <h6 class="text-light-green fw-600" style="margin-top: -0.2cm;">Description</h6>
-                    <p class="text-light-white"> {{ $produit->description }}</p>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <aside class="col-lg-3">
-          <div class="side-bar section-padding pb-0">
+        <aside class="col-lg-3 blog-inner main-box" >
+          <div class="side-bar section-padding pb-0" style="margin-top: -6ex">
             <div class="advertisement-slider swiper-container h-auto mb-xl-20">
               <div class="rating-box">
                 @isset($client_note)
@@ -213,20 +167,34 @@
         </aside>
       </div>
     </div>
-  </section>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $("#success-cart<?php echo $produit->id?>").hide();
+  </section>  <script type="text/javascript">
+   $(document).ready(function () {
       $("#add-cart<?php echo $produit->id?>").click(function () {
         $.ajax({
           type: 'get',
           url: '<?php echo url('panier/add/produit'); ?>/' + <?php echo $produit->id ?>,
           success: function () {
-            $("#add-cart<?php echo $produit->id?>").hide();
-            $("#success-cart<?php echo $produit->id?>").show();
+            $("#panier").load(" #panier");
+          },
+          error: function (e) {
+            console.log(e);
+            alert('Error')
           }
         });
       });
-    });
-  </script>
+      $("#delete-cart<?php echo $produit->id?>").click(function () {
+        $.ajax({
+          type: 'get',
+          url: '<?php echo url('panier/destroy/produit'); ?>/' + <?php echo $produit->id ?>,
+          success: function () {
+            $("#panier").load(" #panier");
+          },
+          error: function (e) {
+            console.log(e);
+            alert('Error')
+          }
+        });
+      });
+   });
+ </script>
 @endsection

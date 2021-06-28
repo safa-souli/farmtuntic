@@ -209,7 +209,7 @@ class ProduitController extends Controller
 
   public function countNoneCategorie()
   {
-    return produit::where('categorie_id', 'null')->count();
+    return produit::where('categorie_id', null)->count();
   }
 
   public function etoiles($id)
