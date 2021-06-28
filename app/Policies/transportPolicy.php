@@ -65,7 +65,7 @@ class transportPolicy
    */
   public function delete(User $user, transport $transport)
   {
-    //
+    return ($user->type == 'livreur' && $transport->livreur_id == $user->id);
   }
 
   /**

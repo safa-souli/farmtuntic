@@ -28,9 +28,13 @@ class commande extends Model
       ->withTimestamps();
   }
 
-
   public function user()
   {
       return $this->belongsTo(User::class, 'client_id');
+  }
+
+  public function ferme()
+  {
+      return $this->belongsTo(ferme::class, 'ferme_id');
   }
 }

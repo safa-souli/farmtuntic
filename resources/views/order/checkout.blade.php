@@ -40,7 +40,7 @@
                       <label><span class="checkmark"></span>Description supplémentaire pour une commande, vous pouvez nous dire ce dont vous avez besoin, paiement à la livraison.</label>
                     </div>
                     <div class="form-group">
-                      @if(is_null($produits))
+                      @if(is_null($products))
                         
                         <button type="submit" class="btn-submit btn-first fw-500" onclick="alert('Pardon! vous ne pouvez pas commander une commande vide ?');return false;">
                           <img src="{{URL::asset('assets/img/logo/white-icon.png')}}" style="width: 3ex;margin-right:1ex;" alt="image"> Commander
@@ -71,8 +71,8 @@
                 <div id="refresh-delete">
                   <?php 
                     $i = 0; $somme = 0;
-                    if($produits != null) :
-                      foreach($produits as $produit) : $somme += $produit->prix;?>
+                    if(!is_null($products)) :
+                      foreach($products as $produit) : $somme += $produit->prix;?>
                       <div class="cat-product-box" id="product-box{{ $produit->id }}">
                       <?php $i++; ?>
                         <div class="cat-product">
@@ -80,9 +80,7 @@
                             <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
                               <p class="text-light-green fw-700"><span class="text-dark-white">{{ $i }}</span>{{ $produit->nom }}</p>
                               <span class="text-light-white fw-700">
-                                @foreach($produit->categories as $categorie)
-                                  {{ $categorie->nom }},
-                                @endforeach
+                                  {{ $produit->quantite }} élements
                               </span>
                             </a>
                           </div>
@@ -119,15 +117,15 @@
   </section>
   <script type="text/javascript">
     $(document).ready(function () {
-      <?php foreach($panier->produits as $produit) {  ?>
+      <?php foreach($products  as $produit) {  ?>
       $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
         if (confirm("Voulez-vous sûr de supprimer?")) {
           $.ajax({
             type: 'GET',
             url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
             success: function () {
+              $("#cart-refresh-layout").load(" #cart-refresh-layout");
                 $("#refresh-delete").load(" #refresh-delete");
-              $("#item-total").load(" #item-total");
             },
             error: function (error) {
               console.log(error);

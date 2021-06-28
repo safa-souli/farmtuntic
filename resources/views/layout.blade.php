@@ -440,8 +440,7 @@
            <a href="login" class="gem-points" style="color: #fff">S'identifier</a> | 
            <a href="register" class="gem-points" style="color: #fff">S'inscrire</a> | 
          @endguest
-           <a href="{{ route('contact') }}" class="gem-points" style="color: #fff">Contactez-nous </a> | 
-          <a href="propos" class="gem-points" style="color: #fff">Qui sommes-nous?</a>
+           <a href="{{ route('contact') }}" class="gem-points" style="color: #fff">Contactez-nous </a>
          </span>
         </div>
       </div>
@@ -569,7 +568,7 @@
                     @endcan
                     @can('viewAny', \App\transport::class)
                       <li>
-                        <a href="#">
+                        <a href="{{route('transport.show')}}">
                           <div class="icon"><i class="fa fa-bus"></i>
                           </div>
                           <span class="details">Mes transports</span>

@@ -25,6 +25,11 @@ class ferme extends Model
     return $this->hasMany(produit::class);
   }
 
+  public function commandes()
+  {
+    return $this->hasMany(commandes::class);
+  }
+
   public function client()
   {
     return $this->belongsTo(User::class, 'agriculteur_id');

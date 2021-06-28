@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 use App\ferme;
 use App\ferme_avis;
 use App\produit;
+use App\panier;
+use App\commande;
+use App\commande_produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -18,6 +21,7 @@ class FermeController extends Controller
   {
     $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
     $this->middleware('auth')->only('delete');
+    $this->panier = panier::where('ipv4', $_SERVER['REMOTE_ADDR'] ?: ($_SERVER['HTTP_X_FORWARDED_FOR'] ?: $_SERVER['HTTP_CLIENT_IP']))->first();
   }
 
   public function index()
@@ -43,14 +47,20 @@ class FermeController extends Controller
     if (Auth::check())
       if ((ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first()) == NULL) $avis = NULL;
       else $avis = ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first();
-    else
-      $avis = NULL;
+    else $avis = NULL;
+    foreach ($this->panier->produits as $produit) {
+      if($produit->ferme_id = $ferme->id) {
+        $find[] = $produit;
+      }
+    }
+        
     return view('farm.view',
       [
         'time' => $this->time,
         'ferme_avis' => $avis,
         'produits' => produit::all()->where('ferme_id', $ferme->id),
         'all_avis' => ferme::with('avis')->findOrFail($ferme->id)->avis,
+        'products' => $find ?? null,
         'ferme' => $ferme
       ]);
   }

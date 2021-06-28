@@ -169,84 +169,43 @@
             <div class="cart-detail-box">
               <div class="card">
                 <div class="card-header padding-15 fw-700">Your Order</div>
-                <div class="card-body no-padding" id="scrollstyle-4">
-                  <div class="cat-product-box">
-                    <div class="cat-product">
-                      <div class="cat-name">
-                        <a href="#">
-                          <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Fresh Free Range Egss</p> <span class="text-light-white fw-700">small, Oragnic Fresh</span>
-                        </a>
+                <div class="card-body no-padding" id="refresh-delete">
+                    
+                  <?php $i = 0; $somme = 0; 
+                  if ($products):
+                    foreach($products as $produit) : $somme += $produit->prix;?>
+                      <div class="cat-product-box" id="product-box{{ $produit->id }}">
+                        <?php $i++; ?>
+                        <div class="cat-product">
+                          <div class="cat-name" style="width: 3in;">
+                            <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
+                              <p class="text-light-green fw-700"><span class="text-dark-white">{{ $i }}</span>{{ $produit->nom }}</p>
+                              <span class="text-light-white fw-700">
+                                  {{ $produit->quantite ?? '0' }} élements,
+                              </span>
+                            </a>
+                          </div>                            
+                          <div class="col-sm-2 mx-auto">
+                            <div class="delete-btn">
+                                <button 
+                                  class="text-dark-white" 
+                                  id="product-delete{{ $produit->id }}" 
+                                  onmouseenter="this.classList.add('text-danger')" 
+                                  onmouseleave="this.classList.remove('text-danger')">
+                                  <i class="far fa-trash-alt" title="Supprimer"></i></button>
+                            </div>
+                          </div>
+                          <div class="price"><a href="#" class="text-dark-white fw-500">
+                            {{number_format($produit->prix, 2, '.', '')}}<sup>dt</sup>
+                            </a>
+                          </div>
+                        </div>
                       </div>
-                      <div class="delete-btn">
-                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                        </a>
-                      </div>
-                      <div class="price"><a href="#" class="text-dark-white fw-500">
-                          $2.25
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cat-product-box">
-                    <div class="cat-product">
-                      <div class="cat-name">
-                        <a href="#">
-                          <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Fresh Free Range Egss</p> <span class="text-light-white fw-700">small, Oragnic Fresh</span>
-                        </a>
-                      </div>
-                      <div class="delete-btn">
-                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                        </a>
-                      </div>
-                      <div class="price"><a href="#" class="text-dark-white fw-500">
-                          $2.25
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cat-product-box">
-                    <div class="cat-product">
-                      <div class="cat-name">
-                        <a href="#">
-                          <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Fresh Free Range Chicken</p> <span class="text-light-white fw-700">small, Oragnic Fresh</span>
-                        </a>
-                      </div>
-                      <div class="delete-btn">
-                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                        </a>
-                      </div>
-                      <div class="price"><a href="#" class="text-dark-white fw-500">
-                          $2.25
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="cat-product-box">
-                    <div class="cat-product">
-                      <div class="cat-name">
-                        <a href="#">
-                          <p class="text-light-green fw-700"><span class="text-dark-white">1</span> Fresh Free Egss</p> <span class="text-light-white fw-700">small, Oragnic Fresh</span>
-                        </a>
-                      </div>
-                      <div class="delete-btn">
-                        <a href="#" class="text-dark-white"> <i class="far fa-trash-alt"></i>
-                        </a>
-                      </div>
-                      <div class="price"><a href="#" class="text-dark-white fw-500">
-                          $2.25
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-total">
-                    <div class="total-price border-0"><span class="text-dark-white fw-700">Items subtotal:</span>
-                      <span class="text-dark-white fw-700">$9.00</span>
-                    </div>
-                    <div class="empty-bag padding-15 fw-700"><a href="#">Empty bag</a>
-                    </div>
-                  </div>
+                    <?php endforeach;
+                   endif; ?>
                 </div>
-                <div class="card-footer padding-15"><a href="checkout.html" class="btn-first green-btn text-custom-white full-width fw-500">Proceed to Checkout</a>
+                <div class="card-footer padding-15">
+                  <a href="{{route('order', $ferme)}}" class="btn-first green-btn text-custom-white full-width fw-500">Passer à commander</a>
                 </div>
               </div>
             </div>
@@ -465,6 +424,26 @@
     </div>
   </section>
   <script>
+   $(document).ready(function () {
+      <?php foreach($products as $produit) {  ?>
+      $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
+        if (confirm("Voulez-vous sûr de supprimer?")) {
+          $.ajax({
+            type: 'GET',
+            url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
+            success: function () {
+              $("#cart-refresh-layout").load(" #cart-refresh-layout");
+              $("#refresh-delete").load(" #refresh-delete");
+            },
+            error: function (error) {
+              console.log(error);
+              alert("delete error");
+            }
+          });
+        } else return false;
+      });
+      <?php } ?>
+    });
     $(document).ready(function () {
       <?php if(isset($ferme_avis)) { ?>
       $(document).on("click", "#notice-edit", function () {

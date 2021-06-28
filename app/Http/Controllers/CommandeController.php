@@ -47,8 +47,11 @@ class CommandeController extends Controller
 
   public function add(ferme $ferme){
     $panier =  Panier::where('client_id', Auth::user()->id)->first();
-    foreach ($panier->produits()->get() as $produit) {
-      if($produit->ferme_id == $ferme->id) $test[] = $produit;
+     
+    foreach ($panier->produits as $produit) {
+      if($produit->ferme_id = $ferme->id) {
+        $find[] = $produit;
+      }
     }
     return view('order.checkout',
     [
@@ -56,7 +59,7 @@ class CommandeController extends Controller
       'time'   => $this->time,
       'panier' => $panier,
       'ferme' => $ferme,
-      'produits' => $test ?? null
+      'products' => $find ?? null
     ]);
   }
 

@@ -15,7 +15,7 @@ Route::view('/contact', 'contact')->name('contact');
 Route::view('about-us', 'about-us')->name('about-us');
 Route::post('contact', 'contactController@send');
 Route::view('sign-up', 'mail.sign-up');
-Route::view('home', 'panierController@index')->name('home');
+Route::view('home', 'home')->name('home');
 
 #route produit
 Route::get('produits', 'produitController@index')->name('product.index');
@@ -83,9 +83,18 @@ Route::get('profil/delete', 'clientController@delete')->name('profile.delete');
 
 #route of orders 
 
-Route::get('order/{ferme}', 'commandeController@add')->name('order');
+Route::get('order/{ferme}', 'commandeController@add')->name('order')->middleware('auth');
 Route::put('order/{ferme}', 'commandeController@order')->name('order.checkout');
 Route::get('orders/list', 'commandeController@show')->name('orders.list');
 Route::get('order/details/{id}', 'commandeController@detail')->name('order.details');
 Route::get('order/delete/{id}', 'commandeController@delete')->name('order.delete');
 Route::get('order/edit/{id}', 'commandeController@edit')->name('order.edit');
+
+
+#route of transport
+Route::get('transport', 'transportController@index')->middleware('can:viewAny,App\transport')->name('transport.show');
+Route::view('transport/create', 'transport.create')->middleware('can:viewAny,App\transport')->name('transport.create');
+Route::put('transport/create', 'transportController@store')->middleware('can:viewAny,App\transport')->name('transport.store');
+Route::get('transport/edit/{id}', 'transportController@edit')->name('transport.edit');
+Route::post('transport//edit/{id}', 'transportController@update')->name('transport.update');
+Route::get('transport//delete/{id}', 'transportController@delete')->name('transport.delete');
