@@ -16,6 +16,7 @@ class CreateProduitPanierTable extends Migration {
 		{
 			$table->bigInteger('panier_id')->unsigned()->index('panier_id');
 			$table->bigInteger('produit_id')->unsigned()->index('produit_id');
+			$table->integer('quantite')->unsigned()->default(1);
 			$table->timestamps();
 			$table->primary(['panier_id','produit_id']);
 		});

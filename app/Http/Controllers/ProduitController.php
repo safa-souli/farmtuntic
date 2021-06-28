@@ -166,7 +166,6 @@ class ProduitController extends Controller
 
   public function delete(produit $produit)
   {
-    $produit->categories()->delete();
     $produit->notes()->delete();
     $produit->commandes()->delete();
     $produit->paniers()->delete();

@@ -29,8 +29,7 @@ class produit extends Model
 
   public function categories()
   {
-    return $this->belongsToMany(categorie::class, 'produit_categorie', 'categorie_id', 'produit_id')
-      ->using(produit_categorie::class);
+    return $this->belongsTo(categorie::class, 'categorie_id');
   }
 
   public function paniers()

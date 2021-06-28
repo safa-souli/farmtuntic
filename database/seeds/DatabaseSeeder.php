@@ -26,7 +26,6 @@ class DatabaseSeeder extends Seeder
     DB::table('ferme_avis')->truncate();
     DB::table('produit_note')->truncate();
     DB::table('produit_panier')->truncate();
-    DB::table('produit_categorie')->truncate();
     DB::table('produit')->truncate();
     DB::table('commande')->truncate();
     DB::table('panier')->truncate();

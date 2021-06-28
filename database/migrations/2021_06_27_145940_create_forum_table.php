@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateLivraisonTable extends Migration {
+class CreateForumTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateLivraisonTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('livraison', function(Blueprint $table)
+		Schema::create('forum', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->string('trajectoire', 50);
-			$table->bigInteger('transport_id')->unsigned()->index('trasport_id');
+			$table->text('objet', 65535)->nullable();
+			$table->text('description', 65535);
+			$table->bigInteger('client_id')->unsigned()->index('utilisateur_id');
 			$table->timestamps();
 		});
 	}
@@ -29,7 +30,7 @@ class CreateLivraisonTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('livraison');
+		Schema::drop('forum');
 	}
 
 }

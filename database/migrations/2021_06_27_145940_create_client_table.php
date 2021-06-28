@@ -20,7 +20,7 @@ class CreateClientTable extends Migration {
 			$table->date('datenai')->nullable();
 			$table->enum('sexe', array('Femme','Homme'))->nullable();
 			$table->string('telephone', 15)->nullable();
-			$table->string('email', 100);
+			$table->string('email', 100)->unique('mail');
 			$table->enum('type', array('livreur','agriculteur','client'))->default('client');
 			$table->string('adresse', 50)->nullable();
 			$table->string('password', 100);

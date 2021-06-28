@@ -532,7 +532,6 @@ class ComposerStaticInit0a332c44ecaad5948502ab7f30cc7bb1
         'App\\panier' => __DIR__ . '/../..' . '/app/Panier.php',
         'App\\password_resets' => __DIR__ . '/../..' . '/app/password_resets.php',
         'App\\produit' => __DIR__ . '/../..' . '/app/Produit.php',
-        'App\\produit_categorie' => __DIR__ . '/../..' . '/app/produit_categorie.php',
         'App\\produit_note' => __DIR__ . '/../..' . '/app/produit_note.php',
         'App\\produit_panier' => __DIR__ . '/../..' . '/app/produit_panier.php',
         'App\\transport' => __DIR__ . '/../..' . '/app/Transport.php',

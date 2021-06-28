@@ -16,11 +16,14 @@ class CreateProduitTable extends Migration {
 		{
 			$table->bigInteger('id', true)->unsigned();
 			$table->string('nom', 300);
+			$table->integer('promotion')->nullable();
 			$table->float('prix', 10, 0)->default(0);
-			$table->integer('stock');
 			$table->text('image', 65535);
 			$table->text('description');
-			$table->bigInteger('ferme_id')->unsigned()->index('ferme_id');
+			$table->text('caracteristics')->nullable();
+			$table->integer('categorie_id')->unsigned()->nullable()->index('categorie_id');
+			$table->bigInteger('ferme_id')->unsigned()->nullable()->index('ferme_id');
+			$table->bigInteger('agriculteur_id')->unsigned()->nullable()->index('agriculteur_id');
 			$table->timestamps();
 		});
 	}

@@ -13,8 +13,7 @@ class categorie extends Model
 
   public function produits()
   {
-    return $this->belongsToMany(produit::class, 'produit_categorie', 'categorie_id', 'produit_id')
-      ->using(produit_categorie::class)
+    return $this->hasMany(produit::class, 'categorie_id', 'id')
       ->orderBy('created_at', 'desc');
   }
 }

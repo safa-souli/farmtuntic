@@ -63,7 +63,6 @@ return array(
     'App\\panier' => $baseDir . '/app/Panier.php',
     'App\\password_resets' => $baseDir . '/app/password_resets.php',
     'App\\produit' => $baseDir . '/app/Produit.php',
-    'App\\produit_categorie' => $baseDir . '/app/produit_categorie.php',
     'App\\produit_note' => $baseDir . '/app/produit_note.php',
     'App\\produit_panier' => $baseDir . '/app/produit_panier.php',
     'App\\transport' => $baseDir . '/app/Transport.php',

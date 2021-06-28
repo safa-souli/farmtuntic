@@ -15,9 +15,8 @@ class CreateCommandeTable extends Migration {
 		Schema::create('commande', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->integer('total');
-			$table->enum('etat', array('en cours','accepte','refuse'));
-			$table->bigInteger('produit_id')->unsigned()->index('produit_id');
+			$table->enum('methode', array('E','P'))->default('E');
+			$table->text('description')->nullable();
 			$table->bigInteger('client_id')->unsigned()->index('client_id');
 			$table->bigInteger('livraison_id')->unsigned()->nullable()->index('livraison_id');
 			$table->timestamps();

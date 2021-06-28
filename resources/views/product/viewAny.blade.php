@@ -158,71 +158,76 @@
               </ul>
             </nav>
             <div id="products-box" class="container row">
-              @foreach($produits as $produit)
-                <div class="col-lg-12">
-                  <div class="restaurent-product-list">
-                    <div class="restaurent-product-detail">
-                      <div class="restaurent-product-left">
-                        <div class="restaurent-product-title-box">
-                          <div class="restaurent-product-box">
-                            <div class="restaurent-product-title">
-                              <h6 class="mb-2 text-light-black">{{ $produit->nom }}</h6>
+              @if(count($produits) != 0)
+                @foreach($produits as $produit)
+                  <div class="col-lg-12">
+                    <div class="restaurent-product-list">
+                      <div class="restaurent-product-detail">
+                        <div class="restaurent-product-left">
+                          <div class="restaurent-product-title-box">
+                            <div class="restaurent-product-box">
+                              <div class="restaurent-product-title">
+                                <h6 class="mb-2 text-light-black">{{ $produit->nom }}</h6>
+                                <div class="rating-text">
+                                  <p class="text-light-white fs-12">{{ $time->inWords($produit->created_at) }}</p>
+                                </div>
+                              </div>
+                              @isset($product->promo) 
+                                <div class="restaurent-product-label">
+                                  <span class="rectangle-tag bg-gradient-red text-custom-white">{{ $product->promo }}%</span>
+                                </div>
+                              @endisset
+                            </div>
+                            <div class="restaurent-product-rating text-right">
+                              @inject('note', 'App\Http\Controllers\ProduitController')
+                              @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
+                                <i class="fas fa-star text-yellow"></i>
+                              @endfor
+                              @if(((number_format($note->avg($produit->id)) != 0) && $note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
+                                <i class="fas fa-star-half-alt text-yellow"></i>
+                              @endif
                               <div class="rating-text">
-                                <p class="text-light-white fs-12">{{ $time->inWords($produit->created_at) }}</p>
+                                <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
                               </div>
                             </div>
-                            @isset($product->promo) 
-                              <div class="restaurent-product-label">
-                                <span class="rectangle-tag bg-gradient-red text-custom-white">{{ $product->promo }}%</span>
-                              </div>
-                            @endisset
                           </div>
-                          <div class="restaurent-product-rating text-right">
-                            @inject('note', 'App\Http\Controllers\ProduitController')
-                            @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)
-                              <i class="fas fa-star text-yellow"></i>
-                            @endfor
-                            @if(((number_format($note->avg($produit->id)) != 0) && $note->avg($produit->id) %  number_format($note->avg($produit->id))) > 0.5)
-                              <i class="fas fa-star-half-alt text-yellow"></i>
-                            @endif
-                            <div class="rating-text">
-                              <p class="text-light-white fs-12 text-right" title="Nombre d'évaluations">{{ $note->etoiles($produit->id) }} évals</p>
+                          <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
+                          </div>
+                          <div class="restaurent-tags-price">
+                            <div style="float: left;">
+                            @inject('note', 'App\Http\Controllers\PanierController')
+                              @if($note->exist($produit->id)->isEmpty())
+                                <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier">
+                                  <i class="fas fa-shopping-bag"></i>
+                                </button>
+                                <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light" title="Supprimer du panier" style="display: none;">
+                                  <i class="fas fa-shopping-bag"></i>
+                                </button>
+                              @else
+                                <button class="btn-first btn-submit text-light" title="Supprimer du panier"><i class="fas fa-shopping-bag"></i></button>
+                              @endif
+                              <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn align-left" style="float: none;">Afficher plus</a>
+                            </div>
+                            <div class="restaurent-product-price">
+                              <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">{{$produit->prix}}</span><span class="save-price text-light-green fs-12">save $90</span>
+                              </p>
                             </div>
                           </div>
                         </div>
-                        <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
+                        <div class="restaurent-product-img">
+                          <img src='{{ URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid" alt="{{ $produit->nom }}">
                         </div>
-                        <div class="restaurent-tags-price">
-                          <div style="float: left;">
-                          @inject('note', 'App\Http\Controllers\PanierController')
-                            @if($note->exist($produit->id)->isEmpty())
-                              <button id="add-cart{{ $produit->id }}" class="btn-first white-btn text-light-green" title="Ajouter au panier">
-                                <i class="fas fa-shopping-bag"></i>
-                              </button>
-                              <button id="success-cart{{ $produit->id }}" class="btn-first btn-submit text-light" title="Supprimer du panier" style="display: none;">
-                                <i class="fas fa-shopping-bag"></i>
-                              </button>
-                            @else
-                              <button class="btn-first btn-submit text-light" title="Supprimer du panier"><i class="fas fa-shopping-bag"></i></button>
-                            @endif
-                            <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn align-left" style="float: none;">Afficher plus</a>
-                          </div>
-                          <div class="restaurent-product-price">
-                            <p class="text-light-green fw-600">$90 <span class="line-through text-light-white fs-16">{{$produit->prix}}</span><span class="save-price text-light-green fs-12">save $90</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="restaurent-product-img">
-                        <img src='{{ URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid" alt="{{ $produit->nom }}">
                       </div>
                     </div>
                   </div>
+                @endforeach
+              @else              
+                <div class="col-lg-12">
+                  <div class="alert alert-info text-center" role="alert">
+                    Aucun produit disponible à ce moment
+                  </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-          
-        </div>
-              @endforeach
+              @endif
             </div>
 
             <nav aria-label="Page navigation example" style="margin-bottom: 20px;">
