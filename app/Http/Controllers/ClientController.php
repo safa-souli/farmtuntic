@@ -39,16 +39,18 @@ class ClientController extends Controller
     $request->validate([
       'nom' => 'required|string|alpha|min:3|max:130',
       'prenom' => 'required|string|alpha|min:3|max:130',
-      'email' => 'required|string|email|unique:client',
       'telephone' => 'nullable|numeric|digits:8',
       'adresse' =>'nullable|string|min:3|max:130',
       'photo' =>'nullable|image|max:2048',
     ]);
     $client = Auth::user();
+    if($request->hasFile('photo')) {   
+      $client->photo = time().'_'.$request->file('photo')->getClientOriginalName();
+      $request->file('photo')->storeAs('public/assets/img/user', $client->photo);
+    }
     $client->nom = $request->nom;
     $client->prenom = $request->prenom;
     $client->datenai = $request->datenai;
-    $client->email = $request->email;
     $client->telephone = $request->telephone;
     $client->adresse = $request->adresse;
     $client->sexe = $request->sexe;

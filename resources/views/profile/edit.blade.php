@@ -62,7 +62,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Email</label>
-                                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $client->email ?? old('email')}}">
+                                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $client->email ?? old('email')}}" readonly>
                                 @error('email')
                                   <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -172,7 +172,7 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="large-product-box p-relative pb-0">
-                  <img src='{{ URL::asset("assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
+                  <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
                 </div>
               </div>
             </div>

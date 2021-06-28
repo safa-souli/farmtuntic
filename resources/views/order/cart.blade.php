@@ -28,9 +28,7 @@
                               <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
                                 <p class="text-light-green fw-700"><span class="text-dark-white">{{ $i }}</span>{{ $produit->nom }}</p>
                                 <span class="text-light-white fw-700">
-                                  @foreach($produit->categories as $categorie)
-                                    {{ $categorie->nom }},
-                                  @endforeach
+                                    {{ $produit->quantite }} élements,
                                 </span>
                               </a>
                             </div>
@@ -87,7 +85,8 @@
             type: 'GET',
             url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
             success: function () {
-                $("#refresh-delete").load(" #refresh-delete");
+              $("#cart-refresh-layout").load(" #cart-refresh-layout");
+              $("#refresh-delete").load(" #refresh-delete");
               $("#item-total").load(" #item-total");
             },
             error: function (error) {

@@ -174,6 +174,8 @@
           type: 'get',
           url: '<?php echo url('panier/add/produit'); ?>/' + <?php echo $produit->id ?>,
           success: function () {
+            
+            $("#cart-refresh-layout").load(" #cart-refresh-layout");
             $("#panier").load(" #panier");
           },
           error: function (e) {
@@ -187,6 +189,8 @@
           type: 'get',
           url: '<?php echo url('panier/destroy/produit'); ?>/' + <?php echo $produit->id ?>,
           success: function () {
+            
+            $("#cart-refresh-layout").load(" #cart-refresh-layout");
             $("#panier").load(" #panier");
           },
           error: function (e) {

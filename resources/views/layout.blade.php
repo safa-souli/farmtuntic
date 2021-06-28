@@ -521,7 +521,7 @@
               <div class="user-details p-relative">
                 <a href="#" class="text-light-white fw-500">
                   <?php $photo = Auth::user()->photo; ?>
-                  <img src='{{ URL::asset("assets/img/user/$photo") }}' width="50" height="50" class="rounded-circle" alt="user-img">
+                  <img src='{{ URL::asset("storage/assets/img/user/$photo") }}' style="width: 1cm;height:1cm" class="rounded-circle" alt="user-img">
                   <span> {{ Auth::user()->prenom }} {{ Auth::user()->nom }} </span>
                 </a>
                 <div class="user-dropdown" style="margin-left: 30px;">
@@ -577,8 +577,8 @@
                       </li>
                     @endcan
                   </ul>
-                  <div class="user-footer"><a href="{{ route('logout') }}"
-                                              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
+                  <div class="user-footer">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnecter</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                   </div>
                 </div>
@@ -586,8 +586,8 @@
               <!-- mobile search -->
           @endguest
           <!-- user cart -->
-            @inject('panier', 'App\Http\Controllers\panierController')
-            <div class="cart-btn cart-dropdown">
+          <div id="cart-refresh-layout" class="cart-btn cart-dropdown">
+              @inject('panier', 'App\Http\Controllers\panierController')
               <a href="{{ route('card.show') }}" class="text-light-green fw-700"> <i class="fas fa-shopping-cart" title="Panier"></i>
                 <span class="user-alert-cart">{{$panier->layout()}}</span>
               </a>

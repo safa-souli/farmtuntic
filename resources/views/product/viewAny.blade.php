@@ -172,7 +172,8 @@
           $.ajax({
             type: 'get',
             url: '<?php echo url('panier/add/produit'); ?>/' + <?php echo $produit->id ?>,
-            success: function () {
+            success: function () {              
+              $("#cart-refresh-layout").load(" #cart-refresh-layout");
               $("#panier-produit{{ $produit->id }}").load(" #panier-produit{{ $produit->id }}");
             },
             error: function (e) {
@@ -185,7 +186,8 @@
           $.ajax({
             type: 'get',
             url: '<?php echo url('panier/destroy/produit'); ?>/' + <?php echo $produit->id ?>,
-            success: function () {
+            success: function () {              
+              $("#cart-refresh-layout").load(" #cart-refresh-layout");
               $("#panier-produit{{ $produit->id }}").load(" #panier-produit{{ $produit->id }}");
             },
             error: function (e) {

@@ -19,7 +19,7 @@ class PanierController extends Controller
   {
     if(!$this->panier) $panier = panier::where('client_id', Auth::user()->id);
     else $panier = $this->panier;
-    return $panier->count();
+    return $panier->produits()->count();
   }
 
   public function show()
