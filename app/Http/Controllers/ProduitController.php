@@ -101,7 +101,7 @@ class ProduitController extends Controller
     ]);
     $produit = new produit();
     if($request->hasFile('image')) {    
-      $produit->image = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+      $produit->image = time().'_'.$request->file('image')->getClientOriginalName();
       $request->file('image')->storeAs('public/assets/img/dish', $produit->image);
     }
     else  $produit->image = 'default.jpg';
@@ -197,7 +197,7 @@ class ProduitController extends Controller
 
   public function note_update(produit_note $note, Request $request)
   {
-    $note->update($request()->all());
+    $note->update($request->all());
     return redirect()->back();
   }
 
@@ -205,6 +205,11 @@ class ProduitController extends Controller
   public function count($id)
   {
     return categorie::find($id)->produits()->count();
+  }
+
+  public function countNoneCategorie()
+  {
+    return produit::where('categorie_id', 'null')->count();
   }
 
   public function etoiles($id)

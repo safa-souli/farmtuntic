@@ -10,7 +10,7 @@
             <div id="add-restaurent-tab" class="step-app">
               <div class="row">
                 <div class="col-xl-12 col-lg-7">
-                  <form method="POST" action="{{ route('farm.update', ['ferme' => $ferme]) }}">
+                  <form method="POST" action="{{ route('farm.update', $ferme->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="step-content">
                       <div class="step-tab-panel active">
@@ -24,8 +24,8 @@
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Nom de ferme <sup class="fs-16">*</sup>
                                 </label>
-                                <input  name="nom_ferme" class="form-control @error('nom_ferme') is-invalid @enderror" placeholder="i.e Mazraa" value={{$ferme->nom ?? old('nom_ferme')}}>
-                                @error('nom_ferme')
+                                <input  name="nom" class="form-control @error('nom') is-invalid @enderror" placeholder="i.e Mazraa" value={{$ferme->nom ?? old('nom')}}>
+                                @error('nom')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
                                     </span>
@@ -79,7 +79,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Photo ferme</label>
-                                <input type="file" name="image_ferme" class="custom-file">
+                                <input type="file" name="image" class="custom-file">
                                 @error('image')
                                 <span style="font-size: 80%;color: #dc3545;" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
                             </div>
                           </div>
                           <hr>
-                          <button class="btn-second btn-submit">Modifier</button>
+                          <button type="submit" class="btn-second btn-submit">Modifier</button>
                         </div>
                       </div>
                     </div>
@@ -104,7 +104,7 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="large-product-box p-relative pb-0">
-                  <img src='{{ URL::asset("assets/img/farms/$ferme->image") }}' class="img-fluid full-width" alt="ferme-image">
+                  <img src='{{ URL::asset("storage/assets/img/farms/$ferme->image") }}' class="img-fluid full-width" alt="ferme-image">
                 </div>
               </div>
             </div>

@@ -63,13 +63,13 @@ Route::get('forum/edit/{forum}', 'forumController@edit')->middleware('can:update
 Route::post('forum/update/{forum}', 'forumController@update')->middleware('can:update,forum')->name('forum.update');
 Route::get('forum/delete/{forum}', 'forumController@delete')->middleware('can:delete,forum')->name('forum.delete');
 
-//route forum commentaire
+#route forum commentaire
 Route::put('forum/commentaire/store', 'forum_commentaireController@store')->name('comment.store');
 Route::get('forum/commentaire/edit/{forum}/{commentaire}', 'forum_commentaireController@edit')->middleware('can:update,commentaire')->name('comment.edit');
 Route::post('forum/commentaire/update/{commentaire}', 'forum_commentaireController@update')->name('comment.update');
 Route::get('forum/commentaire/delete/{commentaire}', 'forum_commentaireController@delete')->middleware('can:delete,commentaire')->name('comment.delete');
 
-//route forum commentaire repondes
+#route forum commentaire repondes
 Route::put('forum/commentaire/reponde/{commentaire}', 'forum_commentaire_repondeController@store')->name('reply.store');
 Route::get('forum/commentaire/reponde/edit/{forum}/{commentaire}/{reponde}', 'forum_commentaire_repondeController@edit')->middleware('can:update,reponde')->name('reply.edit');
 Route::post('forum/commentaire/reponde/update/{reponde}', 'forum_commentaire_repondeController@update')->middleware('can:update,reponde')->name('reply.update');

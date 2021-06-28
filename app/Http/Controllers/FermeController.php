@@ -70,6 +70,21 @@ class FermeController extends Controller
       'prix' => 'required|numeric|min:1',
       'promotion' => 'nullable|numeric|between:1,99'
     ]);
+    
+    $ferme = new ferme();
+    if($request->hasFile('image_ferme')) {    
+      $ferme->image = time().'_'.$request->file('image_ferme')->getClientOriginalName();
+      $request->file('image_ferme')->storeAs('public/assets/img/farms', $ferme->image);
+    }
+    else  $ferme->image = 'default.jpg';
+    
+    $produit = new produit();
+    if($request->hasFile('image_produit')) {    
+      $produit->image = time().'_'.$request->file('image_produit')->getClientOriginalName();
+      $request->file('image_produit')->storeAs('public/assets/img/dish', $produit->image);
+    }
+    else  $produit->image = 'default.jpg';
+    
     $ferme->nom = $request->nom_ferme;
     $ferme->telephone = $request->telephone;
     $ferme->email = $request->email;
@@ -93,7 +108,7 @@ class FermeController extends Controller
     return view('farm.edit', ['ferme' => $ferme]);
   }
 
-  public function update(request $request, ferme $ferme)
+  public function update(Request $request, ferme $ferme)
   {
     
     $request->validate([
@@ -104,7 +119,18 @@ class FermeController extends Controller
       'image' => 'nullable|image|max:2048',
       'description' => 'required'
     ]);
-    $ferme->update(\request()->all());
+    if($request->hasFile('image')) {   
+      $ferme->image = time().'_'.$request->file('image')->getClientOriginalName();
+      $request->file('image')->storeAs('public/assets/img/farms', $ferme->image);
+    }
+    else  $ferme->image = 'default.jpg';
+    $ferme->nom = $request->nom;
+    $ferme->telephone = $request->telephone;
+    $ferme->email = $request->email;
+    $ferme->adresse = $request->adresse;
+    $ferme->description = $request->description;
+    $ferme->agriculteur_id = Auth::user()->id;
+    $ferme->save();
     return redirect()->back();
   }
 

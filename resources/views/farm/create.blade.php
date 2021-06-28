@@ -3,7 +3,6 @@
   <div class="main-sec"></div>
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
-    {{var_dump($errors)}}
     <div class="container-fluid" style="margin-left: 200px;">
       <div class="col-lg-8">
           <div class="row">

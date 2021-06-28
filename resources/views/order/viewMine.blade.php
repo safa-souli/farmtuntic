@@ -4,7 +4,7 @@
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
     
-    <div class="container-fluid" style="margin-left: 200px;">
+    <div class="container-fluid" style="margin-left: 2in;">
       <div class="col-lg-8" style="margin-left: 1in">
           
           <div class="row">
@@ -25,7 +25,7 @@
             </thead>
             <tbody>
                 @foreach ($orders as $order)
-                    <tr class='clickable-row' data-href='{{ route('order.details', $order->id) }}'>
+                    <tr>
                         <th scope="row">{{ $order->id }}</th>
                         <td>{{ $time->inWords($order->created_at)}}</td>
                         @isset($order->livraison_id)
@@ -66,11 +66,17 @@
                             </td>
                         @endisset
                         <td>
-                            @if(is_null($order->livraison_id))
-                                <a href="{{ route('order.delete', $order->id) }}" onclick="return confirm('Voulez-vous sûr d\'annuler la commande n°{{ $order->id }}?');">
-                                    <i class="fas fa-times-circle" style="font-size:200%;color: red"></i>
-                                </a>
-                            @endif
+                            <div class="btn-group">
+                                <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('order.details', $order)}}" class="dropdown-item">Afficher</a>
+                                    @if(is_null($order->livraison_id))
+                                        <a  href="{{ route('order.delete', $produit) }}" class="dropdown-item" onclick="return confirm('Voulez-vous sûr du supprimer ce produit?')">Annuler </a>
+                                    @endif
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </a>
@@ -83,12 +89,4 @@
       </div>
     </div>
   </section>
-
-<script>
-$(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
-    });
-});
-</script>
 @endsection
