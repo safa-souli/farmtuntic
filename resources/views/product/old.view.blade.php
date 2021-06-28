@@ -245,7 +245,7 @@
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="{{ URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo">
+                            <img src="{{ URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo" style="width: 1cm;height:1cm">
                           </div>
                           <div class="add-fav text-light-white"><img src="{{ URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>
@@ -293,7 +293,7 @@
                         </a>
                         <div class="overlay">
                           <div class="brand-logo">
-                            <img src="{{ URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo">
+                            <img src="{{ URL::asset('assets/img/user/user-1.png')}}" class="img-fluid" alt="logo" style="width: 1cm;height:1cm">
                           </div>
                           <div class="add-fav text-light-white"><img src="{{ URL::asset('assets/img/svg/013-heart-1.svg')}}" alt="tag">
                           </div>

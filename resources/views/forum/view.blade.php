@@ -25,7 +25,7 @@
                   <h2 class="blog-title text-light-black">{{ $forum->objet }}</h2>
                   <div class="review-user">
                     <div class="review-user-img">
-                      <img src='{{ URL::asset("storage/assets/img/user/{$forum->client->photo}") }}' class="rounded-circle" alt="photo-profil">
+                      <img src='{{ URL::asset("storage/assets/img/user/{$forum->client->photo}") }}' class="rounded-circle" alt="photo-profil" style="width: 1cm;height:1cm">
                       <div class="reviewer-name" style="margin: -50px 0 30px 70px;">
                         <p class="text-light-black fw-600">{{ $forum->client->prenom }} {{ $forum->client->nom }}
                           <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small><br>
@@ -57,7 +57,7 @@
                       <div class="review-box u-line">
                         <div class="review-user">
                           <div class="review-user-img">
-                            <img src='{{ URL::asset("assets/img/user/$commentaire->photo") }}' class="rounded-circle" alt="#">
+                            <img src='{{ URL::asset("assets/img/user/$commentaire->photo") }}' class="rounded-circle" alt="#" style="width: 1cm;height:1cm">
                             <div class="reviewer-name">
                               <p class="text-light-black fw-600">{{ $commentaire->prenom }} {{ $commentaire->nom }}
                                 <small class="text-light-white fw-500">{{ $commentaire->adresse }}</small>
@@ -134,7 +134,7 @@
                               <div class="review-user">
                                 
                                 <div class="review-user-img">
-                                  <img src='{{ URL::asset("assets/img/user/$commentaire->photo") }}' class="rounded-circle" alt="#">
+                                  <img src='{{ URL::asset("assets/img/user/$commentaire->photo") }}' class="rounded-circle" style="width: 1cm;height:1cm" alt="#">
                                   <div class="reviewer-name">
                                     <p class="text-light-black fw-600">{{ $commentaire->prenom }} {{ $commentaire->nom }}
                                       <small class="text-light-white fw-500">{{ $commentaire->adresse }}</small>

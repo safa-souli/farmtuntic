@@ -149,7 +149,7 @@
                 <div class="cat-product-box">
                   <div class="cat-product">
                     <div class="cat-name">
-                      <img src='{{ URL::asset("assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
+                      <img src='{{ URL::asset("assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image" style="width: 1cm;height:1cm">
                     </div>
                   </div>
                   @auth

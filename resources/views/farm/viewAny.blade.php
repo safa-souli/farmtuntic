@@ -24,7 +24,7 @@
                     </div>
                     <div class="post-meta">
                       <div class="author-img">
-                        <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}") }}' class="rounded-circle" alt="image">
+                        <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}") }}' class="rounded-circle" alt="image" style="width: 1cm;height:1cm">
                       </div>
                       <div class="author-meta">
                         <h6 class="no-margin"><a href="#" class="text-light-black">{{ $ferme->client->prenom }} {{ $ferme->client->nom }}</a></h6>

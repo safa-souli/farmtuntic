@@ -172,7 +172,7 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="large-product-box p-relative pb-0">
-                  <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
+                  <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image" style="width: 1cm;height:1cm">
                 </div>
               </div>
             </div>

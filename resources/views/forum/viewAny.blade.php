@@ -21,7 +21,7 @@
                     <div class="review-box">
                       <div class="review-user">
                         <div class="review-user-img">
-                          <img src='{{ URL::asset("assets/img/user/{$forum->client->photo}")}}' class="rounded-circle" alt="#">
+                          <img src='{{ URL::asset("assets/img/user/{$forum->client->photo}")}}' class="rounded-circle" alt="#" style="width: 1cm;height:1cm">
                           <div class="reviewer-name">
                             <p class="text-light-black fw-700">
                               <a href="{{ route('profile.show', ['client' => $forum->client]) }}">

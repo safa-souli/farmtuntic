@@ -2,7 +2,7 @@
 @section('content')
   <!-- restaurent top -->
   <div class="page-banner p-relative smoothscroll" id="menu">
-    <img src='{{ URL::asset("assets/img/farms/$ferme->image")}}' class="img-fluid full-width" alt="ferme">
+    <img src='{{ URL::asset("storage/assets/img/farms/$ferme->image")}}' class="img-fluid full-height" alt="ferme">
     <div class="overlay-2">
       <div class="container">
         <div class="row">
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="restaurent-logo">
-            <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}")}}' class="img-fluid" title="{{ $ferme->client->prenom }} {{ $ferme->client->nom }}">
+            <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}")}}' class="img-fluid" title="{{ $ferme->client->prenom }} {{ $ferme->client->nom }}" style="width: 1in;height:1in;">
           </div>
         </div>
       </div>
@@ -146,7 +146,7 @@
                                 <div class="restaurent-tags-price">
                                   <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn">Afficher plus</a>
                                   <div class="restaurent-product-price">
-                                    <h6 class="text-success fw-600 no-margin">{{$produit->prix}}<sup>dt</sup></h6>
+                                    <h6 class="text-light-green fw-600 no-margin">{{number_format($produit->prix, 2, '.', ' ')  }}<sup>dt</sup></h6>
                                   </div>
                                 </div>
                               </div>
@@ -284,7 +284,7 @@
             <div id="notice-box" class="review-box">
               <div class="review-user">
                 <div class="review-user-img">
-                  <img src='{{ URL::asset("assets/img/user/$user->photo") }}' class="rounded-circle" alt="#">
+                  <img src='{{ URL::asset("storage/assets/img/user/$user->photo") }}' class="rounded-circle" style="width: 1.5cm;height:1.5cm;">
                   <div class="reviewer-name">
                     <p class="text-light-black fw-600">{{ $user->prenom }} {{ $user->nom }}
                       <small class="text-light-white fw-500">{{ $user->adresse }}</small>
@@ -295,18 +295,18 @@
                         <i class="fas fa-star text-yellow"></i>
                       @endfor
                     </span>
-                      <span class="ml-2 text-light-white">{{ $time->inWords($ferme_avis->created_at) }}</span>
+                      <span class="ml-2 text-light-white text-right">{{ $time->inWords($ferme_avis->created_at) }}</span>
                     </div>
                   </div>
                 </div>
                   
                   <div class="btn-group">
-                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Action
+                    <button class="btn-text text-light-green btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <i class="fas fa-ellipsis-v"></i>
                     </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" id="notice-edit">Modifier</a>
-                      <a class="dropdown-item" id="notice-delete">Supprimer </a>
+                    <div class="dropdown-menu" style="margin-left: -1in">
+                      <a href="#javascript(0)" class="dropdown-item" id="notice-edit">Modifier</a>
+                      <a href="#javascript(0)" class="dropdown-item" id="notice-delete">Supprimer </a>
                     </div>
                   </div>
               </div>
@@ -340,14 +340,14 @@
                         <input type="radio" id="starhalf" name="etoiles" value="0.5" {{ ($ferme_avis->etoiles == 0.5) ?  'checked': '' }}/>
                         <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                       </fieldset>
-                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required>{{ $ferme_avis->avis }}</textarea>
+                      <textarea class="form-control" name="avis" rows="2" placeholder="Votre avis" required>{{ $ferme_avis->avis }}</textarea>
                     </div>
                   </div>
-                  <div class="col-md-6" style="margin-top: -1cm">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
-                      <button type="submit" class="btn btn-secondary btn-sm btn-submit" style="margin-top: 10px">Valider</button>
-                      <button id="notice-cancel" type="button" class="btn btn-secondary btn-sm" style="margin-top: 10px">Annuler</button>
+                      <button type="submit" class="btn btn-secondary btn-sm btn-submit">Valider</button>
+                      <button id="notice-cancel" type="button" class="btn btn-secondary btn-sm">Annuler</button>
                     </div>
                   </div>
                 </div>
@@ -382,7 +382,7 @@
                         <input type="radio" id="starhalf" name="etoiles" value="0.5"/>
                         <label class="half" for="starhalf" title="mauvais - 0.5 stars"></label>
                       </fieldset>
-                      <textarea class="form-control form-control-submit" name="avis" rows="2" placeholder="Votre avis" required></textarea>
+                      <textarea class="form-control" name="avis" rows="2" placeholder="Votre avis" required></textarea>
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -428,7 +428,7 @@
               <div class="review-box u-line">
                 <div class="review-user">
                   <div class="review-user-img">
-                    <img src='{{ URL::asset("assets/img/user/{$avis->photo}") }}' class="rounded-circle" alt="#">
+                    <img src='{{ URL::asset("storage/assets/img/user/{$avis->photo}") }}' class="rounded-circle" alt="#" style="width: 1.5cm;height:1.5cm">
                     <div class="reviewer-name">
                       <p class="text-light-black fw-600">{{ $avis->prenom }} {{ $avis->nom }}<small
                           class="text-light-white fw-500">{{ $avis->adresse }}</small>

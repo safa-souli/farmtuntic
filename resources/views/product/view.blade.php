@@ -15,7 +15,7 @@
               </ul>
             </div>
             <div class="post-wrapper mb-xl-20">
-              <img src='{{URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid full-width" alt="produit-img">
+              <img src='{{URL::asset("storage/assets/img/dish/$produit->image")}}' class="img-fluid full-width" alt="produit-img">
             </div>
             
             <div class="row">
@@ -132,7 +132,7 @@
                         <div class="overlay">
                           <div class="brand-logo">
                             <a href="{{ route('profile.show', ['client' => $produit->ferme->client]) }}">
-                              <img src='{{ URL::asset("assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="user-profile">
+                              <img src='{{ URL::asset("storage/assets/img/user/{$produit->ferme->client->photo}") }}' class="img-fluid" alt="user-profile" style="width: 2cm;height:1.5cm">
                             </a>
                           </div>
                         </div>
