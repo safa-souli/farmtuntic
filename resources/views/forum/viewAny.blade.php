@@ -29,7 +29,7 @@
                               </a>
                               <small class="text-light-white fw-500">{{ $forum->client->adresse }}</small>
                             </p>
-                            <p class="text-light-black"><strong class="fw-600">Theme :</strong> {{ $forum->theme }} </p>
+                            <p class="text-light-black"><strong class="fw-600">Theme :</strong> {{ $forum->objet }} </p>
                           </div>
                         </div>
                         <div class="review-date"><span class="text-light-white text-right">{{ $time->inWords($forum->created_at) }}</span>

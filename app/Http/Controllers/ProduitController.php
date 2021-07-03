@@ -60,14 +60,24 @@ class ProduitController extends Controller
       ]);
   }
 
-  public function categorie(categorie $categorie, $id)
+  public function categorie(categorie $categorie)
   {
-    $categorie = categorie::find($id);
     return view('product.viewAny',
       [
         'time' => $this->time,
-        'produits' => $categorie->produits()->paginate(15), //access to the parent columns
+        'produits' => produit::where('categorie_id', $categorie->id)->paginate(15),
         'Categorie' => $categorie,
+        'categories' => categorie::orderBy('nom')->get()
+      ]);
+  }
+
+
+  public function noncategorie()
+  {
+    return view('product.viewAny',
+      [
+        'time' => $this->time,
+        'produits' => produit::where('categorie_id', null)->paginate(15),
         'categories' => categorie::orderBy('nom')->get()
       ]);
   }

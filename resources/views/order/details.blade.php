@@ -64,13 +64,15 @@
                   </div>
                   <div class="u-line mb-xl-20">
                       <div class="row">
-                          <div class="col-lg-12">
+                          <div class="col-lg-12" >
                               <h5 class="text-light-black fw-600 title">Your Order <span><a href="#" class="fs-12">Print recipt</a></span></h5>
                               <p class="title text-light-white"> {{date_format($order->created_at,"F j, Y, g:i a")}} <span class="text-light-black">Order #{{$order->id}}</span>
                               </p>
                           </div>
                           <div class="col-lg-12">
-                            @foreach ($products as $product)                                
+                            <?php $somme = 0;
+                            foreach ($products as $product):  
+                             ?>                             
                               <div class="checkout-product">
                                   <div class="img-name-value">
                                       <div>
@@ -80,15 +82,45 @@
                                       </div>
                                       <div class="product-value"> <span class="text-light-white">({{$product->pivot->quantite}})</span>
                                       </div>
-                                      <div class="product-name"> <span><a href="#" class="text-light-white">{{$product->nom}}</a></span>
+                                      <div class="product-name"> <span><a href="#" class="text-light-white">{{$product->nom}} </a></span>
                                       </div>
-                                      <div class="product-value"> <span><a href="#" class="text-green">{{$product->pivot->etat}}</a></span>
+                                      <div class="product-value"> 
+                                          @if (is_null($order->livraison_id))
+                                              
+                                          <span> /
+                                              <a href="#" class="text-green">
+                                                  <?php 
+                                                    switch ($product->pivot->etat) {
+                                                        case 'A':
+                                                            echo 'acceptée';
+                                                            break;
+                                                        
+                                                        case 'R':
+                                                            echo 'refusée';
+                                                            break;
+                                                        
+                                                        case 'L':
+                                                            echo 'en livraison';
+                                                            break;
+                                                        case 'H':
+                                                            echo 'hors de livraison';
+                                                            break;
+                                                        
+                                                        default:
+                                                            echo 'en attende';
+                                                            break;
+                                                    }
+                                                  ?>
+                                              </a>
+                                            </span>
+                                      @endif
                                       </div>
                                   </div>
-                                  <div class="price"> <span class="text-light-white">{{ $product->prix }} <sup>dt</sup></span>
+                                  <div class="price"> <span class="text-light-white">{{ number_format($product->prix, 3, '.', ' ')  }} <sup>dt</sup></span>
                                   </div>
                               </div>
-                            @endforeach
+                            <?php  $somme = $product->prix * $product->pivot->quantite;
+                          endforeach; ?>
                           </div>
                       </div>
                   </div>
@@ -104,28 +136,28 @@
                               @else
                                   
                               <div class="method-type"> <i class="fas fa-coins text-dark-white"></i>
-                                  <span class="text-light-white">Monnai</span>
+                                  <span class="text-light-white">Paiement en livraison</span>
                               </div>
                               @endif
                           </div>
                       </div>
                       <div class="col-lg-5">
                           <div class="price-table u-line">
-                              <div class="item"> <span class="text-light-white">Item subtotal:</span>
-                                  <span class="text-light-white">$30.5</span>
+                              <div class="item"> <span class="text-light-white">Som:</span>
+                                  <span class="text-light-white">{{ number_format($somme, 3, '.', ' ')  }}<sup>dt</sup></span>
                               </div>
-                              <div class="item"> <span class="text-light-white">Delivery fee:</span>
-                                  <span class="text-light-white">$30.5</span>
+                              <div class="item"> <span class="text-light-white">frais de livraison:</span>
+                                  <span class="text-light-white">gratuit</span>
                               </div>
                           </div>
                           <div class="total-price padding-tb-10">
-                              <h5 class="title text-light-black fw-700">Total: <span>$33.36</span></h5>
+                              <h5 class="title text-light-black fw-700">Total: <span>{{ number_format($somme, 3, '.', ' ')  }}<sup>dt</sup></span></h5>
                           </div>
                       </div>
                       @isset($order->livraison)
                       <div class="col-12"><p style="font-size: 80%;color: #dc3545;"><i class="fas fa-exclamation-circle"></i> <span> Vous n'avez pas modifier votre commande il est en livraison, nous avons besoin de vous en place !</span></p></div>
                       @else
-                        <div class="col-12 d-flex"> <a href="#" class="btn-first white-btn fw-600 help-btn">Modifier?</a>
+                        <div class="col-12 d-flex"> <a href="javascript:void(0)" class="btn-first white-btn fw-600 help-btn">Modifier?</a>
                         </div>
                       @endisset
                   </div>
@@ -134,38 +166,5 @@
       </div>
   </div>
 </section>
-<script>
-  // Set the date we're counting down to
-  var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-  
-  // Update the count down every 1 second
-  var x = setInterval(function() {
-  
-    // Get today's date and time
-    var now = new Date().getTime();
-      
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
-      
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-    // Output the result in an element with id="demo"
-    document.getElementById("mb-days").innerHTML = days;
-    document.getElementById("mb-hours").innerHTML = hours;
-    document.getElementById("mb-minutes").innerHTML = minutes;
-    document.getElementById("mb-seconds").innerHTML = seconds;
-    
-      
-    // If the count down is over, write some text 
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("alert").innerHTML = "EXPIRED";
-    }
-  }, 1000);
-  </script>
     
 @endsection

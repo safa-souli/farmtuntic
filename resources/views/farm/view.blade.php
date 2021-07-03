@@ -30,7 +30,7 @@
         <div class="col-md-12">
           <div class="heading padding-tb-10">
             <h3 class="text-light-black title fw-700 no-margin">{{ $ferme->nom }}</h3>
-            <p class="text-light-black sub-title no-margin">{{ $ferme->adresse }}
+            <p class="text-light-black sub-title no-margin"><i class="fas fa-map-marker-alt"></i> {{ $ferme->adresse }}
             </p>
             <div class="head-rating">
               <div class="rating">
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="restaurent-logo">
-            <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}")}}' class="img-fluid" title="{{ $ferme->client->prenom }} {{ $ferme->client->nom }}" style="width: 1in;height:1in;">
+            <img src='{{ URL::asset("storage/assets/img/user/{$ferme->client->photo}")}}' class="img-fluid" title="{{ $ferme->client->prenom }} {{ $ferme->client->nom }}" style="width: 1in;height:1in;">
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
             <ul class="nav nav-pills">
               <li class="nav-item"><a class="nav-link active text-light-white fw-700" data-toggle="pill" href="#menu">Menu</a>
               </li>
-              <li class="nav-item"><a class="nav-link text-light-white fw-700" data-toggle="pill" href="#review">Avis</a>
+              <li class="nav-item"><a class="nav-link text-light-white fw-700" href="#review">Avis</a>
               </li>
             </ul>
           </div>
@@ -119,7 +119,7 @@
                                     </div>
                                     @if (!is_null($produit->promotion))
                                       <div class="restaurent-product-label">
-                                        <span class="rectangle-tag bg-gradient-red text-custom-white">$produit->promotion%</span>
+                                        <span class="rectangle-tag bg-gradient-red text-custom-white">{{$produit->promotion}}%</span>
                                       </div>                                        
                                     @endif
                                   </div>
@@ -134,14 +134,14 @@
                                         @if(($note->avg($ferme->id) %  number_format($note->avg($ferme->id))) > 0.5)
                                           <i class="fas fa-star-half-alt text-yellow"></i>
                                         @endif
-                                      @endif
+                                      @endif<br>
                                       @if($note->etoiles($ferme->id))
-                                        <span class="text-light-black fs-12 rate-data" style="top:0;">{{ $note->etoiles($ferme->id) }} évaluations</span>
+                                        <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($ferme->id) }} évaluations</span>
                                       @endif
                                     </div>
                                   </div>
                                 </div>
-                                <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 100) }}...</span>
+                                <div class="restaurent-product-caption-box"><span class="text-light-white">{{ substr($produit->description, 0, 300) }}</span>
                                 </div>
                                 <div class="restaurent-tags-price">
                                   <a href="{{ route('product.show', ['produit' => $produit]) }}" class="btn-first white-btn">Afficher plus</a>
@@ -151,7 +151,7 @@
                                 </div>
                               </div>
                               <div class="restaurent-product-img">
-                                <img src='{{ URL::asset("assets/img/dish/$produit->image")}}' class="img-fluid" alt="#">
+                                <img src='{{ URL::asset("storage/assets/img/dish/$produit->image")}}' class="img-fluid" alt="#">
                               </div>
                             </div>
                           </div>
@@ -172,16 +172,16 @@
                 <div class="card-body no-padding" id="refresh-delete">
                     
                   <?php $i = 0; $somme = 0; 
-                  if ($products):
+                  if (!is_null($products)):
                     foreach($products as $produit) : $somme += $produit->prix;?>
                       <div class="cat-product-box" id="product-box{{ $produit->id }}">
                         <?php $i++; ?>
                         <div class="cat-product">
                           <div class="cat-name" style="width: 3in;">
-                            <a href="{{ route('card.show', ['produit_id' => $produit->id]) }}">
+                            <a href="{{ route('product.show', ['produit_id' => $produit->id]) }}">
                               <p class="text-light-green fw-700"><span class="text-dark-white">{{ $i }}</span>{{ $produit->nom }}</p>
                               <span class="text-light-white fw-700">
-                                  {{ $produit->quantite ?? '0' }} élements,
+                                  {{ $produit->pivot->quantite ?? '0' }} élements,
                               </span>
                             </a>
                           </div>                            
@@ -305,7 +305,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
-                      <button type="submit" class="btn btn-secondary btn-sm btn-submit">Valider</button>
+                      <button type="submit" class="btn-sm btn-secondary btn-sm btn-submit">Valider</button>
                       <button id="notice-cancel" type="button" class="btn btn-secondary btn-sm">Annuler</button>
                     </div>
                   </div>
@@ -344,11 +344,11 @@
                       <textarea class="form-control" name="avis" rows="2" placeholder="Votre avis" required></textarea>
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4" style="margin-top: -3ex">
                     <div class="form-group">
                       <div class="form-group"></div>
                       <input type="hidden" name="ferme_id" value="{{ $ferme->id }}">
-                      <button type="submit" class="btn-second btn-submit" style="margin-top: -2ch">Valider</button>
+                      <button type="submit" class="btn-sm btn-submit" >Valider</button>
                     </div>
                   </div>
                 </div>
@@ -425,7 +425,9 @@
   </section>
   <script>
    $(document).ready(function () {
-      <?php foreach($products as $produit) {  ?>
+      <?php 
+      if(!is_null($products)) {
+      foreach($products as $produit) {  ?>
       $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
         if (confirm("Voulez-vous sûr de supprimer?")) {
           $.ajax({
@@ -442,7 +444,7 @@
           });
         } else return false;
       });
-      <?php } ?>
+      <?php } } ?>
     });
     $(document).ready(function () {
       <?php if(isset($ferme_avis)) { ?>

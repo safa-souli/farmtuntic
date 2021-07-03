@@ -50,7 +50,7 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="text-light-black fw-700"> Type <sup class="fs-16" style="color: red">*</sup></label>
-                                  <input type="number" name="prix" class="form-control @error('prix') is-invalid @enderror" placeholder="i.e 7.32" value="{{ old('prix') }}">
+                                  <input name="type" class="form-control @error('prix') is-invalid @enderror" placeholder="i.e 7.32" value="{{ old('prix') }}">
                                   @error('prix')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>

@@ -21,7 +21,8 @@ Route::view('home', 'home')->name('home');
 Route::get('produits', 'produitController@index')->name('product.index');
 Route::get('produits/search', 'produitController@search')->name('product.search');
 Route::get('produits/mine', 'produitController@mine')->middleware('can:viewAny, App\produit')->name('product.mine');
-Route::get('produits/categorie/{id}', 'produitController@categorie')->name('product.categorie');
+Route::get('produits/categorie/{categorie}', 'produitController@categorie')->name('product.categorie');
+Route::get('produits/noncategorie', 'produitController@noncategorie')->name('product.noncategorie');
 Route::get('produit/{produit}', 'produitController@show')->name('product.show');
 Route::view('produit//create', 'product.create')->name('product.create')->middleware('can:create,App\produit');
 Route::get('produit/{ferme}/create', 'produitController@farm')->name('farm.product.create')->middleware('can:create,App\produit');
@@ -37,6 +38,7 @@ Route::post('produit/note/update/{note}', 'produitController@note_update')->name
 #route panier
 Route::get('panier', 'panierController@show')->name('card.show');
 Route::get('panier/add/produit/{id}', 'panierController@store')->name('card.store');
+Route::get('panier/edit/produit/{panier}', 'panierController@update')->name('cart.update');
 Route::get('panier/destroy/produit/{id}', 'panierController@delete')->name('card.delete');
 
 #route ferme
@@ -48,8 +50,7 @@ Route::put('ferme/store', 'fermeController@store')->middleware('can:create,App\f
 Route::get('ferme/edit/{ferme}', 'fermeController@edit')->middleware('can:update,ferme')->name('farm.edit');
 Route::post('ferme/update/{ferme}', 'fermeController@update')->middleware('can:update,ferme')->name('farm.update');
 Route::get('ferme/delete/{ferme}', 'fermeController@delete')->middleware('can:delete,ferme')->name('farm.delete');
-
-//route ferme avis
+#route ferme avis
 Route::put('ferme/donner/avis', 'ferme_avisController@store')->name('notice.store');
 Route::post('ferme/update/avis/{avis}', 'ferme_avisController@update')->name('notice.update');
 Route::get('ferme/delete/avis/{avis}', 'ferme_avisController@delete')->name('notice.delete');
@@ -62,13 +63,11 @@ Route::put('forum/store', 'forumController@store')->middleware('auth')->name('fo
 Route::get('forum/edit/{forum}', 'forumController@edit')->middleware('can:update,forum')->name('forum.edit');
 Route::post('forum/update/{forum}', 'forumController@update')->middleware('can:update,forum')->name('forum.update');
 Route::get('forum/delete/{forum}', 'forumController@delete')->middleware('can:delete,forum')->name('forum.delete');
-
 #route forum commentaire
 Route::put('forum/commentaire/store', 'forum_commentaireController@store')->name('comment.store');
 Route::get('forum/commentaire/edit/{forum}/{commentaire}', 'forum_commentaireController@edit')->middleware('can:update,commentaire')->name('comment.edit');
 Route::post('forum/commentaire/update/{commentaire}', 'forum_commentaireController@update')->name('comment.update');
 Route::get('forum/commentaire/delete/{commentaire}', 'forum_commentaireController@delete')->middleware('can:delete,commentaire')->name('comment.delete');
-
 #route forum commentaire repondes
 Route::put('forum/commentaire/reponde/{commentaire}', 'forum_commentaire_repondeController@store')->name('reply.store');
 Route::get('forum/commentaire/reponde/edit/{forum}/{commentaire}/{reponde}', 'forum_commentaire_repondeController@edit')->middleware('can:update,reponde')->name('reply.edit');

@@ -49,7 +49,7 @@ class FermeController extends Controller
       else $avis = ferme_avis::where(['ferme_id' => $ferme->id, 'client_id' => Auth::user()->id])->first();
     else $avis = NULL;
     foreach ($this->panier->produits as $produit) {
-      if($produit->ferme_id = $ferme->id) {
+      if($produit->ferme_id == $ferme->id) {
         $find[] = $produit;
       }
     }
@@ -82,23 +82,19 @@ class FermeController extends Controller
     ]);
     
     $ferme = new ferme();
-    if($request->hasFile('image_ferme')) {    
-      $ferme->image = time().'_'.$request->file('image_ferme')->getClientOriginalName();
-      $request->file('image_ferme')->storeAs('public/assets/img/farms', $ferme->image);
-    }
-    else  $ferme->image = 'default.jpg';
-    
     $produit = new produit();
-    if($request->hasFile('image_produit')) {    
-      $produit->image = time().'_'.$request->file('image_produit')->getClientOriginalName();
-      $request->file('image_produit')->storeAs('public/assets/img/dish', $produit->image);
-    }
-    else  $produit->image = 'default.jpg';
-    
+    if ($request->hasFile('image_ferme')) {    
+        $ferme->image = time().'_'.$request->file('image_ferme')->getClientOriginalName();
+        $request->file('image_ferme')->storeAs('public/assets/img/farms', $ferme->image);
+        if($request->hasFile('image_produit')) {    
+          $produit->image = time().'_'.$request->file('image_produit')->getClientOriginalName();
+          $request->file('image_produit')->storeAs('public/assets/img/dish', $produit->image);
+        } else $produit->image = 'default.jpg';
+      
+    } else  $ferme->image = 'default.jpg';
     $ferme->nom = $request->nom_ferme;
     $ferme->telephone = $request->telephone;
     $ferme->email = $request->email;
-    $ferme->image = $image_ferme ?? 'default.jpg';
     $ferme->adresse = $request->adresse;
     $ferme->description = $request->description_ferme;
     $ferme->agriculteur_id = Auth::user()->id;
@@ -107,7 +103,7 @@ class FermeController extends Controller
       'nom' => $request->nom_produit,
       'prix' => $request->prix,
       'promotion' => $request->promotion,
-      'image' => $request->image_produit ?? 'default.jpg',
+      'image' => $produit->image,
       'description' => $request->description_produit
     ]);
     return redirect()->route('farm.mine');

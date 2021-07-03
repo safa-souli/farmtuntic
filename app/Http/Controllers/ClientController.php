@@ -64,8 +64,8 @@ class ClientController extends Controller
     {
       $request->validate([
         'nom_entreprise' => 'nullable|string|alpha|min:3|max:130',
-        'telephone_entreprise' => 'nullable|numeric|size:8',
-        'adresse_entreprise' => 'nullable|string|digits:3',
+        'telephone_entreprise' => 'required|numeric|size:8',
+        'adresse_entreprise' => 'nullable|string|min:3',
       ]);
       $client->livreur->nom_entreprise = $request->nom_entreprise;
       $client->livreur->telephone_entreprise = $request->telephone_entreprise;

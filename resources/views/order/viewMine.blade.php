@@ -73,7 +73,7 @@
                                 <div class="dropdown-menu">
                                     <a href="{{ route('order.details', $order)}}" class="dropdown-item">Afficher</a>
                                     @if(is_null($order->livraison_id))
-                                        <a  href="{{ route('order.delete', $produit) }}" class="dropdown-item" onclick="return confirm('Voulez-vous sûr du supprimer ce produit?')">Annuler </a>
+                                        <a  href="{{ route('order.delete', $order->id) }}" class="dropdown-item" onclick="return confirm('Voulez-vous sûr d\'annuler ce produit?')">Annuler </a>
                                     @endif
                                 </div>
                             </div>

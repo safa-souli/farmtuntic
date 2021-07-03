@@ -18,22 +18,23 @@
                 <div class="col-xl-4 col-lg-3 col-sm-3">
                   <article class="blog-services-wrapper main-box mb-xl-20">
                     <div class="post-img">
-                      <a href="blog-details.html">
-                        <img src='{{ URL::asset("assets/img/farms/$ferme->image")}}' class="img-fluid full-width" alt="ferme">
+                      <a href="void:javascript(0)">
+                        <img src='{{ URL::asset("storage/assets/img/farms/$ferme->image")}}' class="img-fluid full-width" alt="ferme">
                       </a>
                     </div>
                     <div class="post-meta">
                       <div class="author-img">
-                        <img src='{{ URL::asset("assets/img/user/{$ferme->client->photo}") }}' class="rounded-circle" alt="image" style="width: 1cm;height:1cm">
+                        <img src='{{ URL::asset("storage/assets/img/user/{$ferme->client->photo}") }}' class="rounded-circle" alt="image" style="width: 1.5cm;height:1.5cm">
                       </div>
                       <div class="author-meta">
-                        <h6 class="no-margin"><a href="#" class="text-light-black">{{ $ferme->client->prenom }} {{ $ferme->client->nom }}</a></h6>
+                        <h6 class="no-margin">
+                          <a href="{{route('profile.show', $ferme->client->id)}}" class="text-light-black">{{ $ferme->client->prenom }} {{ $ferme->client->nom }}</a></h6>
                         <p class="no-margin text-light-white"><a href="#" class="text-light-white">{{ $time->inWords($ferme->created_at) }}</p>
                       </div>
                     </div>
                     <div class="post-content padding-20">
                       <h5 class="no-margin"><a href="blog-details.html" class="text-light-black">{{ $ferme->nom }}</a></h5>
-                      <div class="rating">
+                      <div class="col-12 rating no-padding" style="margin: 1ch 0 2ch">
                         @inject('note', 'App\Http\Controllers\FermeController')
                         @if($note->avg($ferme->id))
                           @for($i = 0; $i <  number_format($note->avg($ferme->id)); $i++)
@@ -44,7 +45,7 @@
                           @endif
                         @endif
                         @if($note->etoiles($ferme->id))
-                          <span class="text-light-black fs-12 rate-data" style="top:0;">{{ $note->etoiles($ferme->id) }} évaluations</span>
+                          <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($ferme->id) }} évaluations</span>
                         @endif
                       </div>
                       <br>

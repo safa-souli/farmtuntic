@@ -59,9 +59,8 @@ class transportController extends Controller
       $transport = new transport();
       if($request->hasFile('image')) {    
         $transport->image = time().'_'.$request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/assets/img/farms', $transport->image);
-      }
-      else  $transport->image = 'default.jpg';
+        $request->file('image')->storeAs('public/assets/img/transport', $transport->image);
+      } else  $transport->image = 'default.jpg';
 
       $transport->matricule = $request->matricule;
       $transport->nom = $request->nom;

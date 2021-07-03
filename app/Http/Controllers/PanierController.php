@@ -31,11 +31,25 @@ class PanierController extends Controller
       'panier' => $panier
     ]);
   }
+
+  public function update(request $request, panier $panier)
+  {
+    foreach($request->pivot as $key => $value) dd(var_dump($value));
+
+    foreach ($panier->produits as $produit) {
+      $result = \DB::table('produit_panier')
+      ->where('produit_id', $produit->id)
+      ->update(['quantite' => 2]);
+    }
+    return redirect()->back();
+  }
+
   public function store($produit_id)
   {
     panier::find($this->panier->id)->produits()->attach('', ['produit_id' => $produit_id]);
     return redirect()->back();
   }
+
   public function delete($produit_id)
   {
     panier::find($this->panier->id)->produits()->detach($produit_id);

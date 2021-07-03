@@ -51,7 +51,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Téléphone</label>
-                                <input type="text" name="telephone" class="form-control @error('telephone') is-invalid @enderror" value="{{ $client->telephone ?? old('telephone')}}">
+                                <input type="text" name="telephone" class="form-control @error('telephone') is-invalid @enderror" value="{{ old('telephone') ?? $client->telephone }}">
                                 @error('telephone')
                                   <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -86,7 +86,7 @@
                                 <label class="text-light-black fw-700">Photo</label>
                                 <input type="file" name="photo" class="custom-file">
                                 @error('photo')
-                                  <span class="invalid-feedback" role="alert">
+                                  <span style="font-size: 80%;color: #dc3545;" role="alert">
                                     <strong>{{ $message }}</strong>
                                   </span>
                                 @enderror
@@ -131,7 +131,7 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="text-light-black fw-700">Adresse de l'entreprise</label>
-                                    <input type="text" name="adresse_entreprise" class="form-control @error('adresse_entreprise') is-invalid @enderror" value="{{ $client->livreur->adresse_entreprise ?? old('adresse_entreprise')}}">
+                                    <input type="text" name="adresse_entreprise" class="form-control @error('adresse_entreprise') is-invalid @enderror" value="{{  old('adresse_entreprise') ?? $client->livreur->adresse_entreprise}}">
                                     @error('adresse_entreprise')
                                       <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -172,7 +172,7 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="large-product-box p-relative pb-0">
-                  <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image" style="width: 1cm;height:1cm">
+                  <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
                 </div>
               </div>
             </div>

@@ -21,20 +21,20 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Nom</label>
-                              <h1 class="fw-100"> {{ $client->nom }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->nom }} </h6>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Prénom</label>
-                              <h1 class="fw-100"> {{ $client->prenom }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->prenom }} </h6>
                             </div>
                           </div>
                           @isset($client->datenai)
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Date de naissance</label>
-                                <h1 class="fw-100"> {{ $client->datenai }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->datenai }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -42,21 +42,21 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Téléphone</label>
-                                <h1 class="fw-100"> {{ $client->telephone }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->telephone }} </h6>
                               </div>
                             </div>
                           @endisset
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Email</label>
-                              <h1 class="fw-100"> {{ $client->email }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->email }} </h6>
                             </div>
                           </div>
                           @isset($client->adresse)
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Adresse</label>
-                                <h1 class="fw-100"> {{ $client->adresse }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->adresse }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -64,7 +64,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Sexe</label>
-                                <h1 class="fw-100"> {{ $client->sexe }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->sexe }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -84,7 +84,7 @@
                 <div class="cat-product-box">
                   <div class="cat-product">
                     <div class="cat-name">
-                      <img src='{{ URL::asset("assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image" style="width: 1cm;height:1cm">
+                      <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
                     </div>
                   </div>
                   @auth

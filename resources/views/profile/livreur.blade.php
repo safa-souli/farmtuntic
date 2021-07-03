@@ -21,20 +21,20 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Nom</label>
-                              <h1 class="fw-100"> {{ $client->nom }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->nom }} </h6>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Prénom</label>
-                              <h1 class="fw-100"> {{ $client->prenom }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->prenom }} </h6>
                             </div>
                           </div>
                           @isset($client->datenai)
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Date de naissance</label>
-                                <h1 class="fw-100"> {{ $client->datenai }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->datenai }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -42,21 +42,21 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Téléphone</label>
-                                <h1 class="fw-100"> {{ $client->telephone }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->telephone }} </h6>
                               </div>
                             </div>
                           @endisset
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Email</label>
-                              <h1 class="fw-100"> {{ $client->email }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->email }} </h6>
                             </div>
                           </div>
                           @isset($client->adresse)
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Adresse</label>
-                                <h1 class="fw-100"> {{ $client->adresse }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->adresse }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -64,7 +64,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Sexe</label>
-                                <h1 class="fw-100"> {{ $client->sexe }} </h1>
+                                <h6 class="text-light-white fw-100"> {{ $client->sexe }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -76,19 +76,19 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Nom de l'entreprise</label>
-                              <h1 class="fw-100"> {{ $client->livreur->nom_entreprise }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->livreur->nom_entreprise }} </h6>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Télephone de {{ $client->livreur->nom_entreprise }}</label>
-                              <h1 class="fw-100"> {{ $client->livreur->telephone_entreprise }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->livreur->telephone_entreprise }} </h6>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Adresse de {{ $client->livreur->nom_entreprise }}</label>
-                              <h1 class="fw-100"> {{ $client->livreur->adresse_entreprise }} </h1>
+                              <h6 class="text-light-white fw-100"> {{ $client->livreur->adresse_entreprise }} </h6>
                             </div>
                           </div>
                         </div>
@@ -111,7 +111,7 @@
                     </div>
                   </div>
                   @if($client->id == Auth::user()->id)
-                    <a href="{{ route('profile.show') }}">
+                    <a href="{{ route('profile.edit', $client->id) }}">
                       <div class="card-footer p-0 modify-order">
                         <button class="text-custom-white full-width fw-500 bg-light-green"><i class="fas fa-chevron-left mr-2"></i> Modifier profil</button>
                       </div>

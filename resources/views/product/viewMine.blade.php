@@ -4,10 +4,7 @@
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
     
-    <div class="container-fluid" style="margin-left: 2in;">
-      <div class="col-lg-12" style="margin-left: 1in">
-          
-          <div class="row">
+    <div class="container-fluid padding-20">
               <div class="sidebar-tabs main-box padding-20 mb-md-50">
                 <div class="section-header-left">
                     <h3 class="text-light-black header-title">Votre list des produits </h3>
@@ -23,11 +20,11 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th scope="col" style="width: 2cm">#</th>
-                        <th scope="col" style="width: 2cm">Image</th>
-                        <th scope="col" style="width: 3cm">nom</th>
-                        <th scope="col" style="width: 3cm">prix</th>
-                        <th scope="col" style="width: 3in">Date</th>
+                        <th scope="col" style="width: 10%">#</th>
+                        <th scope="col" style="width: 30%">Image</th>
+                        <th scope="col" style="width: 20%">nom</th>
+                        <th scope="col" style="width: 10%">prix</th>
+                        <th scope="col" style="width: 30%">Date</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -58,7 +55,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </section>
 @endsection

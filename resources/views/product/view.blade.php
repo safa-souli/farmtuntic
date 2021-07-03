@@ -39,9 +39,9 @@
                       @endif
                       <span class="text-light-black fs-12 rate-data">{{ $note->etoiles($produit->ferme->id) }} évaluations</span>
                     @endif
-                  </div>
+                  </div><br>
                   <p><span class="mr-1"><strong>{{number_format($produit->prix, 2, '.', ' ')  }}<sup>dt</sup></strong></span></p>
-                  <p class="pt-1">@if(is_null('$produit->description')) {{ $produit->description }} @else Aucun description   @endif</p>
+                  <p class="pt-1">@if(!is_null('$produit->description')) {{ $produit->description }} @else Aucun description   @endif</p>
                   @if(!is_null($produit->caracteristics))
                     <div class="table-responsive">
                       <table class="table table-sm table-borderless mb-0" style="border: 0;">

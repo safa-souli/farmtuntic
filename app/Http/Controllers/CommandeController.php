@@ -17,6 +17,7 @@ class CommandeController extends Controller
 
   public function __construct()
   {
+    $this->panier = panier::where('ipv4', $_SERVER['REMOTE_ADDR'] ?: ($_SERVER['HTTP_X_FORWARDED_FOR'] ?: $_SERVER['HTTP_CLIENT_IP']))->first();
     $this->time = $time = new \Westsworld\TimeAgo(new \Westsworld\TimeAgo\Translations\Fr());
     $this->middleware('auth');
   }
@@ -47,9 +48,8 @@ class CommandeController extends Controller
 
   public function add(ferme $ferme){
     $panier =  Panier::where('client_id', Auth::user()->id)->first();
-     
-    foreach ($panier->produits as $produit) {
-      if($produit->ferme_id = $ferme->id) {
+    foreach ($this->panier->produits as $produit) {
+      if($produit->ferme_id == $ferme->id) {
         $find[] = $produit;
       }
     }

@@ -47,7 +47,7 @@
                       @endforeach
                       
                       <li class="pb-xl-20 mb-xl-20">
-                        <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-light-black fw-600">Autre
+                        <a href="{{ route('product.noncategorie') }}" class="text-light-black fw-600">Autre
                           <span class="text-light-white fw-400">
                             (
                               @inject('noneCat', 'App\Http\Controllers\ProduitController')
@@ -110,7 +110,7 @@
                               </h6> 
                               <a href="{{ route('product.categorie', ['categorie'=> $categorie]) }}" class="text-muted" data-abc="true">{{$produit->categories->nom ?? 'Aucun categorie'}}</a>
                           </div>
-                          <h3 class="mb-0 font-weight-semibold">{{number_format($produit->prix, 2, '.', ' ')}}<sup>dt</sup></h3>
+                          <h3 class="mb-0 font-weight-semibold">{{number_format($produit->prix, 3, '.', ' ')}}<sup>dt</sup></h3>
                           <div> 
                             @inject('note', 'App\Http\Controllers\ProduitController')
                             @for($i = 0; $i <  number_format($note->avg($produit->id)); $i++)

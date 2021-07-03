@@ -437,8 +437,8 @@
         <div class="copyright-text">
         <span class="text-light-white">
         @guest
-           <a href="login" class="gem-points" style="color: #fff">S'identifier</a> | 
-           <a href="register" class="gem-points" style="color: #fff">S'inscrire</a> | 
+           <a href="{{route('login')}}" class="gem-points" style="color: #fff">S'identifier</a> | 
+           <a href="{{route('register')}}" class="gem-points" style="color: #fff">S'inscrire</a> | 
          @endguest
            <a href="{{ route('contact') }}" class="gem-points" style="color: #fff">Contactez-nous </a>
          </span>
@@ -520,7 +520,7 @@
               <div class="user-details p-relative">
                 <a href="#" class="text-light-white fw-500">
                   <?php $photo = Auth::user()->photo; ?>
-                  <img src='{{ URL::asset("storage/assets/img/user/$photo") }}' style="width: 1cm;height:1cm" class="rounded-circle" alt="user-img">
+                  <img src='{{ URL::asset("storage/assets/img/user/$photo") }}' style="width: 1cm;height:1cm" class="rounded-circle" alt="{{$photo}}">
                   <span> {{ Auth::user()->prenom }} {{ Auth::user()->nom }} </span>
                 </a>
                 <div class="user-dropdown" style="margin-left: 30px;">
@@ -623,7 +623,7 @@
             </li>
             <li><a href="#" class="text-light-white fw-600">Rechercher ferme</a>
             </li>
-            <li><a href="login" class="text-light-white fw-600">S'identifier</a>
+            <li><a href="{{route('login')}}" class="text-light-white fw-600">S'identifier</a>
             </li>
           </ul>
         </div>

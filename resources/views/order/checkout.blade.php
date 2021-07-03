@@ -71,6 +71,7 @@
                 <div id="refresh-delete">
                   <?php 
                     $i = 0; $somme = 0;
+
                     if(!is_null($products)) :
                       foreach($products as $produit) : $somme += $produit->prix;?>
                       <div class="cat-product-box" id="product-box{{ $produit->id }}">
@@ -117,24 +118,26 @@
   </section>
   <script type="text/javascript">
     $(document).ready(function () {
-      <?php foreach($products  as $produit) {  ?>
-      $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
-        if (confirm("Voulez-vous sûr de supprimer?")) {
-          $.ajax({
-            type: 'GET',
-            url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
-            success: function () {
-              $("#cart-refresh-layout").load(" #cart-refresh-layout");
-                $("#refresh-delete").load(" #refresh-delete");
-            },
-            error: function (error) {
-              console.log(error);
-              alert("delete error");
-            }
-          });
-        } else return false;
-      });
-      <?php } ?>
+      <?php
+      if(!is_null($products)) {
+       foreach($products  as $produit) {  ?>
+        $(document).on("click", "#product-delete<?php echo e($produit->id); ?>", function () {
+          if (confirm("Voulez-vous sûr de supprimer?")) {
+            $.ajax({
+              type: 'GET',
+              url: '<?php echo url('panier/destroy/produit'); ?>/' + '<?php echo $produit->id; ?>',
+              success: function () {
+                $("#cart-refresh-layout").load(" #cart-refresh-layout");
+                  $("#refresh-delete").load(" #refresh-delete");
+              },
+              error: function (error) {
+                console.log(error);
+                alert("delete error");
+              }
+            });
+          } else return false;
+        });
+      <?php } } ?>
     });
   </script>
 @endsection

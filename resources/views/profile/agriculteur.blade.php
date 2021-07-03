@@ -5,7 +5,7 @@
   <!-- Navigation -->
   <section class="register-restaurent-sec section-padding bg-light-theme">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row auto-margin" style="margin-left: 3in;">
         <div class="col-lg-9">
           <div class="sidebar-tabs main-box padding-20 mb-md-40">
             <div id="add-restaurent-tab" class="step-app">
@@ -17,7 +17,31 @@
                     <li class="add-res-tab" id="stepbtn2"><a href="#" class="add-res-tab">Fermes</a>
                     </li>
                   </ul>
+                  
+                  <div class="cart-detail-box">
+                    <div class="card">
+                      <div class="card-body no-padding" id="scrollstyle-4">
+                        <div class="cat-product-box">
+                          <div class="cat-product">
+                            <div class="cat-name">
+                              <img src='{{ URL::asset("storage/assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image">
+                            </div>
+                          </div>
+                          @auth
+                            @if($client->id == Auth::user()->id)
+                              <a href="{{ route('profile.edit') }}">
+                                <div class="card-footer p-0 modify-order">
+                                  <button class="text-custom-white full-width fw-500 bg-light-green"> Modifier profil <i class="fas fa-chevron-right mr-2"></i></button>
+                                </div>
+                              </a>
+                            @endif
+                          @endauth
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                
                 <div class="col-xl-8 col-lg-7">
                   <div class="step-content">
                     <div class="step-tab-panel active" id="steppanel1">
@@ -29,20 +53,20 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Nom</label>
-                              <h1 class="fw-100"> {{ $client->nom }} </h1>
+                              <h6 class="text-light-white fw-100" > {{ $client->nom }} </h6>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Prénom</label>
-                              <h1 class="fw-100"> {{ $client->prenom }} </h1>
+                              <h6 class="text-light-white fw-100" > {{ $client->prenom }} </h6>
                             </div>
                           </div>
                           @isset($client->datenai)
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Date de naissance</label>
-                                <h1 class="fw-100"> {{ $client->datenai }} </h1>
+                                <h6 class="text-light-white fw-100" > {{ $client->datenai }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -50,21 +74,21 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Téléphone</label>
-                                <h1 class="fw-100"> {{ $client->telephone }} </h1>
+                                <h6 class="text-light-white fw-100" > {{ $client->telephone }} </h6>
                               </div>
                             </div>
                           @endisset
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Email</label>
-                              <h1 class="fw-100"> {{ $client->email }} </h1>
+                              <h6 class="text-light-white fw-100" > {{ $client->email }} </h6>
                             </div>
                           </div>
                           @isset($client->adresse)
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Adresse</label>
-                                <h1 class="fw-100"> {{ $client->adresse }} </h1>
+                                <h6 class="text-light-white fw-100" > {{ $client->adresse }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -72,7 +96,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="text-light-black fw-700">Sexe</label>
-                                <h1 class="fw-100"> {{ $client->sexe }} </h1>
+                                <h6 class="text-light-white fw-100" > {{ $client->sexe }} </h6>
                               </div>
                             </div>
                           @endisset
@@ -84,13 +108,13 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Domaines</label>
-                              <h6 class="fw-100"> {{ $client->agriculteur->domaine }} </h6>
+                              <p class="text-light-white fw-100"> {{ $client->agriculteur->domaine }} </p>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="text-light-black fw-700">Certification</label>
-                              <h1 class="fw-100"> {{ $client->agriculteur->certificate }} </h1>
+                              <p class="text-light-white fw-100" > {{ $client->agriculteur->certificate }} </p>
                             </div>
                           </div>
                         </div>
@@ -124,7 +148,7 @@
                                       @endif
                                     </div>
                                     <br>
-                                    <p style="margin-top: 10px;">{{ substr($ferme->description, 0, 100) }}...</p>
+                                    <p  style="margin-top: 10px;">{{ substr($ferme->description, 0, 100) }}...</p>
                                     <div class="blog-link-wrap"><a href="{{ route('farm.show', ['ferme' => $ferme]) }}" class="btn-first white-btn">Afficher plus</a>
                                     </div>
                                   </div>
@@ -137,30 +161,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="cart-detail-box">
-            <div class="card">
-              <div class="card-body no-padding" id="scrollstyle-4">
-                <div class="cat-product-box">
-                  <div class="cat-product">
-                    <div class="cat-name">
-                      <img src='{{ URL::asset("assets/img/user/$client->photo") }}' class="img-fluid full-width" alt="image" style="width: 1cm;height:1cm">
-                    </div>
-                  </div>
-                  @auth
-                    @if($client->id == Auth::user()->id)
-                      <a href="{{ route('profile.edit') }}">
-                        <div class="card-footer p-0 modify-order">
-                          <button class="text-custom-white full-width fw-500 bg-light-green"><i class="fas fa-chevron-left mr-2"></i> Modifier profil</button>
-                        </div>
-                      </a>
-                    @endif
-                  @endauth
                 </div>
               </div>
             </div>
