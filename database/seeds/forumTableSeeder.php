@@ -11,7 +11,7 @@ class forumTableSeeder extends Seeder
    */
   public function run()
   {
-    factory(App\forum::class, 20)
+    factory(App\forum::class, 30)
       ->create()
       ->each(function ($forum) {
         $faker = Faker\Factory::create();

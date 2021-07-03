@@ -28,21 +28,21 @@ class DatabaseSeeder extends Seeder
     DB::table('produit_panier')->truncate();
     DB::table('produit')->truncate();
     DB::table('commande')->truncate();
+    //DB::table('contact')->truncate();
     DB::table('panier')->truncate();
-    DB::table('demande')->truncate();
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     //seeding tables
     $this->call(UsersTableSeeder::class);
-    $this->call(forumTableSeeder::class);
-    $this->call(fermeTableSeeder::class);
+    //$this->call(forumTableSeeder::class);
+    //$this->call(categorieTableSeeder::class);
+    //$this->call(fermeTableSeeder::class);
     $this->call(produitTableSeeder::class);
-    $this->call(categorieTableSeeder::class);
-    $this->call(produitNoteTableSeeder::class);
+    //$this->call(produitNoteTableSeeder::class);
     $this->call(transportTableSeeder::class);
     $this->call(livraisonTableSeeder::class);
     $this->call(commandeTableSeeder::class);
-    $this->call(demandeTableSeeder::class);
-    $this->call(panierTableSeeder::class);
+    //$this->call(panierTableSeeder::class);
+    //$this->call(contactTableSeeder::class);
   }
 }

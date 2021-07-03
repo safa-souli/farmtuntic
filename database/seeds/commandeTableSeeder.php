@@ -11,15 +11,14 @@ class commandeTableSeeder extends Seeder
    */
   public function run()
   {
-    $clients = App\User::all();
-    foreach ($clients as $client) {
+    $commandes = factory(App\commande::class, 50)->create();
+    foreach ($commandes as $commande) {
       $faker = Faker\Factory::create();
       for($i = 0; $i < rand(5, 10); $i++)
       {
-        $client->commandes()->attach('', [
-          'total' => 0,
-          'etat' => $faker->randomElement(['en cours', 'accepte', 'refuse']),
-          'livraison_id' => App\livraison::all()->random()->id,
+        $commande->products()->attach('', [
+          'etat' => $faker->randomElement(['R','A','P','E', 'L']),
+          'quantite' => $faker->rand('1, 100'),
           'produit_id' => App\produit::all()->random()->id
         ]);
       }

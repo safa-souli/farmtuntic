@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(livreur::class, function (Faker $faker, $param) {
   return [
     'id' => $param['id'],
-    'nom_entreprise' => $faker->word,
+    'nom_entreprise' => $faker->company,
     'adresse_entreprise' => $faker->streetAddress,
     'telephone_entreprise' => $faker->e164PhoneNumber,
     'certificate' => NULL

@@ -8,7 +8,9 @@ use Faker\Generator as Faker;
 $factory->define(transport::class, function (Faker $faker, $param) {
   return [
     'nom' => $faker->word,
-    'type' => 'N',
+    'type' => $faker->word,
+    'quantite' => $faker->randomDigitNotNull,
+    'image' => 'transport ('.rand(1, 10).').jpg',
     'livreur_id' => $param['livreur_id'],
   ];
 });

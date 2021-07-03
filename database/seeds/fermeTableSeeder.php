@@ -14,7 +14,7 @@ class fermeTableSeeder extends Seeder
   {
     $agriculteurs = App\agriculteur::all();
     foreach ($agriculteurs as $agriculteur) {
-      factory(App\ferme::class, rand(1, 3))
+      factory(App\ferme::class, rand(1, 5))
         ->create(['agriculteur_id' => $agriculteur->id])
         ->each(function ($ferme) {
           $faker = Faker\Factory::create();
