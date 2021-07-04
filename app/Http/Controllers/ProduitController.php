@@ -51,12 +51,16 @@ class ProduitController extends Controller
   
   public function mine()
   {
-    
+    $produit = \DB::table('ferme')
+            ->join('produit', 'ferme.id', '=', 'produit.ferme_id')
+            ->where('ferme.agriculteur_id', Auth::user()->id)
+            ->orderBy('produit.created_at', 'DESC')
+            ->get();
+        
     return view('product.viewMine',
       [
         'time' => $this->time,
-        'produits' => produit::where('agriculteur_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(15),
-        'categories' => categorie::orderBy('nom')->get()
+        'produits' => $produit
       ]);
   }
 

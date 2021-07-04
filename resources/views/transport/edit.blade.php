@@ -49,7 +49,7 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="text-light-black fw-700"> Type <sup class="fs-16" style="color: red">*</sup></label>
-                                  <input name="type" class="form-control @error('type') is-invalid @enderror" placeholder="i.e 7.32" value="{{ old('type') ?? $transport->type}}">
+                                  <input name="type" class="form-control @error('type') is-invalid @enderror" placeholder="i.e 7.32" value="{{ $transport->type ??  old('type') }}">
                                   @error('type')
                                     <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>

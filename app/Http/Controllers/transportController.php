@@ -21,7 +21,7 @@ class transportController extends Controller
       return view('transport.view',
         [
           'time' => $this->time,
-          'transports' => transport::where('livreur_id', Auth::user()->id)->get()
+          'transports' => transport::where('livreur_id', Auth::user()->id)->orderBy('created_at','DESC')->get()
         ]);
     }
 
@@ -53,7 +53,8 @@ class transportController extends Controller
       $request->validate([
         'matricule' =>'required|numeric|unique:transport',
         'nom' =>'required|string|min:3|max:255',
-        'image' => 'nullable|image|max:2048'
+        'image' => 'nullable|image|max:2048',
+        'type' => 'required'
       ]);
       
       $transport = new transport();
@@ -64,6 +65,7 @@ class transportController extends Controller
 
       $transport->matricule = $request->matricule;
       $transport->nom = $request->nom;
+      $transport->type = $request->type;
       $transport->livreur_id = Auth::user()->id;
       $transport->save();
       return redirect()->route('transport.show');
@@ -82,6 +84,7 @@ class transportController extends Controller
       $request->validate([
         'matricule' => $validate_mat,
         'nom' =>'required|string|min:3|max:255',
+        'type' =>'required',
         'image' => 'nullable|image|max:2048'
       ]);
       
@@ -89,10 +92,10 @@ class transportController extends Controller
         $transport->image = time().'_'.$request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/assets/img/transport', $transport->image);
       }
-      else  $transport->image = 'default.jpg';
 
       $transport->matricule = $request->matricule;
       $transport->nom = $request->nom;
+      $transport->type = $request->type;
       $transport->livreur_id = Auth::user()->id;
       $transport->save();
       return redirect()->route('transport.edit', transport::find($request->matricule));

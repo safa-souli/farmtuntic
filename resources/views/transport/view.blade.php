@@ -39,7 +39,7 @@
                       <tr>
                           <th scope="row">{{ $transport->matricule }}</th>
                           <td class="w-25"> 
-                            <img  class="img-responsive" src='{{ URL::asset("storage/assets/img/transport/{$transport->image}") }}' alt="haha" style="height:1in">  </td>
+                            <img  class="img-responsive" src='{{ URL::asset("storage/assets/img/transport/$transport->image") }}' alt="{{$transport->image}}" style="height:1in">  </td>
                           <td>{{$transport->nom}} </td>
                           <td>{{$transport->type}} </td>
                           <td>{{ $time->inWords($transport->updated_at)}}</td>

@@ -34,15 +34,15 @@ class DatabaseSeeder extends Seeder
 
     //seeding tables
     $this->call(UsersTableSeeder::class);
-    //$this->call(forumTableSeeder::class);
-    //$this->call(categorieTableSeeder::class);
-    //$this->call(fermeTableSeeder::class);
+    $this->call(forumTableSeeder::class);
+    $this->call(categorieTableSeeder::class);
+    $this->call(fermeTableSeeder::class);
     $this->call(produitTableSeeder::class);
-    //$this->call(produitNoteTableSeeder::class);
+    $this->call(produitNoteTableSeeder::class);
     $this->call(transportTableSeeder::class);
     $this->call(livraisonTableSeeder::class);
     $this->call(commandeTableSeeder::class);
-    //$this->call(panierTableSeeder::class);
+    $this->call(panierTableSeeder::class);
     //$this->call(contactTableSeeder::class);
   }
 }

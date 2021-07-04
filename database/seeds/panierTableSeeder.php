@@ -12,7 +12,7 @@ class panierTableSeeder extends Seeder
   public function run()
   {
     $clients = App\User::all();
-    DB::insert('INSERT INTO `farmtastic`.`panier` (`ipv4`) VALUES (?);', ['127.0.0.1']);
+    DB::insert('INSERT INTO `panier` (`ipv4`) VALUES (?);', ['127.0.0.1']);
     foreach ($clients as $client) {
       factory(App\panier::class)->create(['client_id' => $client->id]);
     }

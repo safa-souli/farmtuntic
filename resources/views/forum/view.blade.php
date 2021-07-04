@@ -57,7 +57,7 @@
                       <div class="review-box u-line">
                         <div class="review-user">
                           <div class="review-user-img">
-                            <img src='{{ URL::asset("assets/img/user/$commentaire->photo") }}' class="rounded-circle" alt="#" style="width: 1cm;height:1cm">
+                            <img src='{{ URL::asset("storage/assets/img/user/$commentaire->photo") }}' class="rounded-circle" alt="#" style="width: 1cm;height:1cm">
                             <div class="reviewer-name">
                               <p class="text-light-black fw-600">{{ $commentaire->prenom }} {{ $commentaire->nom }}
                                 <small class="text-light-white fw-500">{{ $commentaire->adresse }}</small>
@@ -134,7 +134,7 @@
                               <div class="review-user">
                                 
                                 <div class="review-user-img">
-                                  <img src='{{ URL::asset("assets/img/user/$commentaire->photo") }}' class="rounded-circle" style="width: 1cm;height:1cm" alt="#">
+                                  <img src='{{ URL::asset("storage/assets/img/user/$commentaire->photo") }}' class="rounded-circle" style="width: 1cm;height:1cm" alt="#">
                                   <div class="reviewer-name">
                                     <p class="text-light-black fw-600">{{ $commentaire->prenom }} {{ $commentaire->nom }}
                                       <small class="text-light-white fw-500">{{ $commentaire->adresse }}</small>
